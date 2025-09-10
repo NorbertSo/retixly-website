@@ -5,25 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retixly - AI-Powered SEO, UX & Security Audits</title>
     <meta name="description" content="Profesjonalne audyty SEO, UX i bezpieczeństwa oparte na AI. Zwiększ wydajność swojego e-commerce dzięki Retixly.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Retixly - AI-Powered SEO, UX & Security Audits">
+    <meta property="og:description" content="Rewolucyjne audyty oparte na AI. Zwiększ wydajność nawet do 300%.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #6366f1;
             --secondary-color: #8b5cf6;
             --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            
             --bg-dark: #0f172a;
             --bg-light: #1e293b;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
-            --glass: rgba(255, 255, 255, 0.1);
-            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --text-disabled: #475569;
+            
+            --border-color: rgba(148, 163, 184, 0.1);
+            --border-focus: rgba(99, 102, 241, 0.4);
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            --gradient-card: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+            
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(148, 163, 184, 0.2);
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            --font-size-6xl: 3.75rem;
         }
 
-        * {
+        /* CSS Reset & Base Styles */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -31,14 +77,35 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
-            color: var(--text-light);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        *:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
 
         /* Background */
@@ -48,7 +115,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
+            background: radial-gradient(ellipse at top, var(--primary-color) 0%, var(--bg-dark) 70%);
             z-index: -2;
         }
 
@@ -60,35 +127,40 @@
             width: 200%;
             height: 200%;
             background: 
-                radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+                radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            animation: float 30s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(-30px, -50px) rotate(120deg); }
-            66% { transform: translate(30px, -30px) rotate(240deg); }
+            33% { transform: translate(-20px, -30px) rotate(120deg); }
+            66% { transform: translate(20px, -20px) rotate(240deg); }
         }
 
-        /* Mobile-first container */
+        /* Container */
         .container {
             width: 100%;
             padding: 0 1rem;
             margin: 0 auto;
         }
 
-        /* Mobile-first header */
+        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header-scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: var(--shadow-lg);
         }
 
         nav {
@@ -96,32 +168,45 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            position: relative;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.025em;
         }
 
-        /* Mobile menu hidden by default */
         .nav-links {
             display: none;
         }
 
         .menu-toggle {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-size: var(--font-size-lg);
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        /* Mobile-first Hero Section */
+        .menu-toggle:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -139,167 +224,192 @@
         }
 
         .hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
         }
 
         .hero .highlight {
-            background: var(--gradient);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
             display: inline-block;
-            padding: 0 0.2em;
             transition: all 0.5s ease;
         }
 
-        .hero .highlight::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(15, 23, 42, 0.4);
-            border-radius: 8px;
-            z-index: -1;
-            backdrop-filter: blur(10px);
-        }
-
         .hero p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--gradient);
+            background: var(--gradient-primary);
             color: white;
-            padding: 0.875rem 1.5rem;
+            padding: 1rem 2rem;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: var(--radius-xl);
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
+            font-size: var(--font-size-base);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-2xl);
         }
 
-        /* Mobile-first About Section */
+        /* About Section */
         .about {
-            padding: 4rem 1rem;
+            padding: 6rem 1rem;
             position: relative;
             z-index: 1;
         }
 
-        .about-content {
-            display: block;
-        }
-
         .about h2 {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
             margin-bottom: 2rem;
             text-align: center;
+            letter-spacing: -0.025em;
         }
 
         .about p {
-            color: var(--text-muted);
-            font-size: 1rem;
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
             line-height: 1.8;
             margin-bottom: 1.5rem;
+            text-align: center;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            max-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stat-item {
             text-align: center;
-            padding: 1rem;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
         }
 
         .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
             color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
         }
 
-        /* Mobile-first Services */
+        /* Services Section */
         .services {
-            padding: 4rem 1rem;
+            padding: 6rem 1rem;
             position: relative;
             z-index: 1;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-title h2 {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
             margin-bottom: 1rem;
+            letter-spacing: -0.025em;
         }
 
         .section-title p {
-            color: var(--text-muted);
-            font-size: 1rem;
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            max-width: 48rem;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
+            max-width: 72rem;
+            margin: 0 auto;
         }
 
         .service-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
             padding: 2rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            background: var(--gradient);
+            font-size: 3rem;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -307,34 +417,36 @@
         }
 
         .service-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: var(--font-size-xl);
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
         .service-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: var(--font-size-base);
         }
 
-        /* Mobile-first Contact */
+        /* Contact Section */
         .contact {
-            padding: 4rem 1rem;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(20px);
+            padding: 6rem 1rem;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+            backdrop-filter: blur(24px);
             position: relative;
             z-index: 1;
         }
 
         .contact-form {
-            max-width: 100%;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            max-width: 32rem;
+            margin: 0 auto;
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
             padding: 2rem;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-xl);
         }
 
         .form-group {
@@ -344,54 +456,72 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-light);
-            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: var(--font-size-sm);
         }
 
         .form-group input {
             width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            color: var(--text-light);
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            padding: 0.875rem 1rem;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-size: var(--font-size-base);
+            transition: all 0.2s ease;
+            backdrop-filter: blur(12px);
         }
 
         .form-group input:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 3px var(--border-focus);
+            background: rgba(30, 41, 59, 0.7);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
         }
 
         .submit-btn {
             width: 100%;
-            background: var(--gradient);
+            background: var(--gradient-primary);
             color: white;
             border: none;
             padding: 1rem;
-            font-size: 1rem;
+            font-size: var(--font-size-base);
             font-weight: 600;
-            border-radius: 10px;
+            border-radius: var(--radius-lg);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* Footer */
         footer {
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             position: relative;
             z-index: 1;
-            font-size: 0.9rem;
+            font-size: var(--font-size-sm);
         }
 
         /* Scroll Indicator */
@@ -401,20 +531,20 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: var(--gradient);
+            background: var(--gradient-primary);
             z-index: 10000;
-            transition: width 0.3s ease;
+            transition: width 0.1s ease;
         }
 
-        /* Tablet styles */
-        @media (min-width: 768px) {
+        /* Tablet Styles - 768px+ */
+        @media (min-width: 48em) {
             .container {
-                max-width: 750px;
+                max-width: 48rem;
                 padding: 0 1.5rem;
             }
 
             .logo {
-                font-size: 1.8rem;
+                font-size: var(--font-size-3xl);
             }
 
             .nav-links {
@@ -424,21 +554,23 @@
             }
 
             .nav-links a {
-                color: var(--text-light);
+                color: var(--text-primary);
                 text-decoration: none;
                 font-weight: 500;
-                transition: color 0.3s ease;
+                font-size: var(--font-size-base);
+                transition: all 0.2s ease;
                 position: relative;
+                padding: 0.5rem 0;
             }
 
             .nav-links a::after {
                 content: '';
                 position: absolute;
-                bottom: -5px;
+                bottom: 0;
                 left: 0;
                 width: 0;
                 height: 2px;
-                background: var(--gradient);
+                background: var(--gradient-primary);
                 transition: width 0.3s ease;
             }
 
@@ -450,32 +582,17 @@
                 display: none;
             }
 
-            .hero {
-                padding: 8rem 1.5rem 6rem;
-            }
-
             .hero h1 {
-                font-size: 3rem;
+                font-size: var(--font-size-5xl);
             }
 
             .hero p {
-                font-size: 1.25rem;
-            }
-
-            .about-content {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-                align-items: center;
-            }
-
-            .about h2 {
-                text-align: left;
+                font-size: var(--font-size-xl);
             }
 
             .stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 48rem;
             }
 
             .services-grid {
@@ -483,62 +600,79 @@
                 gap: 2rem;
             }
 
+            .service-card {
+                padding: 2.5rem;
+            }
+
             .contact-form {
-                max-width: 600px;
-                margin: 0 auto;
                 padding: 3rem;
             }
         }
 
-        /* Desktop styles */
-        @media (min-width: 1024px) {
+        /* Desktop Styles - 1024px+ */
+        @media (min-width: 64em) {
             .container {
-                max-width: 1200px;
+                max-width: 80rem;
                 padding: 0 2rem;
             }
 
             .hero h1 {
-                font-size: 4rem;
+                font-size: var(--font-size-6xl);
             }
 
             .services-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
             }
 
-            .stats {
-                grid-template-columns: repeat(4, 1fr);
+            .about {
+                padding: 8rem 1rem;
+            }
+
+            .services {
+                padding: 8rem 1rem;
+            }
+
+            .contact {
+                padding: 8rem 1rem;
             }
         }
 
-        /* Animation classes */
+        /* Large Desktop - 1280px+ */
+        @media (min-width: 80em) {
+            .container {
+                max-width: 90rem;
+            }
+        }
+
+        /* Animations */
         .fade-in {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Reduced animations for better mobile performance */
-        @media (prefers-reduced-motion: reduce) {
-            .animated-bg::before {
-                animation: none;
-            }
-            
-            .fade-in {
-                opacity: 1;
-                transform: none;
-            }
+        /* Loading state */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Success state */
+        .success {
+            background: var(--gradient-accent);
         }
     </style>
 </head>
 <body>
-    <div class="animated-bg"></div>
-    <div class="scroll-indicator"></div>
+    <div class="animated-bg" aria-hidden="true"></div>
+    <div class="scroll-indicator" role="progressbar" aria-label="Postęp przewijania strony"></div>
 
-    <header>
+    <header role="banner">
         <div class="container">
-            <nav>
+            <nav role="navigation" aria-label="Główne menu">
                 <div class="logo">Retixly</div>
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
+                <button class="menu-toggle" aria-label="Otwórz menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -551,14 +685,14 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section id="home" class="hero" role="banner">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Przyszłość <span class="highlight">AI-powered</span><br>audytów dla Twojego biznesu</h1>
+                    <h1>Przyszłość <span class="highlight">AI-powered</span> audytów dla Twojego biznesu</h1>
                     <p>Rewolucyjne audyty SEO, UX i bezpieczeństwa oparte na sztucznej inteligencji. Zwiększ wydajność swojego e-commerce nawet do 300% dzięki naszym zaawansowanym analizom.</p>
-                    <a href="#contact" class="cta-button">
-                        <i class="fas fa-rocket"></i>
-                        Rozpocznij bezpłatny audyt
+                    <a href="#contact" class="cta-button" role="button">
+                        <i class="fas fa-rocket" aria-hidden="true"></i>
+                        <span>Rozpocznij bezpłatny audyt</span>
                     </a>
                 </div>
             </div>
@@ -566,30 +700,27 @@
 
         <section id="about" class="about">
             <div class="container">
-                <div class="about-content fade-in">
-                    <div class="about-text">
-                        <h2>Polski startup, <span class="highlight">globalne ambicje</span></h2>
-                        <p>Jesteśmy dynamicznym polskim startupem technologicznym, który celuje w rynki globalne. Nasza misja to rewolucja w sposobie analizowania i optymalizowania stron internetowych.</p>
-                        <p>Wykorzystujemy najnowocześniejsze algorytmy AI do dostarczania precyzyjnych audytów, które pomagają firmom osiągać lepsze wyniki w konkurencyjnym środowisku e-commerce.</p>
-                        <p>Dzięki naszemu zespołowi ekspertów i innowacyjnym rozwiązaniom, pomagamy klientom na całym świecie przekształcać swoje strony w wydajne narzędzia sprzedażowe.</p>
+                <h2>Innowacyjny startup, <span class="highlight">globalne standardy</span></h2>
+                <p>Jesteśmy dynamicznym startupem technologicznym, który wyznacza nowe standardy w analizie i optymalizacji stron internetowych na światowych rynkach.</p>
+                <p>Wykorzystujemy najnowocześniejsze algorytmy AI i machine learning do dostarczania precyzyjnych audytów, które przekładają się na mierzalne wyniki biznesowe w konkurencyjnym środowisku e-commerce.</p>
+                <p>Dzięki zaawansowanej technologii i głębokiej wiedzy eksperckiej, pomagamy klientom na całym świecie transformować swoje strony w wysoce konwertujące narzędzia sprzedażowe.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Oparcie na AI</div>
                     </div>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-number">95%</div>
-                            <div class="stat-label">Oparcie na AI</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">30min</div>
-                            <div class="stat-label">Czas dostawy</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Dostępność</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">Global</div>
-                            <div class="stat-label">Zasięg</div>
-                        </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30min</div>
+                        <div class="stat-label">Czas dostawy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Dostępność</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Global</div>
+                        <div class="stat-label">Zasięg</div>
                     </div>
                 </div>
             </div>
@@ -597,34 +728,34 @@
 
         <section id="services" class="services">
             <div class="container">
-                <div class="section-title fade-in">
+                <div class="section-title">
                     <h2>Nasze <span class="highlight">AI-powered</span> Usługi</h2>
-                    <p>Wykorzystujemy najnowocześniejsze algorytmy sztucznej inteligencji do kompleksowej analizy Twojej strony internetowej</p>
+                    <p>Wykorzystujemy najnowocześniejsze algorytmy sztucznej inteligencji do kompleksowej analizy i optymalizacji Twojej strony internetowej</p>
                 </div>
 
                 <div class="services-grid">
-                    <div class="service-card fade-in">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-search-plus"></i>
+                            <i class="fas fa-search-plus" aria-hidden="true"></i>
                         </div>
                         <h3>Audyt SEO AI</h3>
-                        <p>Zaawansowana analiza SEO z wykorzystaniem uczenia maszynowego. Identyfikujemy ukryte możliwości optymalizacji i przewidujemy trendy w algorytmach wyszukiwarek.</p>
+                        <p>Zaawansowana analiza SEO z wykorzystaniem uczenia maszynowego. Identyfikujemy ukryte możliwości optymalizacji i przewidujemy trendy w algorytmach wyszukiwarek dla maksymalnej widoczności.</p>
                     </div>
 
-                    <div class="service-card fade-in">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-users" aria-hidden="true"></i>
                         </div>
                         <h3>Analiza UX AI</h3>
-                        <p>Głęboka analiza doświadczeń użytkowników oparta na danych behawioralnych i heatmapach AI. Optymalizujemy konwersje i zwiększamy zadowolenie klientów.</p>
+                        <p>Głęboka analiza doświadczeń użytkowników oparta na danych behawioralnych i heatmapach AI. Optymalizujemy ścieżki konwersji i zwiększamy zadowolenie klientów poprzez data-driven insights.</p>
                     </div>
 
-                    <div class="service-card fade-in">
+                    <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         </div>
                         <h3>Security Audit AI</h3>
-                        <p>Kompleksowe skanowanie bezpieczeństwa z wykorzystaniem AI do wykrywania zagrożeń. Chronimy Twój biznes przed cyberatakami i naruszeniami danych.</p>
+                        <p>Kompleksowe skanowanie bezpieczeństwa z wykorzystaniem AI do wykrywania zagrożeń. Chronimy Twój biznes przed cyberatakami, naruszeniami danych i lukami bezpieczeństwa.</p>
                     </div>
                 </div>
             </div>
@@ -632,78 +763,98 @@
 
         <section id="contact" class="contact">
             <div class="container">
-                <div class="section-title fade-in">
+                <div class="section-title">
                     <h2>Otrzymaj <span class="highlight">bezpłatny</span> audyt</h2>
-                    <p>Wprowadź adres swojej strony i email, a nasz AI przeprowadzi dla Ciebie wstępną analizę w ciągu 20-30 minut</p>
+                    <p>Wprowadź adres swojej strony i email, a nasz AI przeprowadzi dla Ciebie kompleksową analizę w ciągu 20-30 minut</p>
                 </div>
 
-                <form class="contact-form fade-in" id="auditForm">
+                <form class="contact-form" id="auditForm" novalidate>
                     <div class="form-group">
                         <label for="website">Adres strony internetowej</label>
-                        <input type="url" id="website" name="website" placeholder="https://twoja-strona.pl" required>
+                        <input 
+                            type="url" 
+                            id="website" 
+                            name="website" 
+                            placeholder="https://twoja-strona.pl" 
+                            required
+                            aria-describedby="website-error"
+                        >
+                        <div id="website-error" class="error-message" aria-live="polite"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Adres email</label>
-                        <input type="email" id="email" name="email" placeholder="twoj@email.pl" required>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="twoj@email.pl" 
+                            required
+                            aria-describedby="email-error"
+                        >
+                        <div id="email-error" class="error-message" aria-live="polite"></div>
                     </div>
 
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i>
-                        Wyślij żądanie audytu
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        <span>Wyślij żądanie audytu</span>
                     </button>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2025 Retixly. Wszystkie prawa zastrzeżone. | AI-Powered Business Solutions</p>
         </div>
     </footer>
 
     <script>
-        // Language detection (simplified)
-        const translations = {
-            pl: {
-                navHome: "Home",
-                navAbout: "O nas", 
-                navServices: "Usługi",
-                navContact: "Kontakt",
-                heroTitle: "Przyszłość AI-powered audytów dla Twojego biznesu",
-                heroDescription: "Rewolucyjne audyty SEO, UX i bezpieczeństwa oparte na sztucznej inteligencji. Zwiększ wydajność swojego e-commerce nawet do 300% dzięki naszym zaawansowanym analizom.",
-                ctaText: "Rozpocznij bezpłatny audyt"
-            },
-            en: {
-                navHome: "Home",
-                navAbout: "About", 
-                navServices: "Services",
-                navContact: "Contact",
-                heroTitle: "The Future of AI-powered Audits for Your Business",
-                heroDescription: "Revolutionary SEO, UX and security audits powered by artificial intelligence. Increase your e-commerce performance by up to 300% with our advanced analyses.",
-                ctaText: "Start free audit"
-            }
+        // Performance optimized script
+        const debounce = (func, wait) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
         };
 
-        // Simplified language detection
+        // Language detection with fallback
         async function detectLanguage() {
             try {
-                const response = await fetch('https://ipapi.co/json/');
+                const response = await fetch('https://ipapi.co/json/', { 
+                    signal: AbortSignal.timeout(3000) 
+                });
                 const data = await response.json();
                 return data.country_code === 'PL' ? 'pl' : 'en';
             } catch (error) {
-                return 'pl'; // Default to Polish
+                console.log('Language detection failed, using Polish as default');
+                return 'pl';
             }
         }
 
         // Scroll indicator
-        function updateScrollIndicator() {
+        const updateScrollIndicator = debounce(() => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            const scrollPercentage = Math.min((scrollTop / scrollHeight) * 100, 100);
             document.querySelector('.scroll-indicator').style.width = scrollPercentage + '%';
-        }
+        }, 10);
+
+        // Header scroll effect
+        const updateHeader = debounce(() => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        }, 10);
 
         // Smooth scrolling
         function initSmoothScroll() {
@@ -721,76 +872,165 @@
             });
         }
 
-        // Form submission
+        // Enhanced form validation and submission
         function initForm() {
             const form = document.getElementById('auditForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = document.querySelector('.submit-btn');
-                    const originalHTML = submitBtn.innerHTML;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!form || !submitBtn) return;
+
+            // Form validation
+            const validateEmail = (email) => {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            };
+
+            const validateURL = (url) => {
+                try {
+                    new URL(url);
+                    return true;
+                } catch {
+                    return false;
+                }
+            };
+
+            const showError = (input, message) => {
+                const errorDiv = document.getElementById(input.id + '-error');
+                if (errorDiv) {
+                    errorDiv.textContent = message;
+                    errorDiv.style.color = 'var(--error-color)';
+                    errorDiv.style.fontSize = 'var(--font-size-sm)';
+                    errorDiv.style.marginTop = '0.25rem';
+                }
+                input.style.borderColor = 'var(--error-color)';
+            };
+
+            const clearError = (input) => {
+                const errorDiv = document.getElementById(input.id + '-error');
+                if (errorDiv) {
+                    errorDiv.textContent = '';
+                }
+                input.style.borderColor = 'var(--border-color)';
+            };
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const websiteInput = document.getElementById('website');
+                const emailInput = document.getElementById('email');
+                let isValid = true;
+
+                // Clear previous errors
+                clearError(websiteInput);
+                clearError(emailInput);
+
+                // Validate website URL
+                if (!websiteInput.value.trim()) {
+                    showError(websiteInput, 'Podaj adres strony internetowej');
+                    isValid = false;
+                } else if (!validateURL(websiteInput.value)) {
+                    showError(websiteInput, 'Podaj prawidłowy adres URL');
+                    isValid = false;
+                }
+
+                // Validate email
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'Podaj adres email');
+                    isValid = false;
+                } else if (!validateEmail(emailInput.value)) {
+                    showError(emailInput, 'Podaj prawidłowy adres email');
+                    isValid = false;
+                }
+
+                if (!isValid) return;
+
+                // Submit form
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
+                
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 2000));
                     
                     submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
-                    submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    submitBtn.classList.add('success');
                     
                     setTimeout(() => {
                         submitBtn.innerHTML = originalHTML;
-                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('success');
                         form.reset();
                     }, 3000);
-                });
-            }
+                    
+                } catch (error) {
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Błąd wysyłania';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
+            });
         }
 
-        // Dynamic highlight text
+        // Dynamic highlight animation
         function initHighlightAnimation() {
             const highlights = ['AI-powered', 'inteligentnych', 'nowoczesnych', 'zaawansowanych'];
             let currentHighlight = 0;
             const highlightElement = document.querySelector('.hero .highlight');
             
-            if (highlightElement) {
-                setInterval(() => {
-                    highlightElement.style.opacity = '0';
-                    setTimeout(() => {
-                        currentHighlight = (currentHighlight + 1) % highlights.length;
-                        highlightElement.textContent = highlights[currentHighlight];
-                        highlightElement.style.opacity = '1';
-                    }, 500);
-                }, 3000);
-            }
+            if (!highlightElement) return;
+            
+            setInterval(() => {
+                highlightElement.style.opacity = '0';
+                setTimeout(() => {
+                    currentHighlight = (currentHighlight + 1) % highlights.length;
+                    highlightElement.textContent = highlights[currentHighlight];
+                    highlightElement.style.opacity = '1';
+                }, 500);
+            }, 4000);
         }
 
-        // Mobile menu toggle
+        // Mobile menu
         function initMobileMenu() {
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
             
-            if (menuToggle && navLinks) {
-                menuToggle.addEventListener('click', () => {
-                    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-                });
-            }
+            if (!menuToggle || !navLinks) return;
+            
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                navLinks.style.display = isExpanded ? 'none' : 'flex';
+            });
         }
 
-        // Initialize everything when DOM is ready
+        // Initialize on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
             initSmoothScroll();
             initForm();
             initHighlightAnimation();
             initMobileMenu();
             
-            // Add scroll listener
-            window.addEventListener('scroll', updateScrollIndicator);
+            // Add optimized scroll listeners
+            window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+            window.addEventListener('scroll', updateHeader, { passive: true });
             
-            // Detect and apply language
+            // Initialize language detection
             detectLanguage().then(lang => {
                 if (lang === 'en') {
                     document.documentElement.lang = 'en';
-                    // Apply English translations here if needed
+                    // Apply English translations if needed
                 }
             });
         });
+
+        // Service Worker registration for PWA (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // navigator.registerServiceWorker('/sw.js');
+            });
+        }
     </script>
 </body>
 </html>
