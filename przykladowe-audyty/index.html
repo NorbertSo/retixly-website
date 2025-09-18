@@ -3,12 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Przykładowe Audyty SEO - Retixly</title>
-    <meta name="description" content="Zobacz przykłady naszych profesjonalnych audytów SEO, UX i bezpieczeństwa. Przekonaj się o jakości naszych analiz.">
+    <title>Przykładowe Audyty SEO, UX i Performance - Zobacz Nasze Analizy | Retixly</title>
+    <meta name="description" content="Sprawdź przykłady profesjonalnych audytów SEO, UX i bezpieczeństwa stron internetowych. Kompleksowe analizy z konkretnymi rekomendacjami i planem wdrożenia. Zamów darmowy audyt swojej strony.">
+    <meta name="keywords" content="audyt SEO, audyt strony internetowej, analiza UX, audyt bezpieczeństwa, przykłady audytów, profesjonalny audyt SEO, darmowy audyt strony">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
+    <link rel="canonical" href="https://retixly.com/przykladowe-audyty/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://retixly.com/przykladowe-audyty/">
+    <meta property="og:title" content="Przykładowe Audyty SEO - Zobacz Nasze Profesjonalne Analizy">
+    <meta property="og:description" content="Sprawdź jak wyglądają nasze kompleksowe audyty stron internetowych. Analizy SEO, UX, Performance i Security z konkretnymi rekomendacjami.">
+    <meta property="og:image" content="https://retixly.com/images/og-audyty-seo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://retixly.com/przykladowe-audyty/">
+    <meta property="twitter:title" content="Przykładowe Audyty SEO - Retixly">
+    <meta property="twitter:description" content="Zobacz przykłady naszych profesjonalnych audytów stron internetowych z konkretnymi rekomendacjami.">
+    <meta property="twitter:image" content="https://retixly.com/images/og-audyty-seo.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Przykładowe Audyty SEO",
+      "description": "Profesjonalne przykłady audytów SEO, UX i bezpieczeństwa stron internetowych",
+      "url": "https://retixly.com/przykladowe-audyty/",
+      "mainEntity": {
+        "@type": "Service",
+        "name": "Audyt SEO i UX",
+        "description": "Kompleksowa analiza strony internetowej obejmująca SEO, UX, Performance i Security",
+        "provider": {
+          "@type": "Organization",
+          "name": "Retixly",
+          "url": "https://retixly.com"
+        },
+        "areaServed": "Poland",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Audyty Stron Internetowych",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Audyt SEO Technical",
+                "description": "Analiza techniczna SEO, Core Web Vitals, optymalizacja wydajności"
+              }
+            },
+            {
+              "@type": "Offer", 
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Audyt UX i Użyteczności",
+                "description": "Analiza doświadczenia użytkownika, nawigacji i konwersji"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service", 
+                "name": "Audyt Bezpieczeństwa",
+                "description": "Analiza zabezpieczeń, nagłówków bezpieczeństwa, podatności"
+              }
+            }
+          ]
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Strona główna",
+            "item": "https://retixly.com"
+          },
+          {
+            "@type": "ListItem", 
+            "position": 2,
+            "name": "Przykładowe Audyty",
+            "item": "https://retixly.com/przykladowe-audyty/"
+          }
+        ]
+      }
+    }
+    </script>
+
     <style>
         :root {
             --primary-color: #6366f1;
@@ -64,7 +152,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
@@ -104,15 +192,42 @@
             color: var(--primary-color);
         }
 
+        /* Breadcrumbs */
+        .breadcrumbs {
+            padding-top: 6rem;
+            padding-bottom: 1rem;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .breadcrumb-separator {
+            color: var(--text-muted);
+        }
+
         /* Main Content */
         .main {
-            padding-top: 6rem;
             min-height: 100vh;
         }
 
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 3rem 0;
             background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
         }
 
@@ -129,13 +244,40 @@
         .hero p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 2rem;
         }
 
-        /* Examples Grid */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Examples Section */
         .examples-section {
-            padding: 4rem 0;
+            padding: 3rem 0;
         }
 
         .section-title {
@@ -152,6 +294,8 @@
         .section-title p {
             font-size: 1.125rem;
             color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .examples-grid {
@@ -194,17 +338,34 @@
         }
 
         .grade-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+            position: relative;
         }
 
-        .grade-a { background: linear-gradient(45deg, var(--success-color), #34d399); }
-        .grade-b { background: linear-gradient(45deg, var(--warning-color), #fbbf24); }
-        .grade-c { background: linear-gradient(45deg, var(--error-color), #f87171); }
+        .grade-badge::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            color: var(--text-muted);
+        }
+
+        .grade-c { 
+            background: linear-gradient(135deg, var(--warning-color), #fb923c);
+            color: white;
+        }
 
         .example-card h3 {
             font-size: 1.5rem;
@@ -216,6 +377,13 @@
             color: var(--text-muted);
             font-size: 0.875rem;
             margin-bottom: 1rem;
+        }
+
+        .example-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
         }
 
         .metrics {
@@ -230,10 +398,11 @@
             padding: 1rem;
             background: rgba(30, 41, 59, 0.5);
             border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
         }
 
         .metric-value {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 0.25rem;
         }
@@ -244,14 +413,19 @@
             text-transform: uppercase;
         }
 
+        .score-40 { color: var(--error-color); }
+        .score-100 { color: var(--success-color); }
+        .score-67 { color: var(--warning-color); }
+        .score-25 { color: var(--error-color); }
+
         .highlights {
             margin-top: 1.5rem;
         }
 
         .highlights h4 {
             font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--success-color);
+            margin-bottom: 0.75rem;
+            color: var(--error-color);
         }
 
         .highlights ul {
@@ -260,27 +434,30 @@
         }
 
         .highlights li {
-            padding: 0.25rem 0;
+            padding: 0.5rem 0;
             font-size: 0.875rem;
             color: var(--text-secondary);
+            display: flex;
+            align-items: center;
         }
 
         .highlights li::before {
-            content: '✓';
-            color: var(--success-color);
+            content: '⚠';
+            color: var(--error-color);
             font-weight: bold;
             margin-right: 0.5rem;
         }
 
         .view-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: var(--gradient-primary);
             color: white;
             text-decoration: none;
             padding: 0.75rem 1.5rem;
             border-radius: var(--radius-lg);
             font-weight: 600;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             transition: all 0.2s ease;
         }
 
@@ -289,43 +466,136 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* CTA Section */
-        .cta-section {
+        .view-button i {
+            margin-right: 0.5rem;
+        }
+
+        .coming-soon-section {
+            padding: 3rem 0;
+            text-align: center;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: var(--radius-2xl);
+            margin: 3rem 0;
+        }
+
+        .coming-soon-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .coming-soon-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .coming-soon-badge {
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: var(--radius-lg);
+            font-size: 0.875rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Form Section */
+        .form-section {
             background: var(--gradient-primary);
             padding: 4rem 0;
-            text-align: center;
             margin-top: 4rem;
         }
 
-        .cta-section h2 {
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form-section h2 {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
             color: white;
         }
 
-        .cta-section p {
+        .form-section .subtitle {
             font-size: 1.125rem;
             margin-bottom: 2rem;
             opacity: 0.9;
             color: white;
         }
 
-        .cta-button {
-            display: inline-block;
+        .audit-form {
             background: white;
-            color: var(--primary-color);
-            text-decoration: none;
+            border-radius: var(--radius-2xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--bg-dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+            background: white;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
             padding: 1rem 2rem;
-            border-radius: var(--radius-xl);
-            font-weight: 700;
+            border-radius: var(--radius-lg);
             font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .cta-button:hover {
+        .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-note {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -336,9 +606,31 @@
             .hero h1 {
                 font-size: 2rem;
             }
-            
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
             .examples-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .coming-soon-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form-section {
+                padding: 3rem 0;
+            }
+
+            .audit-form {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -357,154 +649,318 @@
         </div>
     </header>
 
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <nav class="breadcrumb-list" aria-label="breadcrumb">
+                <a href="../index.html">Strona główna</a>
+                <span class="breadcrumb-separator">></span>
+                <span>Przykładowe Audyty</span>
+            </nav>
+        </div>
+    </div>
+
     <main class="main">
         <section class="hero">
             <div class="container">
-                <h1>Przykładowe Audyty SEO</h1>
-                <p>Zobacz rzeczywiste wyniki naszych analiz i przekonaj się, jak dokładnie analizujemy każdą stronę internetową</p>
+                <h1>Przykładowe Audyty SEO i UX</h1>
+                <p>Sprawdź rzeczywiste wyniki naszych profesjonalnych analiz. Zobacz jak dokładnie badamy każdy aspekt Twojej strony internetowej - od wydajności po bezpieczeństwo.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Punktów Analizy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Główne Obszary</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">7-9</div>
+                        <div class="stat-label">Stron Raportu</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="examples-section" id="examples">
             <div class="container">
                 <div class="section-title">
-                    <h2>Rzeczywiste Rezultaty</h2>
-                    <p>Każdy audyt to kompleksowa analiza wszystkich aspektów wpływających na widoczność i wydajność strony</p>
+                    <h2>Profesjonalne Przykłady Audytów</h2>
+                    <p>Każdy audyt to kompleksowa analiza wszystkich kluczowych aspektów wpływających na sukces Twojej strony internetowej</p>
                 </div>
 
                 <div class="examples-grid">
-                    <!-- Przykład 1: Sklep ślubny -->
+                    <!-- Główny przykład audytu -->
                     <div class="example-card">
-                        <div class="grade-badge grade-c">C (64/100)</div>
-                        <h3>Sklep Ślubny</h3>
-                        <div class="domain">sklep-slubny-xxx.pl</div>
+                        <div class="grade-badge grade-c" data-label="Ogólna ocena">C 64</div>
+                        <h3>Sklep Dekoracyjny</h3>
+                        <div class="domain">sklep-dekoracyjny.pl</div>
+                        
+                        <div class="example-description">
+                            Kompleksowa analiza sklepu internetowego z branży dekoracyjnej. Audyt obejmuje szczegółową analizę wydajności, optymalizacji SEO, bezpieczeństwa i doświadczenia użytkownika z konkretnym planem działania.
+                        </div>
                         
                         <div class="metrics">
                             <div class="metric">
-                                <div class="metric-value" style="color: var(--error-color);">40</div>
+                                <div class="metric-value score-40">40/100</div>
                                 <div class="metric-label">Performance</div>
                             </div>
                             <div class="metric">
-                                <div class="metric-value" style="color: var(--success-color);">100</div>
+                                <div class="metric-value score-100">100/100</div>
                                 <div class="metric-label">SEO</div>
                             </div>
                             <div class="metric">
-                                <div class="metric-value" style="color: var(--warning-color);">67</div>
+                                <div class="metric-value score-67">67/100</div>
                                 <div class="metric-label">UX</div>
                             </div>
                             <div class="metric">
-                                <div class="metric-value" style="color: var(--error-color);">25</div>
+                                <div class="metric-value score-25">25/100</div>
                                 <div class="metric-label">Security</div>
                             </div>
                         </div>
 
                         <div class="highlights">
-                            <h4>Kluczowe problemy:</h4>
+                            <h4>Kluczowe problemy wykryte:</h4>
                             <ul>
-                                <li>Krytyczne luki bezpieczeństwa</li>
-                                <li>Brak optymalizacji obrazów</li>
-                                <li>Problemy z UX na mobile</li>
-                                <li>Przeciążone menu główne</li>
+                                <li>Krytyczne luki bezpieczeństwa - brak CSP</li>
+                                <li>Brak optymalizacji ładowania obrazów</li>
+                                <li>Problemy z UX na urządzeniach mobilnych</li>
+                                <li>Przeciążone menu główne (24 elementy)</li>
                             </ul>
                         </div>
 
                         <a href="audyt-1.html" class="view-button">
-                            <i class="fas fa-eye"></i> Zobacz pełny audyt
+                            <i class="fas fa-eye"></i> Zobacz pełny audyt (7-9 stron)
                         </a>
                     </div>
+                </div>
 
-                    <!-- Przykład 2: Blog technologiczny -->
-                    <div class="example-card">
-                        <div class="grade-badge grade-b">B (78/100)</div>
-                        <h3>Blog Technologiczny</h3>
-                        <div class="domain">techblog-demo.com</div>
-                        
-                        <div class="metrics">
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--warning-color);">72</div>
-                                <div class="metric-label">Performance</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--success-color);">85</div>
-                                <div class="metric-label">SEO</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--success-color);">82</div>
-                                <div class="metric-label">UX</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--warning-color);">73</div>
-                                <div class="metric-label">Security</div>
-                            </div>
-                        </div>
-
-                        <div class="highlights">
-                            <h4>Potencjał poprawy:</h4>
-                            <ul>
-                                <li>Optymalizacja Core Web Vitals</li>
-                                <li>Poprawa struktury nagłówków</li>
-                                <li>Dodanie schema markup</li>
-                                <li>Wzmocnienie security headers</li>
-                            </ul>
-                        </div>
-
-                        <a href="audyt-2.html" class="view-button">
-                            <i class="fas fa-eye"></i> Zobacz pełny audyt
-                        </a>
-                    </div>
-
-                    <!-- Przykład 3: Strona korporacyjna -->
-                    <div class="example-card">
-                        <div class="grade-badge grade-a">A- (87/100)</div>
-                        <h3>Strona Korporacyjna</h3>
-                        <div class="domain">corporate-example.org</div>
-                        
-                        <div class="metrics">
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--success-color);">89</div>
-                                <div class="metric-label">Performance</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--success-color);">91</div>
-                                <div class="metric-label">SEO</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--success-color);">85</div>
-                                <div class="metric-label">UX</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value" style="color: var(--success-color);">83</div>
-                                <div class="metric-label">Security</div>
-                            </div>
-                        </div>
-
-                        <div class="highlights">
-                            <h4>Mocne strony:</h4>
-                            <ul>
-                                <li>Doskonała optymalizacja techniczna</li>
-                                <li>Wysokie bezpieczeństwo</li>
-                                <li>Responsywny design</li>
-                                <li>Szybkie ładowanie</li>
-                            </ul>
-                        </div>
-
-                        <a href="audyt-3.html" class="view-button">
-                            <i class="fas fa-eye"></i> Zobacz pełny audyt
-                        </a>
+                <div class="coming-soon-section">
+                    <h3>Więcej przykładów już wkrótce</h3>
+                    <p>Przygotowujemy dodatkowe przykłady audytów z różnych branż i typów stron internetowych</p>
+                    <div class="coming-soon-badges">
+                        <span class="coming-soon-badge">Blog Technologiczny</span>
+                        <span class="coming-soon-badge">Strona Korporacyjna</span>
+                        <span class="coming-soon-badge">Portfolio Fotografa</span>
+                        <span class="coming-soon-badge">Restauracja</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="cta-section">
+        <section class="form-section">
             <div class="container">
-                <h2>Gotowy na audyt swojej strony?</h2>
-                <p>Otrzymaj szczegółową analizę i konkretne rekomendacje dla swojej witryny</p>
-                <a href="../index.html#contact" class="cta-button">
-                    <i class="fas fa-rocket"></i> Zamów audyt teraz
-                </a>
+                <div class="form-container">
+                    <h2>Zamów Darmowy Audyt Swojej Strony</h2>
+                    <p class="subtitle">Otrzymaj profesjonalną analizę i konkretne rekomendacje dla swojej witryny</p>
+                    
+                    <form class="audit-form" id="auditForm" novalidate>
+                        <div class="form-group">
+                            <label for="website">Adres strony internetowej *</label>
+                            <input 
+                                type="url" 
+                                id="website" 
+                                name="website" 
+                                placeholder="https://twoja-strona.pl" 
+                                required
+                                aria-describedby="website-error"
+                            >
+                            <div id="website-error" class="error-message" aria-live="polite"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Adres email *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="twoj@email.pl" 
+                                required
+                                aria-describedby="email-error"
+                            >
+                            <div id="email-error" class="error-message" aria-live="polite"></div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
+                            Zamów Darmowy Audyt
+                        </button>
+                        
+                        <p class="form-note">
+                            * Pola wymagane. Audyt otrzymasz w ciągu 24-48 godzin na podany adres email.
+                        </p>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
+
+    <script>
+        // Form validation and submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('auditForm');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            function validateURL(string) {
+                try {
+                    const url = new URL(string);
+                    return url.protocol === 'http:' || url.protocol === 'https:';
+                } catch (_) {
+                    return false;
+                }
+            }
+            
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+            
+            function showError(input, message) {
+                const errorDiv = document.getElementById(input.id + '-error');
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                input.style.borderColor = 'var(--error-color)';
+            }
+            
+            function clearError(input) {
+                const errorDiv = document.getElementById(input.id + '-error');
+                errorDiv.style.display = 'none';
+                input.style.borderColor = '#e2e8f0';
+            }
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const websiteInput = document.getElementById('website');
+                const emailInput = document.getElementById('email');
+                let isValid = true;
+
+                // Clear previous errors
+                clearError(websiteInput);
+                clearError(emailInput);
+
+                // Validate website URL
+                if (!websiteInput.value.trim()) {
+                    showError(websiteInput, 'Podaj adres strony internetowej');
+                    isValid = false;
+                } else if (!validateURL(websiteInput.value)) {
+                    showError(websiteInput, 'Podaj prawidłowy adres URL (np. https://twoja-strona.pl)');
+                    isValid = false;
+                }
+
+                // Validate email
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'Podaj adres email');
+                    isValid = false;
+                } else if (!validateEmail(emailInput.value)) {
+                    showError(emailInput, 'Podaj prawidłowy adres email');
+                    isValid = false;
+                }
+
+                if (!isValid) return;
+
+                // Submit to webhook
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Przetwarzanie...';
+                
+                try {
+                    // Replace with your actual n8n webhook URL
+                    const webhookUrl = 'https://your-n8n-domain.com/webhook/darmowy-audyt-seo-form';
+                    
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            'URL Strony': websiteInput.value,
+                            'Email': emailInput.value,
+                            'Data wysłania': new Date().toISOString(),
+                            'Źródło': 'Retixly Przykładowe Audyty'
+                        })
+                    });
+
+                    if (response.ok) {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
+                        submitBtn.style.background = 'var(--success-color)';
+                        
+                        // Show success message
+                        alert('Dziękujemy! Twój audyt zostanie wykonany w ciągu 24-48 godzin. Sprawdź swoją skrzynkę email.');
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalHTML;
+                            submitBtn.disabled = false;
+                            submitBtn.style.background = '';
+                            form.reset();
+                        }, 3000);
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Błąd wysyłania';
+                    submitBtn.style.background = 'var(--error-color)';
+                    alert('Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.');
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                    }, 3000);
+                }
+            });
+
+            // Real-time validation
+            document.getElementById('website').addEventListener('blur', function() {
+                if (this.value && !validateURL(this.value)) {
+                    showError(this, 'Podaj prawidłowy adres URL');
+                } else if (this.value) {
+                    clearError(this);
+                }
+            });
+
+            document.getElementById('email').addEventListener('blur', function() {
+                if (this.value && !validateEmail(this.value)) {
+                    showError(this, 'Podaj prawidłowy adres email');
+                } else if (this.value) {
+                    clearError(this);
+                }
+            });
+
+            // Clear errors on focus
+            document.getElementById('website').addEventListener('focus', function() {
+                clearError(this);
+            });
+
+            document.getElementById('email').addEventListener('focus', function() {
+                clearError(this);
+            });
+        });
+
+        // Analytics tracking (if needed)
+        function trackAuditRequest() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'audit_request', {
+                    event_category: 'engagement',
+                    event_label: 'przykladowe_audyty_page'
+                });
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
