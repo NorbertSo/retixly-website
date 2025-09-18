@@ -272,6 +272,37 @@
             box-shadow: var(--shadow-2xl);
         }
 
+        /* Examples Button */
+        .examples-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 1rem;
+            margin-left: 1rem;
+        }
+
+        .examples-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
         /* About Section */
         .about {
             padding: 6rem 1rem;
@@ -590,6 +621,16 @@
                 font-size: var(--font-size-xl);
             }
 
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .examples-button {
+                margin-top: 0;
+                margin-left: 1rem;
+            }
+
             .stats {
                 grid-template-columns: repeat(4, 1fr);
                 max-width: 48rem;
@@ -678,6 +719,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">O nas</a></li>
                     <li><a href="#services">Usługi</a></li>
+                    <li><a href="przykladowe-audyty/">Przykłady</a></li>
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
             </nav>
@@ -690,10 +732,16 @@
                 <div class="hero-content">
                     <h1>Przyszłość <span class="highlight">AI-powered</span> audytów dla Twojego biznesu</h1>
                     <p>Rewolucyjne audyty SEO, UX i bezpieczeństwa oparte na sztucznej inteligencji. Zwiększ wydajność swojego e-commerce nawet do 300% dzięki naszym zaawansowanym analizom.</p>
-                    <a href="#contact" class="cta-button" role="button">
-                        <i class="fas fa-rocket" aria-hidden="true"></i>
-                        <span>Rozpocznij bezpłatny audyt</span>
-                    </a>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="cta-button" role="button">
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
+                            <span>Rozpocznij bezpłatny audyt</span>
+                        </a>
+                        <a href="przykladowe-audyty/" class="examples-button" role="button">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                            <span>Zobacz przykłady audytów</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -950,21 +998,44 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
                 
                 try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    // Replace with your actual n8n webhook URL
+                    const webhookUrl = 'https://your-n8n-domain.com/webhook/darmowy-audyt-seo-form';
                     
-                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
-                    submitBtn.classList.add('success');
-                    
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalHTML;
-                        submitBtn.disabled = false;
-                        submitBtn.classList.remove('success');
-                        form.reset();
-                    }, 3000);
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            'URL Strony': websiteInput.value,
+                            'Email': emailInput.value,
+                            'Data wysłania': new Date().toISOString(),
+                            'Źródło': 'Retixly Homepage'
+                        })
+                    });
+
+                    if (response.ok) {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
+                        submitBtn.classList.add('success');
+                        
+                        // Show success message
+                        alert('Dziękujemy! Twój audyt zostanie wykonany w ciągu 20-30 minut. Sprawdź swoją skrzynkę email.');
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalHTML;
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('success');
+                            form.reset();
+                        }, 3000);
+                        
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
                     
                 } catch (error) {
+                    console.error('Error:', error);
                     submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Błąd wysyłania';
+                    alert('Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.');
                     setTimeout(() => {
                         submitBtn.innerHTML = originalHTML;
                         submitBtn.disabled = false;
