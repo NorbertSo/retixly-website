@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retixly - AI-Powered Audyty SEO, UX & Security | Zwiększ Wydajność o 300%</title>
-    <meta name="description" content="Profesjonalne audyty SEO, UX i bezpieczeństwa oparte na AI. Otrzymaj kompletną analizę swojej strony w 20 minut. Darmowy audyt + konkretne rekomendacje.">
+    <meta name="description" content="Profesjonalne audyty SEO, UX i bezpieczeństwa oparte na AI. Otrzymaj kompletną analizę swojej strony w 24 godziny. Darmowy audyt + konkretne rekomendacje.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Retixly - AI-Powered Audyty SEO | Zwiększ Wydajność o 300%">
-    <meta property="og:description" content="Rewolucyjne audyty oparte na AI. Zoptymalizuj SEO, UX i bezpieczeństwo w 20 minut.">
+    <meta property="og:description" content="Rewolucyjne audyty oparte na AI. Zoptymalizuj SEO, UX i bezpieczeństwo w 24 godzinach.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="/images/og-retixly.jpg">
     <link rel="canonical" href="https://retixly.website/">
@@ -280,20 +280,23 @@
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            align-items: center;
+            gap: 3rem;
             margin: 2rem 0;
             flex-wrap: wrap;
         }
 
         .hero-stat {
             text-align: center;
+            min-width: 120px;
         }
 
         .hero-stat-number {
             display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.75rem;
+            font-weight: 800;
             color: var(--primary-color);
+            margin-bottom: 0.5rem;
         }
 
         .hero-stat-label {
@@ -301,6 +304,7 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            font-weight: 500;
         }
 
         .cta-buttons {
@@ -375,27 +379,19 @@
             margin: 0 auto;
         }
 
-        .trust-item,
-        .service-card,
-        .advantage-item {
-            min-height: 280px;
+        .trust-item {
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .service-card {
-            min-height: 420px;
-        }
-
-        .service-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-benefits {
-            flex: 1;
+            justify-content: center;
+            align-items: center;
         }
 
         .trust-item:hover {
@@ -469,6 +465,9 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card::before {
@@ -508,6 +507,12 @@
             flex-shrink: 0;
         }
 
+        .service-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
         .service-content h3 {
             font-size: 1.5rem;
             font-weight: 700;
@@ -524,6 +529,7 @@
         .service-benefits {
             list-style: none;
             margin-bottom: 1.5rem;
+            flex: 1;
         }
 
         .service-benefits li {
@@ -533,6 +539,7 @@
             margin-bottom: 0.5rem;
             color: var(--text-secondary);
             font-size: 0.95rem;
+            padding: 0.25rem 0;
         }
 
         .service-benefits li::before {
@@ -540,6 +547,8 @@
             color: var(--success-color);
             font-weight: bold;
             flex-shrink: 0;
+            width: 16px;
+            text-align: center;
         }
 
         .service-result {
@@ -547,7 +556,7 @@
             border-left: 3px solid var(--success-color);
             padding: 0.75rem 1rem;
             border-radius: 0 var(--radius-md) var(--radius-md) 0;
-            margin-top: 1rem;
+            margin-top: auto;
         }
 
         .service-result-label {
@@ -670,6 +679,8 @@
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-xl);
             transition: all 0.3s ease;
+            min-height: 120px;
+            align-items: flex-start;
         }
 
         .advantage-item:hover {
@@ -682,6 +693,8 @@
             color: var(--primary-color);
             flex-shrink: 0;
             margin-top: 0.25rem;
+            width: 24px;
+            text-align: center;
         }
 
         .advantage-content h4 {
@@ -923,7 +936,7 @@
             }
 
             .hero-stats {
-                gap: 3rem;
+                gap: 4rem;
             }
 
             .cta-buttons {
@@ -991,6 +1004,16 @@
             outline: 2px solid var(--primary-color);
             outline-offset: 2px;
         }
+
+        /* Dynamic text animation */
+        .highlight {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .highlight.fade-out {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -1020,7 +1043,7 @@
         <section id="home" class="hero" role="banner">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Zwiększ wydajność swojego <span class="highlight">e-commerce o 250%</span> dzięki AI</h1>
+                    <h1>Zwiększ wydajność swojego <span class="highlight" id="dynamicText">e-commerce o 250%</span> dzięki AI</h1>
                     <p class="subtitle">Zoptymalizuj SEO, UX i bezpieczeństwo swojej strony w 24 godziny. Otrzymaj konkretne rekomendacje od ekspertów AI, które przekładają się na realny wzrost sprzedaży.</p>
                     
                     <div class="hero-stats">
@@ -1103,7 +1126,7 @@
                             </div>
                             <div class="service-content">
                                 <h3>Audyt SEO AI</h3>
-                                <p>Głęboka analiza technicznego SEO, struktuty treści i optymalizacji dla wyszukiwarek. Nasze AI wykrywa ukryte problemy wpływające na pozycje w Google.</p>
+                                <p>Głęboka analiza technicznego SEO, struktury treści i optymalizacji dla wyszukiwarek. Nasze AI wykrywa ukryte problemy wpływające na pozycje w Google.</p>
                                 
                                 <ul class="service-benefits">
                                     <li>Analiza Core Web Vitals i wydajności</li>
@@ -1327,7 +1350,7 @@
                             <label class="checkbox-label">
                                 <input type="checkbox" id="consent" name="consent" required>
                                 <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji audytu oraz kontaktu ze mną zgodnie z <a href="#" style="color: var(--primary-color); text-decoration: underline;">polityką prywatności</a>.</span>
+                                <span class="checkbox-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji audytu oraz kontaktu ze mną zgodnie z <a href="polityka-prywatnosci.html" style="color: var(--primary-color); text-decoration: underline;">polityką prywatności</a>.</span>
                             </label>
                             <div id="consent-error" class="error-message" aria-live="polite"></div>
                         </div>
@@ -1365,6 +1388,31 @@
                 timeout = setTimeout(later, wait);
             };
         };
+
+        // Dynamic text rotation
+        function initDynamicText() {
+            const texts = [
+                'e-commerce o 250%',
+                'sklepu o 300%',
+                'sprzedaży o 200%',
+                'konwersji o 180%',
+                'SEO o 250%'
+            ];
+            let currentIndex = 0;
+            const textElement = document.getElementById('dynamicText');
+            
+            if (!textElement) return;
+            
+            setInterval(() => {
+                textElement.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % texts.length;
+                    textElement.textContent = texts[currentIndex];
+                    textElement.classList.remove('fade-out');
+                }, 250);
+            }, 3000);
+        }
 
         // Scroll indicator
         const updateScrollIndicator = debounce(() => {
@@ -1590,6 +1638,7 @@
 
         // Initialize on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
+            initDynamicText();
             initSmoothScroll();
             initLogoClick();
             initMobileMenu();
