@@ -236,7 +236,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             padding: 8rem 1rem 4rem;
             position: relative;
             z-index: 1;
@@ -246,8 +245,10 @@
         .hero-content {
             max-width: 56rem;
             width: 100%;
+            text-align: center;
         }
 
+        /* FIXED: Perfekcyjne centrowanie nagłówka */
         .hero h1 {
             font-size: 2.75rem;
             font-weight: 800;
@@ -255,12 +256,9 @@
             line-height: 1.1;
             letter-spacing: -0.025em;
             text-align: center;
-            /* FIXED: Perfekcyjne centrowanie nagłówka */
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: baseline;
-            gap: 0.5rem;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero .highlight {
@@ -270,7 +268,7 @@
             background-clip: text;
         }
 
-        /* PERFECT ROTATING TEXT SOLUTION */
+        /* ULTIMATE SOLUTION: Niewidoczne, subtelne przejścia */
         .rotating-text {
             display: inline-block;
             position: relative;
@@ -289,31 +287,34 @@
             letter-spacing: inherit;
             
             opacity: 0;
-            /* IMPROVED: Subtelne przejścia */
-            transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-            transform: translateY(15px) scale(0.95);
-            filter: blur(2px);
+            /* ULTRASUBTLE: Delikatne jak oddech */
+            transition: opacity 2.5s cubic-bezier(0.23, 1, 0.32, 1);
             
             position: absolute;
             left: 50%;
             top: 0;
-            transform-origin: center;
+            transform: translateX(-50%);
             white-space: nowrap;
-            margin-left: -50%;
         }
 
         .rotating-word.active {
             opacity: 1;
             position: static;
-            transform: translateY(0) scale(1);
-            filter: blur(0px);
-            margin-left: 0;
+            left: auto;
+            top: auto;
+            transform: none;
         }
 
-        .rotating-word.exit {
+        /* Invisible placeholder for space */
+        .rotating-text::after {
+            content: 'wydajność';
             opacity: 0;
-            transform: translateY(-15px) scale(0.95);
-            filter: blur(2px);
+            pointer-events: none;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero .subtitle {
@@ -1092,7 +1093,7 @@
                     <div class="hero-stats">
                         <div class="hero-stat">
                             <span class="hero-stat-number">24h</span>
-            <span class="hero-stat-label">Czas dostawy</span>
+                            <span class="hero-stat-label">Czas dostawy</span>
                         </div>
                         <div class="hero-stat">
                             <span class="hero-stat-number">95%</span>
@@ -1422,7 +1423,7 @@
             };
         };
 
-        // ENHANCED ROTATING TEXT WITH SMOOTH TRANSITIONS
+        // ULTRA SUBTLE ROTATING TEXT - Niemalże niewidoczne przejścia
         function initRotatingText() {
             const rotatingWords = document.querySelectorAll('.rotating-word');
             
@@ -1431,28 +1432,20 @@
             let currentIndex = 0;
 
             function rotateWord() {
-                // Add exit animation to current word
-                const currentWord = rotatingWords[currentIndex];
-                currentWord.classList.add('exit');
+                // Płynne ukrycie obecnego słowa
+                rotatingWords[currentIndex].classList.remove('active');
                 
+                // Przejście do następnego słowa z opóźnieniem
                 setTimeout(() => {
-                    // Remove active and exit from current word
-                    currentWord.classList.remove('active', 'exit');
-                    
-                    // Move to next word
                     currentIndex = (currentIndex + 1) % rotatingWords.length;
-                    
-                    // Add active to new word with slight delay for smooth effect
-                    setTimeout(() => {
-                        rotatingWords[currentIndex].classList.add('active');
-                    }, 200);
-                }, 400);
+                    rotatingWords[currentIndex].classList.add('active');
+                }, 1200); // Długie opóźnienie dla subtelności
             }
 
-            // Start rotation after 4 seconds, then every 4 seconds for better readability
+            // Bardzo długie interwały - 6 sekund dla komfortu
             setTimeout(() => {
-                setInterval(rotateWord, 4000);
-            }, 4000);
+                setInterval(rotateWord, 6000);
+            }, 5000);
         }
 
         // Scroll indicator
