@@ -248,12 +248,11 @@
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.1;
             letter-spacing: -0.025em;
-            min-height: 3.5rem;
             text-align: center;
         }
 
@@ -262,9 +261,44 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        /* ULTIMATE SOLUTION: Perfect baseline alignment */
+        .rotating-text {
+            display: inline;
             position: relative;
-            transition: opacity 0.5s ease;
-            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .rotating-word {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            
+            /* All words occupy same space in DOM - NO positioning */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .rotating-word.active {
+            opacity: 1;
+            position: static; /* Active word in natural flow */
+        }
+
+        .rotating-word:not(.active) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events: none;
         }
 
         .hero .subtitle {
@@ -280,23 +314,20 @@
         .hero-stats {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 3rem;
+            gap: 2rem;
             margin: 2rem 0;
             flex-wrap: wrap;
         }
 
         .hero-stat {
             text-align: center;
-            min-width: 120px;
         }
 
         .hero-stat-number {
             display: block;
-            font-size: 1.75rem;
-            font-weight: 800;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 0.5rem;
         }
 
         .hero-stat-label {
@@ -304,20 +335,22 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            font-weight: 500;
         }
 
         .cta-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             gap: 1rem;
-            margin-top: 2.5rem;
+            margin: 2.5rem auto 0;
+            text-align: center;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             background: var(--gradient-primary);
             color: white;
@@ -329,6 +362,7 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow-lg);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
         }
 
         .cta-button:hover {
@@ -339,6 +373,7 @@
         .secondary-button {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             background: rgba(255, 255, 255, 0.1);
             color: var(--text-primary);
@@ -349,6 +384,7 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
         }
 
         .secondary-button:hover {
@@ -369,6 +405,7 @@
             font-weight: 700;
             margin-bottom: 3rem;
             color: var(--text-primary);
+            text-align: center;
         }
 
         .trust-grid {
@@ -380,18 +417,18 @@
         }
 
         .trust-item {
-            background: var(--gradient-card);
-            backdrop-filter: blur(24px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-2xl);
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
             min-height: 200px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
         }
 
         .trust-item:hover {
@@ -418,6 +455,7 @@
         .trust-label {
             color: var(--text-secondary);
             font-weight: 500;
+            text-align: center;
         }
 
         /* Services Section */
@@ -437,6 +475,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             letter-spacing: -0.025em;
+            text-align: center;
         }
 
         .section-title p {
@@ -445,6 +484,7 @@
             max-width: 48rem;
             margin: 0 auto;
             line-height: 1.7;
+            text-align: center;
         }
 
         .services-grid {
@@ -465,7 +505,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            min-height: 420px;
+            min-height: 400px;
             display: flex;
             flex-direction: column;
         }
@@ -509,8 +549,6 @@
 
         .service-content {
             flex: 1;
-            display: flex;
-            flex-direction: column;
         }
 
         .service-content h3 {
@@ -529,7 +567,6 @@
         .service-benefits {
             list-style: none;
             margin-bottom: 1.5rem;
-            flex: 1;
         }
 
         .service-benefits li {
@@ -539,7 +576,6 @@
             margin-bottom: 0.5rem;
             color: var(--text-secondary);
             font-size: 0.95rem;
-            padding: 0.25rem 0;
         }
 
         .service-benefits li::before {
@@ -547,8 +583,6 @@
             color: var(--success-color);
             font-weight: bold;
             flex-shrink: 0;
-            width: 16px;
-            text-align: center;
         }
 
         .service-result {
@@ -619,12 +653,14 @@
             font-size: 1.75rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         .examples-preview p {
             color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.6;
+            text-align: center;
         }
 
         .example-metrics {
@@ -693,8 +729,10 @@
             color: var(--primary-color);
             flex-shrink: 0;
             margin-top: 0.25rem;
-            width: 24px;
-            text-align: center;
+        }
+
+        .advantage-content {
+            flex: 1;
         }
 
         .advantage-content h4 {
@@ -936,7 +974,7 @@
             }
 
             .hero-stats {
-                gap: 4rem;
+                gap: 3rem;
             }
 
             .cta-buttons {
@@ -1004,16 +1042,6 @@
             outline: 2px solid var(--primary-color);
             outline-offset: 2px;
         }
-
-        /* Dynamic text animation */
-        .highlight {
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .highlight.fade-out {
-            opacity: 0;
-        }
     </style>
 </head>
 <body>
@@ -1043,7 +1071,7 @@
         <section id="home" class="hero" role="banner">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Zwiększ wydajność swojego <span class="highlight" id="dynamicText">e-commerce o 250%</span> dzięki AI</h1>
+                    <h1>Zwiększ <span class="rotating-text"><span class="rotating-word active">konwersje</span><span class="rotating-word">sprzedaż</span><span class="rotating-word">wydajność</span><span class="rotating-word">pozycje SEO</span><span class="rotating-word">przychody</span></span> swojego e-commerce dzięki AI</h1>
                     <p class="subtitle">Zoptymalizuj SEO, UX i bezpieczeństwo swojej strony w 24 godziny. Otrzymaj konkretne rekomendacje od ekspertów AI, które przekładają się na realny wzrost sprzedaży.</p>
                     
                     <div class="hero-stats">
@@ -1066,7 +1094,7 @@
                             <i class="fas fa-rocket"></i>
                             <span>Darmowy audyt w 24h</span>
                         </a>
-                        <a href="przykladowe-audyty/" class="secondary-button">
+                        <a href="#examples" class="secondary-button">
                             <i class="fas fa-eye"></i>
                             <span>Zobacz przykłady audytów</span>
                         </a>
@@ -1095,7 +1123,7 @@
                     </div>
                     <div class="trust-item">
                         <div class="trust-icon">
-                            <i class="fas fa-shield-check"></i>
+                            <i class="fas fa-crosshairs"></i>
                         </div>
                         <div class="trust-number">95%</div>
                         <div class="trust-label">Skuteczność wykrywania błędów</div>
@@ -1151,7 +1179,7 @@
                             </div>
                             <div class="service-content">
                                 <h3>Analiza UX AI</h3>
-                                <p>Badanie doświadczeń użytkowników oparte na analizie zachowań, ścieżek konwersji i psychologii sprzedaży online dla maksymalnej konwertujości.</p>
+                                <p>Badanie doświadczeń użytkowników oparte na analizie zachowań, ścieżek konwersji i psychologii sprzedaży online dla maksymalnej konwertujności.</p>
                                 
                                 <ul class="service-benefits">
                                     <li>Heatmapy i analiza kliknięć AI</li>
@@ -1232,7 +1260,7 @@
                         </div>
                     </div>
                     
-                    <a href="przykladowe-audyty/audyt-1.html" class="cta-button">
+                    <a href="https://retixly.website/przykladowe-audyty/audyt-1.html" class="cta-button" target="_blank">
                         <i class="fas fa-file-alt"></i>
                         Zobacz pełny audyt
                     </a>
@@ -1297,16 +1325,6 @@
                             <p>Darmowy podstawowy audyt, jasne ceny za rozszerzone analizy. Bez żadnych ukrytych opłat czy długoterminowych zobowiązań. Płacisz tylko za wartość, którą otrzymujesz.</p>
                         </div>
                     </div>
-
-                    <div class="advantage-item">
-                        <div class="advantage-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="advantage-content">
-                            <h4>Support 24/7 + wdrożenie</h4>
-                            <p>Nie zostawiamy Cię samego z raportem. Oferujemy wsparcie w interpretacji wyników, priorytetyzacji zadań i opcjonalnie pomoc we wdrożeniu rekomendacji.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1350,7 +1368,7 @@
                             <label class="checkbox-label">
                                 <input type="checkbox" id="consent" name="consent" required>
                                 <span class="checkbox-custom"></span>
-                                <span class="checkbox-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji audytu oraz kontaktu ze mną zgodnie z <a href="polityka-prywatnosci.html" style="color: var(--primary-color); text-decoration: underline;">polityką prywatności</a>.</span>
+                                <span class="checkbox-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji audytu oraz kontaktu ze mną zgodnie z <a href="#" style="color: var(--primary-color); text-decoration: underline;">polityką prywatności</a>.</span>
                             </label>
                             <div id="consent-error" class="error-message" aria-live="polite"></div>
                         </div>
@@ -1389,28 +1407,26 @@
             };
         };
 
-        // Dynamic text rotation
-        function initDynamicText() {
-            const texts = [
-                'e-commerce o 250%',
-                'sklepu o 300%',
-                'sprzedaży o 200%',
-                'konwersji o 180%',
-                'SEO o 250%'
-            ];
+        // ULTIMATE ROTATING TEXT SOLUTION
+        function initRotatingText() {
+            const rotatingWords = document.querySelectorAll('.rotating-word');
+            
+            if (rotatingWords.length === 0) return;
+            
             let currentIndex = 0;
-            const textElement = document.getElementById('dynamicText');
-            
-            if (!textElement) return;
-            
-            setInterval(() => {
-                textElement.classList.add('fade-out');
+
+            function rotateWord() {
+                // Remove active from all words
+                rotatingWords.forEach(word => word.classList.remove('active'));
                 
-                setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % texts.length;
-                    textElement.textContent = texts[currentIndex];
-                    textElement.classList.remove('fade-out');
-                }, 250);
+                // Show next word
+                currentIndex = (currentIndex + 1) % rotatingWords.length;
+                rotatingWords[currentIndex].classList.add('active');
+            }
+
+            // Start rotation after 3 seconds, then every 3 seconds
+            setTimeout(() => {
+                setInterval(rotateWord, 3000);
             }, 3000);
         }
 
@@ -1580,21 +1596,37 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
                 
                 try {
-                    // Simulate form submission
-                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    // Replace with your actual webhook URL
+                    const webhookUrl = "https://your-n8n-domain.com/webhook/darmowy-audyt-seo-form";
                     
-                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
-                    submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            'URL Strony': websiteInput.value,
+                            'Email': emailInput.value,
+                            'Data wysłania': new Date().toISOString(),
+                            'Źródło': 'Retixly Homepage'
+                        })
+                    });
                     
-                    alert('Dziękujemy! Twój audyt zostanie wykonany w ciągu 24 godzin. Sprawdź swoją skrzynkę email (także spam).');
-                    
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalHTML;
-                        submitBtn.disabled = false;
-                        submitBtn.style.background = '';
-                        form.reset();
-                    }, 3000);
-                    
+                    if (response.ok) {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
+                        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                        
+                        alert('Dziękujemy! Twój audyt zostanie wykonany w ciągu 24 godzin. Sprawdź swoją skrzynkę email (także spam).');
+                        
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalHTML;
+                            submitBtn.disabled = false;
+                            submitBtn.style.background = '';
+                            form.reset();
+                        }, 3000);
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
                 } catch (error) {
                     console.error('Error:', error);
                     submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Błąd wysyłania';
@@ -1638,12 +1670,12 @@
 
         // Initialize on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
-            initDynamicText();
             initSmoothScroll();
             initLogoClick();
             initMobileMenu();
             initForm();
             initScrollAnimations();
+            initRotatingText();
             
             // Add optimized scroll listeners
             window.addEventListener('scroll', updateScrollIndicator, { passive: true });
