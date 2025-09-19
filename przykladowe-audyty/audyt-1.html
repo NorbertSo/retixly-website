@@ -21,10 +21,29 @@
             min-height: 100vh;
         }
 
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            padding-top: 30px;
         }
 
         .audit-header {
@@ -496,10 +515,63 @@
         .gap-title i {
             margin-right: 10px;
         }
+
+        .nav-toc {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            max-height: 70vh;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .nav-toc a {
+            display: block;
+            color: #b8c5d6;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toc a:hover,
+        .nav-toc a.active {
+            background: rgba(76, 175, 254, 0.2);
+            color: #4facfe;
+        }
+
+        @media (min-width: 1200px) {
+            .nav-toc {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+
+    <nav class="nav-toc" id="toc">
+        <a href="#top">Audyt</a>
+        <a href="#performance">Performance</a>
+        <a href="#seo">Technical SEO</a>
+        <a href="#ux">User Experience</a>
+        <a href="#security">Bezpieczeństwo</a>
+        <a href="#content">Strategia Treści</a>
+        <a href="#summary">Podsumowanie</a>
+    </nav>
+
+    <div class="container" id="top">
         <a href="../index.html" class="back-button">
             <i class="fas fa-arrow-left"></i>
             Powrót do strony głównej
@@ -509,7 +581,7 @@
             <h1 class="audit-title">Profesjonalny Audyt Cyfrowy</h1>
             <p class="audit-subtitle">SEO • Performance • Security • UX</p>
             <div class="audit-meta">
-                <div class="website-info">[sklep.xyz]</div>
+                <div class="website-info">sklepslubny.love</div>
                 <div class="audit-date">17.09.2025, 19:08 • Professional v2.0</div>
             </div>
         </div>
@@ -560,7 +632,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="performance">
             <div class="section-header">
                 <i class="fas fa-rocket section-icon"></i>
                 <div>
@@ -577,10 +649,9 @@
             <div class="subsection">
                 <div class="subsection-title">
                     <i class="fas fa-chart-line"></i>
-                    Audyt Technical SEO dla sklep.xyz.
+                    📈 CORE WEB VITALS & PERFORMANCE
                 </div>
 
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📈 CORE WEB VITALS & PERFORMANCE</h4>
                 <p style="margin-bottom: 20px;">Na podstawie analizy kodu HTML i struktury strony, identyfikuję następujące problemy wydajnościowe:</p>
 
                 <div class="warning-box">
@@ -609,6 +680,535 @@
 
                 <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🔍 TECHNICAL SEO FOUNDATION</h4>
                 
+                <div class="subsection">
+                    <div class="subsection-title">On-Page Optimization:</div>
+                    
+                    <h5 style="color: #22d3ee; margin: 15px 0 10px 0;">1. Meta Tags Audit:</h5>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px;">
+                            <strong>Title Tag:</strong> "Dekoracje Ślubne i Weselne na Twój szczęśliwy dzień! - SklepSlubny.Love"<br>
+                            <span style="color: #4ade80;">Length: 67 chars</span><br>
+                            <span style="color: #fbbf24;">Optimization: Dobra długość, ale warto dodać główne słowo kluczowe na początku</span>
+                        </li>
+                        <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px;">
+                            <strong>Meta Description:</strong> "Najpiękniejsze dekoracje na Twój szczęśliwy ślub i wesele! ❤️ Oryginalne kolekcje, podziękowania dla rodziców i upominki dla gości. Szybkie zakupy i natychmiastowa wysyłka!"<br>
+                            <span style="color: #4ade80;">Length: 174 chars</span><br>
+                            <span style="color: #fbbf24;">CTR potential: Dobry, ale brakuje wezwania do działania</span>
+                        </li>
+                        <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px;">
+                            <strong>H1 Analysis:</strong> "Dekoracje ślubne oraz dodatki weselne - SklepSlubny.Love"<br>
+                            <span style="color: #fbbf24;">Keyword targeting: Poprawne, ale zbyt ogólne</span>
+                        </li>
+                    </ul>
+
+                    <h5 style="color: #22d3ee; margin: 15px 0 10px 0;">2. Content Architecture:</h5>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>H2-H6 Structure:</strong> Znaleziono 7 nagłówków H2, hierarchia jest niespójna - niektóre H2 powinny być H3</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Schema.org Implementation:</strong> Obecny, ale niekompletny (brak schema dla produktów)</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Canonical Tags:</strong> Brak jawnego tagu kanonicznego na stronie głównej</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Alt Tags Coverage:</strong> Około 60% obrazów ma alt tagi, ale wiele z nich jest generycznych</li>
+                    </ul>
+
+                    <h5 style="color: #22d3ee; margin: 15px 0 10px 0;">3. Technical Infrastructure:</h5>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>URL Structure:</strong> Czysta struktura URL z kategoriami i podkategoriami</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Internal Linking:</strong> 87 linków wewnętrznych na stronie głównej - zbyt duże zagęszczenie</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Mobile Optimization:</strong> Viewport zdefiniowany, ale brak explicit mobile-friendly meta tagu</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>HTTPS Implementation:</strong> Poprawnie wdrożone HTTPS</li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">⚡ INDEXING & CRAWLABILITY</h4>
+                
+                <div class="subsection">
+                    <div class="subsection-title">Search Engine Access:</div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Robots.txt Analysis:</strong> Brak widocznych blokad w kodzie HTML</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>XML Sitemap:</strong> Brak bezpośredniego odniesienia w HTML</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Meta Robots:</strong> "index,follow" - prawidłowa konfiguracja</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Crawl Budget Optimization:</strong> Strona główna zawiera zbyt wiele linków (>80), co rozprasza budżet crawlowania</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Mobile-First Readiness:</div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Viewport Configuration:</strong> <span class="code-block">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Touch Elements Spacing:</strong> Elementy menu są zbyt blisko siebie na urządzeniach mobilnych</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Font Size Legibility:</strong> Niektóre teksty mają zbyt małą czcionkę dla urządzeń mobilnych</li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📊 ACTIONABLE IMPROVEMENTS</h4>
+
+                <div class="phase-box">
+                    <div class="phase-title">
+                        <i class="fas fa-bolt"></i>
+                        CRITICAL (0-7 dni) - Impact: +5 pozycji:
+                    </div>
+                    <ul class="improvement-list">
+                        <li class="improvement-item priority-critical">
+                            <div class="improvement-title">1. Optymalizacja ładowania obrazów poprzez implementację lazy loading</div>
+                            <div class="improvement-action">Action: Dodać atrybuty loading="lazy" do wszystkich obrazów poniżej pierwszego ekranu</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Developer time: 3 godziny</span>
+                                <span class="metric">Expected result: +20% szybkość ładowania strony</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-critical">
+                            <div class="improvement-title">2. Kompresja i optymalizacja JavaScript</div>
+                            <div class="improvement-action">Action: Minifikacja i łączenie skryptów JS, usunięcie nieużywanych funkcji</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Developer time: 6 godzin</span>
+                                <span class="metric">Expected result: +15% poprawa LCP</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-box">
+                    <div class="phase-title">
+                        <i class="fas fa-flag"></i>
+                        HIGH PRIORITY (1-4 tygodnie) - Impact: +10% visibility:
+                    </div>
+                    <ul class="improvement-list">
+                        <li class="improvement-item priority-high">
+                            <div class="improvement-title">1. Implementacja pełnego schema.org dla produktów</div>
+                            <div class="improvement-action">Action: Dodanie strukturalnych danych dla produktów, cen i dostępności</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Developer time: 8 godzin</span>
+                                <span class="metric">ROI timeline: 2 miesiące</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-high">
+                            <div class="improvement-title">2. Optymalizacja hierarchii nagłówków</div>
+                            <div class="improvement-action">Action: Restrukturyzacja nagłówków H1-H6 dla lepszej semantyki</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Developer time: 4 godziny</span>
+                                <span class="metric">Expected result: +5% CTR z wyników wyszukiwania</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-box">
+                    <div class="phase-title">
+                        <i class="fas fa-clock"></i>
+                        MEDIUM PRIORITY (1-2 miesiące) - Impact: +7% visibility:
+                    </div>
+                    <ul class="improvement-list">
+                        <li class="improvement-item priority-medium">
+                            <div class="improvement-title">1. Optymalizacja meta tagów dla głównych kategorii</div>
+                            <div class="improvement-action">Action: Unikalne i targetowane meta opisy dla każdej kategorii</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Developer time: 10 godzin</span>
+                                <span class="metric">Expected result: +8% CTR dla stron kategorii</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📈 PERFORMANCE PROJECTIONS</h4>
+                
+                <div class="success-box">
+                    <div class="success-title">
+                        <i class="fas fa-chart-line"></i>
+                        Post-Implementation Expectations:
+                    </div>
+                    <div class="projection-grid">
+                        <div class="projection-item">
+                            <div class="projection-label">Technical SEO Health:</div>
+                            <div class="projection-value">65% → 90%</div>
+                        </div>
+                        <div class="projection-item">
+                            <div class="projection-label">Organic Traffic Potential:</div>
+                            <div class="projection-value">+25%</div>
+                        </div>
+                        <div class="projection-item">
+                            <div class="projection-label">Ranking Boost:</div>
+                            <div class="projection-value">+5 pozycji</div>
+                        </div>
+                        <div class="projection-item">
+                            <div class="projection-label">Core Web Vitals:</div>
+                            <div class="projection-value">Niezadowalające → "Good"</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🔒 SECURITY & TRUST SIGNALS</h4>
+                <div class="security-risk">
+                    <div class="risk-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Wykryte problemy bezpieczeństwa:
+                    </div>
+                    <p style="margin-bottom: 15px;">Analiza nagłówków bezpieczeństwa wykazuje brak kilku kluczowych nagłówków:</p>
+                    <ul class="issue-list">
+                        <li class="issue-item issue-high">
+                            <div class="issue-title">1. Brak Content-Security-Policy</div>
+                            <div class="issue-impact">Impact: -5% zaufania użytkowników</div>
+                            <div class="issue-time">Fix time: 3 godziny</div>
+                        </li>
+                        <li class="issue-item issue-high">
+                            <div class="issue-title">2. Brak X-XSS-Protection</div>
+                            <div class="issue-impact">Impact: zwiększone ryzyko ataków XSS</div>
+                            <div class="issue-time">Fix time: 1 godzina</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🚀 DODATKOWE REKOMENDACJE</h4>
+                <ul class="improvement-list">
+                    <li class="improvement-item">
+                        <div class="improvement-title">1. Implementacja preconnect dla Google Fonts</div>
+                        <div class="improvement-action">Action: Dodanie &lt;link rel="preconnect" href="https://fonts.gstatic.com"&gt; w sekcji head</div>
+                        <div class="improvement-metrics">
+                            <span class="metric">Developer time: 1 godzina</span>
+                            <span class="metric">Expected result: -0.3s czasu ładowania</span>
+                        </div>
+                    </li>
+                    <li class="improvement-item">
+                        <div class="improvement-title">2. Redukcja liczby linków wewnętrznych na stronie głównej</div>
+                        <div class="improvement-action">Action: Reorganizacja menu i kategorii, usunięcie duplikatów</div>
+                        <div class="improvement-metrics">
+                            <span class="metric">Developer time: 5 godzin</span>
+                            <span class="metric">Expected result: Lepsze wykorzystanie budżetu crawlowania</span>
+                        </div>
+                    </li>
+                    <li class="improvement-item">
+                        <div class="improvement-title">3. Optymalizacja alt tagów dla obrazów</div>
+                        <div class="improvement-action">Action: Dodanie unikalnych, opisowych alt tagów do wszystkich obrazów</div>
+                        <div class="improvement-metrics">
+                            <span class="metric">Developer time: 4 godziny</span>
+                            <span class="metric">Expected result: +3% ruchu z wyszukiwania obrazów</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #b8c5d6; font-style: italic;">Wdrożenie tych zmian powinno znacząco poprawić wydajność techniczną strony, co przełoży się na lepsze pozycje w wynikach wyszukiwania i zwiększony ruch organiczny.</p>
+            </div>
+        </div>
+
+        <div class="section" id="ux">
+            <div class="section-header">
+                <i class="fas fa-paint-brush section-icon"></i>
+                <div>
+                    <div class="section-title">User Experience & Użyteczność</div>
+                    <div class="section-impact">Wpływ: Konwersja, czas na stronie, zadowolenie użytkowników</div>
+                </div>
+            </div>
+
+            <div class="analysis-result">
+                <div class="result-label">Analiza User Experience</div>
+                <div class="result-score">Wynik: 67/100</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">
+                    <i class="fas fa-compass"></i>
+                    🎨 NAVIGATION & STRUCTURE
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Menu Analysis:</div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Navigation complexity:</strong> Bardzo wysoka - 24 główne elementy w menu (Prezenty, Personalizacja, Kolekcje ślubne, Zaproszenia, Niezbędne, itd.)</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Mobile menu:</strong> Hamburger menu z rozwijanymi kategoriami</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Breadcrumbs:</strong> Brak widocznych breadcrumbs na stronie głównej</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Content Hierarchy:</div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>H1-H6 struktura:</strong> Chaotyczna - H1 "Dekoracje ślubne oraz dodatki weselne - SklepSlubny.Love" jest umieszczony głęboko w strukturze strony, a nie jako główny nagłówek</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>CTA placement:</strong> Niespójne - przyciski "Personalizuj" i "Dodaj do koszyka" występują naprzemiennie w produktach</li>
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Content blocks:</strong> Słaba organizacja - slider zajmuje dużo miejsca, a kluczowe kategorie produktów są zepchnięte niżej</li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">⚡ PERFORMANCE UX</h4>
+                
+                <div class="warning-box">
+                    <div class="warning-title">
+                        <i class="fas fa-hourglass-half"></i>
+                        Loading Impact:
+                    </div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Performance Score:</strong> Brak danych w dostarczonym PageSpeed</li>
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>User frustration:</strong> HIGH - duża liczba skryptów JavaScript (ponad 20) spowalnia ładowanie strony</li>
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Above-fold content:</strong> Przeładowany - slider zajmuje całą przestrzeń, a kluczowe kategorie produktów nie są widoczne bez przewijania</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Mobile Usability:</div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Touch targets:</strong> Nieoptymalne - menu główne ma zbyt małe odstępy między elementami (poniżej rekomendowanych 48px)</li>
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Text readability:</strong> Słaba - niektóre teksty w opisach produktów mają zbyt mały rozmiar fontu</li>
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Horizontal scroll:</strong> Występuje na mobilnych urządzeniach przez brak odpowiedniego dostosowania szerokości elementów</li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📱 ACCESSIBILITY UX</h4>
+                <ul style="list-style: none; margin: 15px 0;">
+                    <li style="margin: 8px 0; color: #fbbf24;">• <strong>Alt text coverage:</strong> 70% obrazków ma alt text, ale wiele z nich jest nieprecyzyjnych (np. powtarzają tylko nazwę produktu)</li>
+                    <li style="margin: 8px 0; color: #f87171;">• <strong>Keyboard navigation:</strong> Utrudniona - brak widocznego focusu na elementach interaktywnych</li>
+                    <li style="margin: 8px 0; color: #f87171;">• <strong>Color contrast:</strong> Niewystarczający - tekst w stopce ma słaby kontrast z tłem (szary na ciemnym tle)</li>
+                </ul>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🛒 CONVERSION UX</h4>
+                
+                <div class="warning-box">
+                    <div class="warning-title">
+                        <i class="fas fa-shopping-cart"></i>
+                        Landing Page:
+                    </div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Value proposition:</strong> Słaba - główny headline "Dekoracje Ślubne i Weselne na Twój szczęśliwy dzień!" jest ukryty w sliderze</li>
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Trust signals:</strong> Brak widocznych opinii klientów, certyfikatów bezpieczeństwa czy gwarancji</li>
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Friction points:</strong></li>
+                    </ul>
+                    <ol style="margin-left: 20px; color: #b8c5d6;">
+                        <li>Brak wyraźnych informacji o kosztach dostawy na stronie głównej</li>
+                        <li>Niespójne przyciski CTA (raz "Personalizuj", raz "Dodaj do koszyka")</li>
+                        <li>Brak widocznej informacji o czasie realizacji zamówienia</li>
+                    </ol>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📊 IMPROVEMENTS</h4>
+
+                <div class="phase-box">
+                    <div class="phase-title">
+                        <i class="fas fa-bolt"></i>
+                        NATYCHMIASTOWE (0-14 dni):
+                    </div>
+                    <ul class="improvement-list">
+                        <li class="improvement-item priority-critical">
+                            <div class="improvement-title">1. Uproszczenie menu głównego</div>
+                            <div class="improvement-action">Zmniejszenie liczby głównych kategorii do 7-8 najważniejszych, resztę przenieść do submenu.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Impact: +15% user satisfaction, -20% bounce rate</span>
+                                <span class="metric">Effort: 8h</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-critical">
+                            <div class="improvement-title">2. Dodanie wyraźnych informacji o dostawie i czasie realizacji</div>
+                            <div class="improvement-action">Umieszczenie banera z informacją "Darmowa dostawa od 200 zł | Realizacja 24h" pod sliderem.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Impact: +10% conversion rate</span>
+                                <span class="metric">Effort: 2h</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-high">
+                            <div class="improvement-title">3. Poprawa alt textów dla obrazków produktów</div>
+                            <div class="improvement-action">Dodanie szczegółowych opisów zamiast powtarzania nazw.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Impact: +5% SEO visibility, lepsza dostępność</span>
+                                <span class="metric">Effort: 6h</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-high">
+                            <div class="improvement-title">4. Ujednolicenie CTA dla produktów</div>
+                            <div class="improvement-action">Zastosowanie jednego spójnego przycisku "Dodaj do koszyka" z opcją personalizacji w szczegółach produktu.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Impact: +8% CTR</span>
+                                <span class="metric">Effort: 4h</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-high">
+                            <div class="improvement-title">5. Dodanie sekcji "Bestsellery" nad sliderem</div>
+                            <div class="improvement-action">Przeniesienie najpopularniejszych produktów na górę strony.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Impact: +12% engagement</span>
+                                <span class="metric">Effort: 6h</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="phase-box">
+                    <div class="phase-title">
+                        <i class="fas fa-cogs"></i>
+                        STRATEGICZNE (1-3 miesiące):
+                    </div>
+                    <ul class="improvement-list">
+                        <li class="improvement-item priority-medium">
+                            <div class="improvement-title">1. Redesign strony głównej</div>
+                            <div class="improvement-action">Zmniejszenie slidera, dodanie kategorii produktowych z ikonami na górze strony, wyraźna propozycja wartości.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Investment: 40h pracy developera</span>
+                                <span class="metric">ROI: 3 miesiące przez wzrost konwersji o 20%</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-medium">
+                            <div class="improvement-title">2. Implementacja systemu opinii klientów</div>
+                            <div class="improvement-action">Dodanie sekcji z opiniami przy produktach i na stronie głównej.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Investment: 24h pracy developera</span>
+                                <span class="metric">ROI: 2 miesiące przez wzrost zaufania i konwersji o 15%</span>
+                            </div>
+                        </li>
+                        <li class="improvement-item priority-medium">
+                            <div class="improvement-title">3. Optymalizacja mobile-first</div>
+                            <div class="improvement-action">Przebudowa interfejsu z myślą o urządzeniach mobilnych, zwiększenie przycisków, poprawa czytelności.</div>
+                            <div class="improvement-metrics">
+                                <span class="metric">Investment: 60h pracy developera</span>
+                                <span class="metric">ROI: 4 miesiące przez wzrost konwersji mobilnej o 25%</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📈 PROJECTIONS</h4>
+                
+                <div class="success-box">
+                    <div class="success-title">
+                        <i class="fas fa-chart-line"></i>
+                        Oczekiwane rezultaty:
+                    </div>
+                    <div class="projection-grid">
+                        <div class="projection-item">
+                            <div class="projection-label">User satisfaction:</div>
+                            <div class="projection-value">65% → 85% (+20%)</div>
+                        </div>
+                        <div class="projection-item">
+                            <div class="projection-label">Bounce rate:</div>
+                            <div class="projection-value">60% → 45% (-15%)</div>
+                        </div>
+                        <div class="projection-item">
+                            <div class="projection-label">Mobile experience:</div>
+                            <div class="projection-value">Słaba → Dobra (+25% konwersji)</div>
+                        </div>
+                        <div class="projection-item">
+                            <div class="projection-label">Średni czas na stronie:</div>
+                            <div class="projection-value">1:30 → 2:45 (+75%)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🔍 KLUCZOWE PROBLEMY UX</h4>
+                <ul style="list-style: none; margin: 15px 0;">
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
+                        <strong style="color: #f87171;">1. Przeładowane menu</strong> - 24 główne kategorie to zdecydowanie za dużo, użytkownicy doświadczają przeciążenia poznawczego.
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
+                        <strong style="color: #f87171;">2. Niespójna hierarchia informacji</strong> - Najważniejsze elementy (bestsellery, kategorie) są zepchnięte w dół strony, a slider zajmuje całą przestrzeń "above the fold".
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
+                        <strong style="color: #f87171;">3. Brak wyraźnych elementów budujących zaufanie</strong> - Brak widocznych opinii klientów, informacji o bezpieczeństwie zakupów czy gwarancji zwrotu.
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
+                        <strong style="color: #f87171;">4. Słaba optymalizacja mobilna</strong> - Zbyt małe przyciski, problemy z czytelnością tekstu i horyzontalnym przewijaniem na urządzeniach mobilnych.
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
+                        <strong style="color: #f87171;">5. Niespójne CTA</strong> - Mieszanie przycisków "Personalizuj" i "Dodaj do koszyka" wprowadza użytkownika w błąd co do następnego kroku.
+                    </li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #b8c5d6; font-style: italic;">Wdrożenie powyższych rekomendacji znacząco poprawi doświadczenie użytkownika, zwiększy konwersję i zmniejszy współczynnik odrzuceń, co przełoży się na wymierne korzyści biznesowe.</p>
+            </div>
+        </div>
+
+        <div class="section" id="security">
+            <div class="section-header">
+                <i class="fas fa-shield-alt section-icon"></i>
+                <div>
+                    <div class="section-title">Bezpieczeństwo & Ochrona</div>
+                    <div class="section-impact">Wpływ: Ochrona przed atakami, zaufanie klientów, zgodność RODO</div>
+                </div>
+            </div>
+
+            <div class="analysis-result">
+                <div class="result-label">Analiza Bezpieczeństwa</div>
+                <div class="result-score" style="color: #f87171;">Wynik: 25/100</div>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">
+                    <i class="fas fa-bug"></i>
+                    🔒 ANALIZA NAGŁÓWKÓW BEZPIECZEŃSTWA
+                </div>
+
+                <div class="security-risk">
+                    <div class="risk-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Ocena ogólna
+                    </div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #dc2626;">• <strong>Obecna ocena:</strong> F (0/100)</li>
+                        <li style="margin: 8px 0; color: #dc2626;">• <strong>Status:</strong> Krytyczny - brak podstawowych nagłówków bezpieczeństwa</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Brakujące nagłówki bezpieczeństwa</div>
+                    <ul class="issue-list">
+                        <li class="issue-item issue-critical">
+                            <div class="issue-title">1. Content-Security-Policy (CSP)</div>
+                            <div class="issue-impact">Ryzyko: WYSOKIE</div>
+                            <div class="issue-impact">Wektor ataku: XSS, wstrzykiwanie złośliwych skryptów</div>
+                            <div class="issue-time">Czas naprawy: 8h</div>
+                        </li>
+                        <li class="issue-item issue-critical">
+                            <div class="issue-title">2. X-Frame-Options</div>
+                            <div class="issue-impact">Ryzyko: WYSOKIE</div>
+                            <div class="issue-impact">Wektor ataku: Clickjacking, osadzanie strony w ramkach</div>
+                            <div class="issue-time">Czas naprawy: 1h</div>
+                        </li>
+                        <li class="issue-item issue-medium">
+                            <div class="issue-title">3. X-Content-Type-Options</div>
+                            <div class="issue-impact">Ryzyko: ŚREDNIE</div>
+                            <div class="issue-impact">Wektor ataku: MIME-sniffing, nieprawidłowa interpretacja zawartości</div>
+                            <div class="issue-time">Czas naprawy: 1h</div>
+                        </li>
+                        <li class="issue-item issue-medium">
+                            <div class="issue-title">4. Referrer-Policy</div>
+                            <div class="issue-impact">Ryzyko: ŚREDNIE</div>
+                            <div class="issue-impact">Wektor ataku: Wyciek informacji o źródle ruchu</div>
+                            <div class="issue-time">Czas naprawy: 1h</div>
+                        </li>
+                        <li class="issue-item issue-medium">
+                            <div class="issue-title">5. Permissions-Policy</div>
+                            <div class="issue-impact">Ryzyko: ŚREDNIE</div>
+                            <div class="issue-impact">Wektor ataku: Nieuprawniony dostęp do funkcji przeglądarki</div>
+                            <div class="issue-time">Czas naprawy: 2h</div>
+                        </li>
+                        <li class="issue-item issue-critical">
+                            <div class="issue-title">6. Strict-Transport-Security (HSTS)</div>
+                            <div class="issue-impact">Ryzyko: WYSOKIE</div>
+                            <div class="issue-impact">Wektor ataku: Downgrade attacks, przechwytywanie nieszyfrowanej komunikacji</div>
+                            <div class="issue-time">Czas naprawy: 1h</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🦠 STATUS REPUTACJI I ZŁOŚLIWEGO OPROGRAMOWANIA</h4>
+                <p style="color: #b8c5d6; margin-bottom: 20px;">Strona nie wykazuje bezpośrednich oznak złośliwego oprogramowania, jednak brak podstawowych zabezpieczeń stanowi poważne ryzyko dla bezpieczeństwa użytkowników.</p>
+
+                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🏗️ BEZPIECZEŃSTWO INFRASTRUKTURY</h4>
+                
+                <div class="subsection">
+                    <div class="subsection-title">Implementacja HTTPS</div>
+                    <ul style="list-style: none; margin: 15px 0;">
+                        <li style="margin: 8px 0; color: #4ade80;">• <strong>Status:</strong> Aktywna (https://sklepslubny.love/)</li>
+                        <li style="margin: 8px 0; color: #f87171;">• <strong>Problem:</strong> Brak wymuszenia HTTPS poprzez HSTS</li>
+                    </ul>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">Skrypty zewnętrzne</div>
+                    <p style="color: #b8c5d6; margin-bottom: 15px;">Zidentyfikowano 7 domen zewnętrznych:</p>
+                    <ol style="margin-left: 20px; color: #b8c5d6;">
+                        <li>connect.facebook.net</li>
+                        <li>www.googletagmanager.com</li>
+                        <li>www.czater.pl</li>
+                        <li>maps.google.com</li>
+                        <li>fonts.googleapis.com</li>
+                        <li>sklepslubny.love (własna domena)</li>
+                        <li>doubleclick.net (śledzenie reklamowe)</li>
+                    </ol>
+                </div>
+
                 <div class="subsection">
                     <div class="subsection-title">Ekspozycja danych</div>
                     <h5 style="color: #22d3ee; margin: 15px 0 10px 0;">1. Cookies:</h5>
@@ -815,13 +1415,13 @@
                         <i class="fas fa-check-circle"></i>
                         PODSUMOWANIE
                     </div>
-                    <p style="color: #b8c5d6; margin-bottom: 15px;">Sklep internetowy sklep.xyz wymaga natychmiastowych działań naprawczych w zakresie bezpieczeństwa. Brak podstawowych nagłówków bezpieczeństwa oraz inne wykryte problemy stanowią poważne zagrożenie dla danych klientów i reputacji firmy. Wdrożenie zaproponowanego planu działania pozwoli na znaczącą poprawę poziomu bezpieczeństwa w ciągu 1-2 miesięcy.</p>
+                    <p style="color: #b8c5d6; margin-bottom: 15px;">Sklep internetowy sklepslubny.love wymaga natychmiastowych działań naprawczych w zakresie bezpieczeństwa. Brak podstawowych nagłówków bezpieczeństwa oraz inne wykryte problemy stanowią poważne zagrożenie dla danych klientów i reputacji firmy. Wdrożenie zaproponowanego planu działania pozwoli na znaczącą poprawę poziomu bezpieczeństwa w ciągu 1-2 miesięcy.</p>
                     <p style="color: #4facfe; font-weight: 600; font-size: 1.1rem;">Całkowity szacowany czas pracy: 75 godzin.</p>
                 </div>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="content">
             <div class="section-header">
                 <i class="fas fa-edit section-icon"></i>
                 <div>
@@ -838,11 +1438,9 @@
             <div class="subsection">
                 <div class="subsection-title">
                     <i class="fas fa-search"></i>
-                    Analiza strategii treści SEO dla sklep.xyz
+                    🔍 ANALIZA OBECNEJ TREŚCI
                 </div>
 
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🔍 ANALIZA OBECNEJ TREŚCI</h4>
-                
                 <div class="subsection">
                     <div class="subsection-title">Podstawowe elementy SEO</div>
                     <ul style="list-style: none; margin: 15px 0;">
@@ -984,11 +1582,6 @@
                         Brakujące typy treści
                     </div>
                     <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 15px 0; padding: 10px; background: rgba(248, 113, 113, 0.1); border-left: 3px solid #f87171; border-radius: 5px;">
-                            <strong style="color: #f87171;">1. Kompleksowe poradniki planowania ślubu</strong><br>
-                            <span style="color: #b8c5d6;">Konkurencja oferuje pełne przewodniki "krok po kroku"</span><br>
-                            <span style="color: #b8c5d6;">Brak sekcji z harmonogramami i checklistami</span>
-                        </li>
                         <li style="margin: 15px 0; padding: 10px; background: rgba(248, 113, 113, 0.1); border-left: 3px solid #f87171; border-radius: 5px;">
                             <strong style="color: #f87171;">2. Kalkulatory kosztów wesela</strong><br>
                             <span style="color: #b8c5d6;">Konkurencja oferuje interaktywne narzędzia</span><br>
@@ -1170,7 +1763,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="summary">
             <div class="section-header">
                 <i class="fas fa-chart-bar section-icon"></i>
                 <div>
@@ -1259,7 +1852,7 @@
                     <i class="fas fa-exclamation-triangle"></i>
                     Krytyczne uwagi końcowe
                 </div>
-                <p style="color: #b8c5d6; margin-bottom: 15px;">Sklep sklep.xyz wymaga pilnych działań naprawczych, szczególnie w obszarze bezpieczeństwa. Obecny stan naraża firmę na poważne ryzyko finansowe i reputacyjne. Pozytywnym aspektem jest dobra podstawa SEO (100/100), którą można wykorzystać do szybkiego wzrostu widoczności po wdrożeniu poprawek technicznych.</p>
+                <p style="color: #b8c5d6; margin-bottom: 15px;">Sklep sklepslubny.love wymaga pilnych działań naprawczych, szczególnie w obszarze bezpieczeństwa. Obecny stan naraża firmę na poważne ryzyko finansowe i reputacyjne. Pozytywnym aspektem jest dobra podstawa SEO (100/100), którą można wykorzystać do szybkiego wzrostu widoczności po wdrożeniu poprawek technicznych.</p>
                 
                 <p style="color: #4facfe; font-weight: 600;">Rekomendujemy rozpoczęcie od najbardziej krytycznych elementów bezpieczeństwa, a następnie systematyczne wdrażanie pozostałych usprawnień zgodnie z przedstawionym planem.</p>
             </div>
@@ -1274,539 +1867,66 @@
             </a>
         </div>
     </div>
+
+    <script>
+        // Progress bar functionality
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progress").style.width = scrolled + "%";
+        }
+
+        // Table of contents active state
+        function updateTOC() {
+            const sections = ['top', 'performance', 'seo', 'ux', 'security', 'content', 'summary'];
+            const tocLinks = document.querySelectorAll('.nav-toc a');
+            
+            for (let i = 0; i < sections.length; i++) {
+                const section = document.getElementById(sections[i]);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        tocLinks.forEach(link => link.classList.remove('active'));
+                        const activeLink = document.querySelector(`.nav-toc a[href="#${sections[i]}"]`);
+                        if (activeLink) activeLink.classList.add('active');
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Scroll event listeners
+        window.addEventListener('scroll', function() {
+            updateProgressBar();
+            updateTOC();
+        });
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.nav-toc a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+            updateTOC();
+        });
+    </script>
 </body>
-</html>
-                    <div class="subsection-title">On-Page Optimization:</div>
-                    
-                    <h5 style="color: #22d3ee; margin: 15px 0 10px 0;">1. Meta Tags Audit:</h5>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px;">
-                            <strong>Title Tag:</strong> "Dekoracje Ślubne i Weselne na Twój szczęśliwy dzień! - SklepSlubny.Love"<br>
-                            <span style="color: #4ade80;">Length: 67 chars</span><br>
-                            <span style="color: #fbbf24;">Optimization: Dobra długość, ale warto dodać główne słowo kluczowe na początku</span>
+</html> background: rgba(248, 113, 113, 0.1); border-left: 3px solid #f87171; border-radius: 5px;">
+                            <strong style="color: #f87171;">1. Kompleksowe poradniki planowania ślubu</strong><br>
+                            <span style="color: #b8c5d6;">Konkurencja oferuje pełne przewodniki "krok po kroku"</span><br>
+                            <span style="color: #b8c5d6;">Brak sekcji z harmonogramami i checklistami</span>
                         </li>
-                        <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px;">
-                            <strong>Meta Description:</strong> "Najpiękniejsze dekoracje na Twój szczęśliwy ślub i wesele! ❤️ Oryginalne kolekcje, podziękowania dla rodziców i upominki dla gości. Szybkie zakupy i natychmiastowa wysyłka!"<br>
-                            <span style="color: #4ade80;">Length: 174 chars</span><br>
-                            <span style="color: #fbbf24;">CTR potential: Dobry, ale brakuje wezwania do działania</span>
-                        </li>
-                        <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px;">
-                            <strong>H1 Analysis:</strong> "Dekoracje ślubne oraz dodatki weselne - SklepSlubny.Love"<br>
-                            <span style="color: #fbbf24;">Keyword targeting: Poprawne, ale zbyt ogólne</span>
-                        </li>
-                    </ul>
-
-                    <h5 style="color: #22d3ee; margin: 15px 0 10px 0;">2. Content Architecture:</h5>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>H2-H6 Structure:</strong> Znaleziono 7 nagłówków H2, hierarchia jest niespójna - niektóre H2 powinny być H3</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Schema.org Implementation:</strong> Obecny, ale niekompletny (brak schema dla produktów)</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Canonical Tags:</strong> Brak jawnego tagu kanonicznego na stronie głównej</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Alt Tags Coverage:</strong> Około 60% obrazów ma alt tagi, ale wiele z nich jest generycznych</li>
-                    </ul>
-
-                    <h5 style="color: #22d3ee; margin: 15px 0 10px 0;">3. Technical Infrastructure:</h5>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>URL Structure:</strong> Czysta struktura URL z kategoriami i podkategoriami</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Internal Linking:</strong> 87 linków wewnętrznych na stronie głównej - zbyt duże zagęszczenie</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Mobile Optimization:</strong> Viewport zdefiniowany, ale brak explicit mobile-friendly meta tagu</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>HTTPS Implementation:</strong> Poprawnie wdrożone HTTPS</li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">⚡ INDEXING & CRAWLABILITY</h4>
-                
-                <div class="subsection">
-                    <div class="subsection-title">Search Engine Access:</div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Robots.txt Analysis:</strong> Brak widocznych blokad w kodzie HTML</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>XML Sitemap:</strong> Brak bezpośredniego odniesienia w HTML</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Meta Robots:</strong> "index,follow" - prawidłowa konfiguracja</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Crawl Budget Optimization:</strong> Strona główna zawiera zbyt wiele linków (>80), co rozprasza budżet crawlowania</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <div class="subsection-title">Mobile-First Readiness:</div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Viewport Configuration:</strong> <span class="code-block">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Touch Elements Spacing:</strong> Elementy menu są zbyt blisko siebie na urządzeniach mobilnych</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Font Size Legibility:</strong> Niektóre teksty mają zbyt małą czcionkę dla urządzeń mobilnych</li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📊 ACTIONABLE IMPROVEMENTS</h4>
-
-                <div class="phase-box">
-                    <div class="phase-title">
-                        <i class="fas fa-bolt"></i>
-                        CRITICAL (0-7 dni) - Impact: +5 pozycji:
-                    </div>
-                    <ul class="improvement-list">
-                        <li class="improvement-item priority-critical">
-                            <div class="improvement-title">1. Optymalizacja ładowania obrazów poprzez implementację lazy loading</div>
-                            <div class="improvement-action">Action: Dodać atrybuty loading="lazy" do wszystkich obrazów poniżej pierwszego ekranu</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Developer time: 3 godziny</span>
-                                <span class="metric">Expected result: +5% CTR z wyników wyszukiwania</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="phase-box">
-                    <div class="phase-title">
-                        <i class="fas fa-clock"></i>
-                        MEDIUM PRIORITY (1-2 miesiące) - Impact: +7% visibility:
-                    </div>
-                    <ul class="improvement-list">
-                        <li class="improvement-item priority-medium">
-                            <div class="improvement-title">1. Optymalizacja meta tagów dla głównych kategorii</div>
-                            <div class="improvement-action">Action: Unikalne i targetowane meta opisy dla każdej kategorii</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Developer time: 10 godzin</span>
-                                <span class="metric">Expected result: +8% CTR dla stron kategorii</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📈 PERFORMANCE PROJECTIONS</h4>
-                
-                <div class="success-box">
-                    <div class="success-title">
-                        <i class="fas fa-chart-line"></i>
-                        Post-Implementation Expectations:
-                    </div>
-                    <div class="projection-grid">
-                        <div class="projection-item">
-                            <div class="projection-label">Technical SEO Health:</div>
-                            <div class="projection-value">65% → 90%</div>
-                        </div>
-                        <div class="projection-item">
-                            <div class="projection-label">Organic Traffic Potential:</div>
-                            <div class="projection-value">+25%</div>
-                        </div>
-                        <div class="projection-item">
-                            <div class="projection-label">Ranking Boost:</div>
-                            <div class="projection-value">+5 pozycji</div>
-                        </div>
-                        <div class="projection-item">
-                            <div class="projection-label">Core Web Vitals:</div>
-                            <div class="projection-value">Niezadowalające → "Good"</div>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🔒 SECURITY & TRUST SIGNALS</h4>
-                <div class="security-risk">
-                    <div class="risk-title">
-                        <i class="fas fa-shield-alt"></i>
-                        Wykryte problemy bezpieczeństwa:
-                    </div>
-                    <p style="margin-bottom: 15px;">Analiza nagłówków bezpieczeństwa wykazuje brak kilku kluczowych nagłówków:</p>
-                    <ul class="issue-list">
-                        <li class="issue-item issue-high">
-                            <div class="issue-title">1. Brak Content-Security-Policy</div>
-                            <div class="issue-impact">Impact: -5% zaufania użytkowników</div>
-                            <div class="issue-time">Fix time: 3 godziny</div>
-                        </li>
-                        <li class="issue-item issue-high">
-                            <div class="issue-title">2. Brak X-XSS-Protection</div>
-                            <div class="issue-impact">Impact: zwiększone ryzyko ataków XSS</div>
-                            <div class="issue-time">Fix time: 1 godzina</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🚀 DODATKOWE REKOMENDACJE</h4>
-                <ul class="improvement-list">
-                    <li class="improvement-item">
-                        <div class="improvement-title">1. Implementacja preconnect dla Google Fonts</div>
-                        <div class="improvement-action">Action: Dodanie &lt;link rel="preconnect" href="https://fonts.gstatic.com"&gt; w sekcji head</div>
-                        <div class="improvement-metrics">
-                            <span class="metric">Developer time: 1 godzina</span>
-                            <span class="metric">Expected result: -0.3s czasu ładowania</span>
-                        </div>
-                    </li>
-                    <li class="improvement-item">
-                        <div class="improvement-title">2. Redukcja liczby linków wewnętrznych na stronie głównej</div>
-                        <div class="improvement-action">Action: Reorganizacja menu i kategorii, usunięcie duplikatów</div>
-                        <div class="improvement-metrics">
-                            <span class="metric">Developer time: 5 godzin</span>
-                            <span class="metric">Expected result: Lepsze wykorzystanie budżetu crawlowania</span>
-                        </div>
-                    </li>
-                    <li class="improvement-item">
-                        <div class="improvement-title">3. Optymalizacja alt tagów dla obrazów</div>
-                        <div class="improvement-action">Action: Dodanie unikalnych, opisowych alt tagów do wszystkich obrazów</div>
-                        <div class="improvement-metrics">
-                            <span class="metric">Developer time: 4 godziny</span>
-                            <span class="metric">Expected result: +3% ruchu z wyszukiwania obrazów</span>
-                        </div>
-                    </li>
-                </ul>
-
-                <p style="margin-top: 20px; color: #b8c5d6; font-style: italic;">Wdrożenie tych zmian powinno znacząco poprawić wydajność techniczną strony, co przełoży się na lepsze pozycje w wynikach wyszukiwania i zwiększony ruch organiczny.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <i class="fas fa-paint-brush section-icon"></i>
-                <div>
-                    <div class="section-title">User Experience & Użyteczność</div>
-                    <div class="section-impact">Wpływ: Konwersja, czas na stronie, zadowolenie użytkowników</div>
-                </div>
-            </div>
-
-            <div class="analysis-result">
-                <div class="result-label">Analiza User Experience</div>
-                <div class="result-score">Wynik: 67/100</div>
-            </div>
-
-            <div class="subsection">
-                <div class="subsection-title">
-                    <i class="fas fa-compass"></i>
-                    Analiza UX strony SklepSlubny.Love
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🎨 NAVIGATION & STRUCTURE</h4>
-                
-                <div class="subsection">
-                    <div class="subsection-title">Menu Analysis:</div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Navigation complexity:</strong> Bardzo wysoka - 24 główne elementy w menu (Prezenty, Personalizacja, Kolekcje ślubne, Zaproszenia, Niezbędne, itd.)</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Mobile menu:</strong> Hamburger menu z rozwijanymi kategoriami</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Breadcrumbs:</strong> Brak widocznych breadcrumbs na stronie głównej</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <div class="subsection-title">Content Hierarchy:</div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>H1-H6 struktura:</strong> Chaotyczna - H1 "Dekoracje ślubne oraz dodatki weselne - SklepSlubny.Love" jest umieszczony głęboko w strukturze strony, a nie jako główny nagłówek</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>CTA placement:</strong> Niespójne - przyciski "Personalizuj" i "Dodaj do koszyka" występują naprzemiennie w produktach</li>
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Content blocks:</strong> Słaba organizacja - slider zajmuje dużo miejsca, a kluczowe kategorie produktów są zepchnięte niżej</li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">⚡ PERFORMANCE UX</h4>
-                
-                <div class="warning-box">
-                    <div class="warning-title">
-                        <i class="fas fa-hourglass-half"></i>
-                        Loading Impact:
-                    </div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #b8c5d6;">• <strong>Performance Score:</strong> Brak danych w dostarczonym PageSpeed</li>
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>User frustration:</strong> HIGH - duża liczba skryptów JavaScript (ponad 20) spowalnia ładowanie strony</li>
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Above-fold content:</strong> Przeładowany - slider zajmuje całą przestrzeń, a kluczowe kategorie produktów nie są widoczne bez przewijania</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <div class="subsection-title">Mobile Usability:</div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Touch targets:</strong> Nieoptymalne - menu główne ma zbyt małe odstępy między elementami (poniżej rekomendowanych 48px)</li>
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Text readability:</strong> Słaba - niektóre teksty w opisach produktów mają zbyt mały rozmiar fontu</li>
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Horizontal scroll:</strong> Występuje na mobilnych urządzeniach przez brak odpowiedniego dostosowania szerokości elementów</li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📱 ACCESSIBILITY UX</h4>
-                <ul style="list-style: none; margin: 15px 0;">
-                    <li style="margin: 8px 0; color: #fbbf24;">• <strong>Alt text coverage:</strong> 70% obrazków ma alt text, ale wiele z nich jest nieprecyzyjnych (np. powtarzają tylko nazwę produktu)</li>
-                    <li style="margin: 8px 0; color: #f87171;">• <strong>Keyboard navigation:</strong> Utrudniona - brak widocznego focusu na elementach interaktywnych</li>
-                    <li style="margin: 8px 0; color: #f87171;">• <strong>Color contrast:</strong> Niewystarczający - tekst w stopce ma słaby kontrast z tłem (szary na ciemnym tle)</li>
-                </ul>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🛒 CONVERSION UX</h4>
-                
-                <div class="warning-box">
-                    <div class="warning-title">
-                        <i class="fas fa-shopping-cart"></i>
-                        Landing Page:
-                    </div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Value proposition:</strong> Słaba - główny headline "Dekoracje Ślubne i Weselne na Twój szczęśliwy dzień!" jest ukryty w sliderze</li>
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Trust signals:</strong> Brak widocznych opinii klientów, certyfikatów bezpieczeństwa czy gwarancji</li>
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Friction points:</strong></li>
-                    </ul>
-                    <ol style="margin-left: 20px; color: #b8c5d6;">
-                        <li>Brak wyraźnych informacji o kosztach dostawy na stronie głównej</li>
-                        <li>Niespójne przyciski CTA (raz "Personalizuj", raz "Dodaj do koszyka")</li>
-                        <li>Brak widocznej informacji o czasie realizacji zamówienia</li>
-                    </ol>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📊 IMPROVEMENTS</h4>
-
-                <div class="phase-box">
-                    <div class="phase-title">
-                        <i class="fas fa-bolt"></i>
-                        NATYCHMIASTOWE (0-14 dni):
-                    </div>
-                    <ul class="improvement-list">
-                        <li class="improvement-item priority-critical">
-                            <div class="improvement-title">1. Uproszczenie menu głównego</div>
-                            <div class="improvement-action">Zmniejszenie liczby głównych kategorii do 7-8 najważniejszych, resztę przenieść do submenu.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Impact: +15% user satisfaction, -20% bounce rate</span>
-                                <span class="metric">Effort: 8h</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-critical">
-                            <div class="improvement-title">2. Dodanie wyraźnych informacji o dostawie i czasie realizacji</div>
-                            <div class="improvement-action">Umieszczenie banera z informacją "Darmowa dostawa od 200 zł | Realizacja 24h" pod sliderem.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Impact: +10% conversion rate</span>
-                                <span class="metric">Effort: 2h</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-high">
-                            <div class="improvement-title">3. Poprawa alt textów dla obrazków produktów</div>
-                            <div class="improvement-action">Dodanie szczegółowych opisów zamiast powtarzania nazw.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Impact: +5% SEO visibility, lepsza dostępność</span>
-                                <span class="metric">Effort: 6h</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-high">
-                            <div class="improvement-title">4. Ujednolicenie CTA dla produktów</div>
-                            <div class="improvement-action">Zastosowanie jednego spójnego przycisku "Dodaj do koszyka" z opcją personalizacji w szczegółach produktu.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Impact: +8% CTR</span>
-                                <span class="metric">Effort: 4h</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-high">
-                            <div class="improvement-title">5. Dodanie sekcji "Bestsellery" nad sliderem</div>
-                            <div class="improvement-action">Przeniesienie najpopularniejszych produktów na górę strony.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Impact: +12% engagement</span>
-                                <span class="metric">Effort: 6h</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="phase-box">
-                    <div class="phase-title">
-                        <i class="fas fa-cogs"></i>
-                        STRATEGICZNE (1-3 miesiące):
-                    </div>
-                    <ul class="improvement-list">
-                        <li class="improvement-item priority-medium">
-                            <div class="improvement-title">1. Redesign strony głównej</div>
-                            <div class="improvement-action">Zmniejszenie slidera, dodanie kategorii produktowych z ikonami na górze strony, wyraźna propozycja wartości.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Investment: 40h pracy developera</span>
-                                <span class="metric">ROI: 3 miesiące przez wzrost konwersji o 20%</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-medium">
-                            <div class="improvement-title">2. Implementacja systemu opinii klientów</div>
-                            <div class="improvement-action">Dodanie sekcji z opiniami przy produktach i na stronie głównej.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Investment: 24h pracy developera</span>
-                                <span class="metric">ROI: 2 miesiące przez wzrost zaufania i konwersji o 15%</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-medium">
-                            <div class="improvement-title">3. Optymalizacja mobile-first</div>
-                            <div class="improvement-action">Przebudowa interfejsu z myślą o urządzeniach mobilnych, zwiększenie przycisków, poprawa czytelności.</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Investment: 60h pracy developera</span>
-                                <span class="metric">ROI: 4 miesiące przez wzrost konwersji mobilnej o 25%</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">📈 PROJECTIONS</h4>
-                
-                <div class="success-box">
-                    <div class="success-title">
-                        <i class="fas fa-chart-line"></i>
-                        Oczekiwane rezultaty:
-                    </div>
-                    <div class="projection-grid">
-                        <div class="projection-item">
-                            <div class="projection-label">User satisfaction:</div>
-                            <div class="projection-value">65% → 85% (+20%)</div>
-                        </div>
-                        <div class="projection-item">
-                            <div class="projection-label">Bounce rate:</div>
-                            <div class="projection-value">60% → 45% (-15%)</div>
-                        </div>
-                        <div class="projection-item">
-                            <div class="projection-label">Mobile experience:</div>
-                            <div class="projection-value">Słaba → Dobra (+25% konwersji)</div>
-                        </div>
-                        <div class="projection-item">
-                            <div class="projection-label">Średni czas na stronie:</div>
-                            <div class="projection-value">1:30 → 2:45 (+75%)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🔍 KLUCZOWE PROBLEMY UX</h4>
-                <ul style="list-style: none; margin: 15px 0;">
-                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
-                        <strong style="color: #f87171;">1. Przeładowane menu</strong> - 24 główne kategorie to zdecydowanie za dużo, użytkownicy doświadczają przeciążenia poznawczego.
-                    </li>
-                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
-                        <strong style="color: #f87171;">2. Niespójna hierarchia informacji</strong> - Najważniejsze elementy (bestsellery, kategorie) są zepchnięte w dół strony, a slider zajmuje całą przestrzeń "above the fold".
-                    </li>
-                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
-                        <strong style="color: #f87171;">3. Brak wyraźnych elementów budujących zaufanie</strong> - Brak widocznych opinii klientów, informacji o bezpieczeństwie zakupów czy gwarancji zwrotu.
-                    </li>
-                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
-                        <strong style="color: #f87171;">4. Słaba optymalizacja mobilna</strong> - Zbyt małe przyciski, problemy z czytelnością tekstu i horyzontalnym przewijaniem na urządzeniach mobilnych.
-                    </li>
-                    <li style="margin: 15px 0; padding: 15px; background: rgba(248, 113, 113, 0.1); border-left: 4px solid #f87171; border-radius: 5px;">
-                        <strong style="color: #f87171;">5. Niespójne CTA</strong> - Mieszanie przycisków "Personalizuj" i "Dodaj do koszyka" wprowadza użytkownika w błąd co do następnego kroku.
-                    </li>
-                </ul>
-
-                <p style="margin-top: 20px; color: #b8c5d6; font-style: italic;">Wdrożenie powyższych rekomendacji znacząco poprawi doświadczenie użytkownika, zwiększy konwersję i zmniejszy współczynnik odrzuceń, co przełoży się na wymierne korzyści biznesowe.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <i class="fas fa-shield-alt section-icon"></i>
-                <div>
-                    <div class="section-title">Bezpieczeństwo & Ochrona</div>
-                    <div class="section-impact">Wpływ: Ochrona przed atakami, zaufanie klientów, zgodność RODO</div>
-                </div>
-            </div>
-
-            <div class="analysis-result">
-                <div class="result-label">Analiza Bezpieczeństwa</div>
-                <div class="result-score" style="color: #f87171;">Wynik: 25/100</div>
-            </div>
-
-            <div class="subsection">
-                <div class="subsection-title">
-                    <i class="fas fa-bug"></i>
-                    Audyt Cyberbezpieczeństwa - sklep.xyz
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🔒 ANALIZA NAGŁÓWKÓW BEZPIECZEŃSTWA</h4>
-                
-                <div class="security-risk">
-                    <div class="risk-title">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        Ocena ogólna
-                    </div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #dc2626;">• <strong>Obecna ocena:</strong> F (0/100)</li>
-                        <li style="margin: 8px 0; color: #dc2626;">• <strong>Status:</strong> Krytyczny - brak podstawowych nagłówków bezpieczeństwa</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <div class="subsection-title">Brakujące nagłówki bezpieczeństwa</div>
-                    <ul class="issue-list">
-                        <li class="issue-item issue-critical">
-                            <div class="issue-title">1. Content-Security-Policy (CSP)</div>
-                            <div class="issue-impact">Ryzyko: WYSOKIE</div>
-                            <div class="issue-impact">Wektor ataku: XSS, wstrzykiwanie złośliwych skryptów</div>
-                            <div class="issue-time">Czas naprawy: 8h</div>
-                        </li>
-                        <li class="issue-item issue-critical">
-                            <div class="issue-title">2. X-Frame-Options</div>
-                            <div class="issue-impact">Ryzyko: WYSOKIE</div>
-                            <div class="issue-impact">Wektor ataku: Clickjacking, osadzanie strony w ramkach</div>
-                            <div class="issue-time">Czas naprawy: 1h</div>
-                        </li>
-                        <li class="issue-item issue-medium">
-                            <div class="issue-title">3. X-Content-Type-Options</div>
-                            <div class="issue-impact">Ryzyko: ŚREDNIE</div>
-                            <div class="issue-impact">Wektor ataku: MIME-sniffing, nieprawidłowa interpretacja zawartości</div>
-                            <div class="issue-time">Czas naprawy: 1h</div>
-                        </li>
-                        <li class="issue-item issue-medium">
-                            <div class="issue-title">4. Referrer-Policy</div>
-                            <div class="issue-impact">Ryzyko: ŚREDNIE</div>
-                            <div class="issue-impact">Wektor ataku: Wyciek informacji o źródle ruchu</div>
-                            <div class="issue-time">Czas naprawy: 1h</div>
-                        </li>
-                        <li class="issue-item issue-medium">
-                            <div class="issue-title">5. Permissions-Policy</div>
-                            <div class="issue-impact">Ryzyko: ŚREDNIE</div>
-                            <div class="issue-impact">Wektor ataku: Nieuprawniony dostęp do funkcji przeglądarki</div>
-                            <div class="issue-time">Czas naprawy: 2h</div>
-                        </li>
-                        <li class="issue-item issue-critical">
-                            <div class="issue-title">6. Strict-Transport-Security (HSTS)</div>
-                            <div class="issue-impact">Ryzyko: WYSOKIE</div>
-                            <div class="issue-impact">Wektor ataku: Downgrade attacks, przechwytywanie nieszyfrowanej komunikacji</div>
-                            <div class="issue-time">Czas naprawy: 1h</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🦠 STATUS REPUTACJI I ZŁOŚLIWEGO OPROGRAMOWANIA</h4>
-                <p style="color: #b8c5d6; margin-bottom: 20px;">Strona nie wykazuje bezpośrednich oznak złośliwego oprogramowania, jednak brak podstawowych zabezpieczeń stanowi poważne ryzyko dla bezpieczeństwa użytkowników.</p>
-
-                <h4 style="color: #4facfe; margin: 20px 0 15px 0;">🏗️ BEZPIECZEŃSTWO INFRASTRUKTURY</h4>
-                
-                <div class="subsection">
-                    <div class="subsection-title">Implementacja HTTPS</div>
-                    <ul style="list-style: none; margin: 15px 0;">
-                        <li style="margin: 8px 0; color: #4ade80;">• <strong>Status:</strong> Aktywna (https://sklep.xyz/)</li>
-                        <li style="margin: 8px 0; color: #f87171;">• <strong>Problem:</strong> Brak wymuszenia HTTPS poprzez HSTS</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <div class="subsection-title">Skrypty zewnętrzne</div>
-                    <p style="color: #b8c5d6; margin-bottom: 15px;">Zidentyfikowano 7 domen zewnętrznych:</p>
-                    <ol style="margin-left: 20px; color: #b8c5d6;">
-                        <li>connect.facebook.net</li>
-                        <li>www.googletagmanager.com</li>
-                        <li>www.czater.pl</li>
-                        <li>maps.google.com</li>
-                        <li>fonts.googleapis.com</li>
-                        <li>sklep-slubny-xxx.pl (własna domena)</li>
-                        <li>doubleclick.net (śledzenie reklamowe)</li>
-                    </ol>
-                </div>
-
-                <div class="subsection">
-                    d result: +20% szybkość ładowania strony</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-critical">
-                            <div class="improvement-title">2. Kompresja i optymalizacja JavaScript</div>
-                            <div class="improvement-action">Action: Minifikacja i łączenie skryptów JS, usunięcie nieużywanych funkcji</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Developer time: 6 godzin</span>
-                                <span class="metric">Expected result: +15% poprawa LCP</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="phase-box">
-                    <div class="phase-title">
-                        <i class="fas fa-flag"></i>
-                        HIGH PRIORITY (1-4 tygodnie) - Impact: +10% visibility:
-                    </div>
-                    <ul class="improvement-list">
-                        <li class="improvement-item priority-high">
-                            <div class="improvement-title">1. Implementacja pełnego schema.org dla produktów</div>
-                            <div class="improvement-action">Action: Dodanie strukturalnych danych dla produktów, cen i dostępności</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Developer time: 8 godzin</span>
-                                <span class="metric">ROI timeline: 2 miesiące</span>
-                            </div>
-                        </li>
-                        <li class="improvement-item priority-high">
-                            <div class="improvement-title">2. Optymalizacja hierarchii nagłówków</div>
-                            <div class="improvement-action">Action: Restrukturyzacja nagłówków H1-H6 dla lepszej semantyki</div>
-                            <div class="improvement-metrics">
-                                <span class="metric">Developer time: 4 godziny</span>
-                                <span class="metric">Expecte
+                        <li style="margin: 15px 0; padding: 10px;
