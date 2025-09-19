@@ -40,9 +40,9 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
             padding-top: 30px;
         }
 
@@ -307,15 +307,34 @@
 
         .improvement-action {
             color: #b8c5d6;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-size: 0.95rem;
+            line-height: 1.5;
+            word-wrap: break-word;
         }
 
         .improvement-metrics {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-top: 10px;
             flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .improvement-metrics {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .improvement-action {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .improvement-title {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
         }
 
         .metric {
@@ -454,25 +473,91 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 12px;
             }
 
             .audit-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .audit-meta {
                 flex-direction: column;
                 text-align: center;
+                gap: 10px;
             }
 
             .section {
-                padding: 25px;
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .subsection {
+                padding: 20px;
+                margin: 20px 0;
             }
 
             .improvement-metrics {
                 flex-direction: column;
-                gap: 5px;
+                gap: 8px;
+            }
+            
+            .improvement-action {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .improvement-title {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-impact {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+
+            .projection-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .scores-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .business-indicators {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .phase-box {
+                padding: 20px;
+            }
+
+            .issue-list, .improvement-list {
+                margin: 15px 0;
+            }
+
+            .issue-item, .improvement-item {
+                padding: 12px;
+                margin: 8px 0;
+            }
+
+            .subsection-title {
+                font-size: 1.2rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .subsection-title i {
+                margin-right: 0;
+                margin-bottom: 8px;
             }
         }
 
@@ -522,34 +607,37 @@
             top: 50%;
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px 10px;
+            padding: 15px 8px;
             border-radius: 10px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             z-index: 1000;
-            max-height: 70vh;
+            max-height: 60vh;
             overflow-y: auto;
             display: none;
+            min-width: 140px;
         }
 
         .nav-toc a {
             display: block;
             color: #b8c5d6;
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 5px;
-            margin: 5px 0;
-            font-size: 0.9rem;
+            margin: 3px 0;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .nav-toc a:hover,
         .nav-toc a.active {
-            background: rgba(76, 175, 254, 0.2);
+            background: rgba(76, 175, 254, 0.3);
             color: #4facfe;
+            transform: translateX(-2px);
         }
 
-        @media (min-width: 1200px) {
+        @media (min-width: 1400px) {
             .nav-toc {
                 display: block;
             }
@@ -1866,6 +1954,53 @@
                 Powrót do przykładów audytów
             </a>
         </div>
+
+        <!-- Contact Form Section -->
+        <div class="section" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); margin-top: 40px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: white; font-size: 2rem; margin-bottom: 15px;">Chcesz podobny audyt dla swojej strony?</h2>
+                <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem;">Otrzymaj profesjonalną analizę swojej witryny w ciągu 24-48 godzin</p>
+            </div>
+            
+            <form class="audit-form" id="contactForm" style="max-width: 500px; margin: 0 auto; background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 15px;">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="website" style="display: block; color: #1a1a2e; font-weight: 600; margin-bottom: 8px;">Adres strony internetowej *</label>
+                    <input 
+                        type="url" 
+                        id="website" 
+                        name="website" 
+                        placeholder="https://twoja-strona.pl" 
+                        required
+                        style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: border-color 0.2s ease;"
+                        aria-describedby="website-error"
+                    >
+                    <div id="website-error" class="error-message" style="color: #dc2626; font-size: 0.875rem; margin-top: 5px; display: none;" aria-live="polite"></div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label for="email" style="display: block; color: #1a1a2e; font-weight: 600; margin-bottom: 8px;">Adres email *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="twoj@email.pl" 
+                        required
+                        style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; transition: border-color 0.2s ease;"
+                        aria-describedby="email-error"
+                    >
+                    <div id="email-error" class="error-message" style="color: #dc2626; font-size: 0.875rem; margin-top: 5px; display: none;" aria-live="polite"></div>
+                </div>
+
+                <button type="submit" id="submitBtn" style="width: 100%; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Zamów darmowy audyt</span>
+                </button>
+                
+                <p style="font-size: 0.875rem; color: #64748b; margin-top: 15px; text-align: center;">
+                    * Pola wymagane. Audyt otrzymasz w ciągu 24-48 godzin na podany adres email.
+                </p>
+            </form>
+        </div>
     </div>
 
     <script>
@@ -1877,30 +2012,151 @@
             document.getElementById("progress").style.width = scrolled + "%";
         }
 
-        // Table of contents active state
+        // Table of contents active state with better detection
         function updateTOC() {
-            const sections = ['top', 'performance', 'seo', 'ux', 'security', 'content', 'summary'];
+            const sections = ['top', 'performance', 'ux', 'security', 'content', 'summary'];
             const tocLinks = document.querySelectorAll('.nav-toc a');
+            
+            let activeSection = 'top';
             
             for (let i = 0; i < sections.length; i++) {
                 const section = document.getElementById(sections[i]);
                 if (section) {
                     const rect = section.getBoundingClientRect();
-                    if (rect.top <= 100 && rect.bottom >= 100) {
-                        tocLinks.forEach(link => link.classList.remove('active'));
-                        const activeLink = document.querySelector(`.nav-toc a[href="#${sections[i]}"]`);
-                        if (activeLink) activeLink.classList.add('active');
-                        break;
+                    if (rect.top <= 150) {
+                        activeSection = sections[i];
                     }
                 }
             }
+            
+            tocLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.nav-toc a[href="#${activeSection}"]`);
+            if (activeLink) activeLink.classList.add('active');
         }
 
-        // Scroll event listeners
-        window.addEventListener('scroll', function() {
-            updateProgressBar();
-            updateTOC();
-        });
+        // Form validation and submission
+        function initForm() {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!form || !submitBtn) return;
+
+            const validateEmail = (email) => {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            };
+
+            const validateURL = (url) => {
+                try {
+                    new URL(url);
+                    return true;
+                } catch {
+                    return false;
+                }
+            };
+
+            const showError = (input, message) => {
+                const errorDiv = document.getElementById(input.id + '-error');
+                if (errorDiv) {
+                    errorDiv.textContent = message;
+                    errorDiv.style.display = 'block';
+                }
+                input.style.borderColor = '#dc2626';
+            };
+
+            const clearError = (input) => {
+                const errorDiv = document.getElementById(input.id + '-error');
+                if (errorDiv) {
+                    errorDiv.style.display = 'none';
+                }
+                input.style.borderColor = '#e2e8f0';
+            };
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const websiteInput = document.getElementById('website');
+                const emailInput = document.getElementById('email');
+                let isValid = true;
+
+                clearError(websiteInput);
+                clearError(emailInput);
+
+                if (!websiteInput.value.trim()) {
+                    showError(websiteInput, 'Podaj adres strony internetowej');
+                    isValid = false;
+                } else if (!validateURL(websiteInput.value)) {
+                    showError(websiteInput, 'Podaj prawidłowy adres URL');
+                    isValid = false;
+                }
+
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'Podaj adres email');
+                    isValid = false;
+                } else if (!validateEmail(emailInput.value)) {
+                    showError(emailInput, 'Podaj prawidłowy adres email');
+                    isValid = false;
+                }
+
+                if (!isValid) return;
+
+                const originalHTML = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
+                
+                try {
+                    // Simulate form submission
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
+                    submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+                    
+                    alert('Dziękujemy! Twój audyt zostanie wykonany w ciągu 24-48 godzin. Sprawdź swoją skrzynkę email.');
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        form.reset();
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Błąd wysyłania';
+                    alert('Wystąpił błąd podczas wysyłania. Spróbuj ponownie.');
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
+            });
+
+            // Real-time validation
+            document.getElementById('website').addEventListener('focus', function() {
+                clearError(this);
+            });
+
+            document.getElementById('email').addEventListener('focus', function() {
+                clearError(this);
+            });
+        }
+
+        // Throttled scroll events for better performance
+        let ticking = false;
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    updateProgressBar();
+                    updateTOC();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', requestTick, { passive: true });
 
         // Smooth scrolling for TOC links
         document.querySelectorAll('.nav-toc a').forEach(link => {
@@ -1921,6 +2177,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateProgressBar();
             updateTOC();
+            initForm();
         });
     </script>
 </body>
