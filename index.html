@@ -230,7 +230,7 @@
             transform: translateY(-1px);
         }
 
-        /* Hero Section */
+        /* FIXED: PERFECT HERO CENTERING */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -245,10 +245,14 @@
         .hero-content {
             max-width: 56rem;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
 
-        /* FIXED: Perfekcyjne centrowanie nagłówka */
+        /* FIXED: STABLE HEADING - NO MORE JUMPING */
         .hero h1 {
             font-size: 2.75rem;
             font-weight: 800;
@@ -257,8 +261,7 @@
             letter-spacing: -0.025em;
             text-align: center;
             width: 100%;
-            margin-left: auto;
-            margin-right: auto;
+            display: block;
         }
 
         .hero .highlight {
@@ -268,12 +271,13 @@
             background-clip: text;
         }
 
-        /* ULTIMATE SOLUTION: Niewidoczne, subtelne przejścia */
+        /* ULTIMATE SOLUTION: FIXED WIDTH ROTATING CONTAINER */
         .rotating-text {
             display: inline-block;
             position: relative;
-            min-width: 280px;
+            width: 320px; /* FIXED WIDTH - prevents jumping */
             text-align: center;
+            vertical-align: baseline;
         }
 
         .rotating-word {
@@ -287,27 +291,23 @@
             letter-spacing: inherit;
             
             opacity: 0;
-            /* ULTRASUBTLE: Delikatne jak oddech */
-            transition: opacity 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: opacity 2s ease-in-out;
             
             position: absolute;
-            left: 50%;
+            left: 0;
+            right: 0;
             top: 0;
-            transform: translateX(-50%);
-            white-space: nowrap;
+            text-align: center;
         }
 
         .rotating-word.active {
             opacity: 1;
             position: static;
-            left: auto;
-            top: auto;
-            transform: none;
         }
 
-        /* Invisible placeholder for space */
-        .rotating-text::after {
-            content: 'wydajność';
+        /* Invisible placeholder maintains space */
+        .rotating-text::before {
+            content: 'pozycje SEO';
             opacity: 0;
             pointer-events: none;
             font-weight: 800;
@@ -323,20 +323,22 @@
             margin-bottom: 2rem;
             line-height: 1.6;
             max-width: 48rem;
-            margin-left: auto;
-            margin-right: auto;
+            text-align: center;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 2rem;
             margin: 2rem 0;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .hero-stat {
             text-align: center;
+            flex: 0 0 auto;
         }
 
         .hero-stat-number {
@@ -353,6 +355,7 @@
             letter-spacing: 0.05em;
         }
 
+        /* FIXED: PERFECTLY CENTERED CTA BUTTONS */
         .cta-buttons {
             display: flex;
             flex-direction: column;
@@ -360,7 +363,7 @@
             justify-content: center;
             gap: 1rem;
             margin: 2.5rem auto 0;
-            text-align: center;
+            width: 100%;
         }
 
         .cta-button {
@@ -379,6 +382,7 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            min-width: 280px;
         }
 
         .cta-button:hover {
@@ -401,6 +405,7 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
+            min-width: 280px;
         }
 
         .secondary-button:hover {
@@ -1035,6 +1040,10 @@
             .contact {
                 padding: 8rem 1rem;
             }
+
+            .rotating-text {
+                width: 380px; /* Larger on desktop */
+            }
         }
 
         /* Animations */
@@ -1423,7 +1432,7 @@
             };
         };
 
-        // ULTRA SUBTLE ROTATING TEXT - Niemalże niewidoczne przejścia
+        // PERFECT ROTATING TEXT - NO MORE JUMPING
         function initRotatingText() {
             const rotatingWords = document.querySelectorAll('.rotating-word');
             
@@ -1432,19 +1441,19 @@
             let currentIndex = 0;
 
             function rotateWord() {
-                // Płynne ukrycie obecnego słowa
+                // Remove active from current word
                 rotatingWords[currentIndex].classList.remove('active');
                 
-                // Przejście do następnego słowa z opóźnieniem
-                setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % rotatingWords.length;
-                    rotatingWords[currentIndex].classList.add('active');
-                }, 1200); // Długie opóźnienie dla subtelności
+                // Move to next word
+                currentIndex = (currentIndex + 1) % rotatingWords.length;
+                
+                // Add active to new word
+                rotatingWords[currentIndex].classList.add('active');
             }
 
-            // Bardzo długie interwały - 6 sekund dla komfortu
+            // Start rotation after 5 seconds, then every 4 seconds
             setTimeout(() => {
-                setInterval(rotateWord, 6000);
+                setInterval(rotateWord, 4000);
             }, 5000);
         }
 
