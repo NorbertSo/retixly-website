@@ -80,7 +80,7 @@
                 "name": "Ile kosztuje audyt SEO w Retixly?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Oferujemy darmowy podstawowy audyt SEO AI w 24 godziny. Rozszerzone audyty są wyceniane indywidualnie w zależności od rozmiaru strony - od 500 zł za małe witryny do 2500 zł za duże portale e-commerce."
+                    "text": "Audyt SEO, UX i bezpieczeństwa w Retixly kosztuje 89 euro. To jedyna cena - nie ma dodatkowych pakietów ani ukrytych opłat."
                 }
             },
             {
@@ -88,7 +88,7 @@
                 "name": "Jak długo trwa audyt strony internetowej?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Podstawowy audyt AI dostarczamy w ciągu 24 godzin. Rozszerzone audyty z dodatkową weryfikacją ekspertów trwają 2-5 dni roboczych w zależności od złożoności projektu."
+                    "text": "Audyt podstawowy otrzymujesz w mniej niż 2 godziny. Pełny kompleksowy audyt trwa 3-4 godziny, maksymalnie 24 godziny."
                 }
             },
             {
@@ -96,15 +96,7 @@
                 "name": "Czym różni się audyt AI od tradycyjnego audytu SEO?", 
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Nasze audyty AI analizują 95% więcej parametrów niż tradycyjne narzędzia, wykrywają ukryte problemy i dostarczają konkretne rekomendacje z przewidywanym ROI. Są szybsze, dokładniejsze i bardziej kompleksowe."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Czy audyt bezpieczeństwa wykryje wszystkie zagrożenia?",
-                "acceptedAnswer": {
-                    "@type": "Answer", 
-                    "text": "Nasz audyt Security AI wykrywa 80-95% znanych podatności według standardów OWASP. Sprawdzamy nagłówki bezpieczeństwa, certyfikaty SSL, podatności XSS i zgodność z RODO. Nie gwarantujemy wykrycia 100% zagrożeń."
+                    "text": "Nasze audyty AI analizują 95% więcej parametrów niż tradycyjne narzędzia, wykrywają ukryte problemy i dostarczają konkretne rekomendacje z przewidywanym ROI w ciągu kilku godzin zamiast tygodni."
                 }
             }
         ],
@@ -401,50 +393,6 @@
             line-height: 1.6;
         }
 
-        /* SEARCH BOX */
-        .search-container {
-            margin-bottom: 3rem;
-            display: flex;
-            justify-content: center;
-        }
-
-        .search-box {
-            position: relative;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 3rem 1rem 1.5rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-xl);
-            color: var(--text-primary);
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .search-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.125rem;
-        }
-
         /* CATEGORY NAVIGATION */
         .category-nav {
             display: flex;
@@ -593,6 +541,17 @@
             margin-bottom: 0.5rem;
         }
 
+        .faq-answer-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .faq-answer-content a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
         /* CONTACT CTA */
         .contact-cta {
             background: var(--gradient-primary);
@@ -667,6 +626,98 @@
 
         .secondary-button:hover {
             background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* FREE AUDIT FORM */
+        .free-audit-form {
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: 3rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .free-audit-form h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .free-audit-form p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .audit-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* BACK TO TOP */
@@ -787,13 +838,6 @@
             animation: fadeInUp 0.6s ease-out;
         }
 
-        /* HIGHLIGHT SEARCH RESULTS */
-        .highlight {
-            background: rgba(255, 235, 59, 0.3);
-            padding: 0 2px;
-            border-radius: 2px;
-        }
-
         /* FOCUS STYLES FOR ACCESSIBILITY */
         *:focus-visible {
             outline: 2px solid var(--primary-color);
@@ -842,20 +886,11 @@
             <p>Znajdź odpowiedzi na pytania dotyczące audytów AI, bezpieczeństwa i optymalizacji stron internetowych</p>
         </div>
 
-        <!-- SEARCH BOX -->
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchInput" class="search-input" placeholder="Wyszukaj pytanie...">
-                <i class="fas fa-search search-icon" aria-hidden="true"></i>
-            </div>
-        </div>
-
         <!-- CATEGORY NAVIGATION -->
         <div class="category-nav" role="tablist">
             <button class="category-btn active" data-category="wszystkie">Wszystkie</button>
             <button class="category-btn" data-category="ogolne">Ogólne</button>
             <button class="category-btn" data-category="audyty">Audyty</button>
-            <button class="category-btn" data-category="techniczne">Techniczne</button>
             <button class="category-btn" data-category="ceny">Ceny</button>
             <button class="category-btn" data-category="wsparcie">Wsparcie</button>
         </div>
@@ -882,27 +917,26 @@
                                     <li><strong>UX</strong> - doświadczenie użytkownika</li>
                                     <li><strong>Security</strong> - bezpieczeństwo cybernetyczne</li>
                                 </ul>
-                                <p>Proces jest w pełni zautomatyzowany i dostarczamy raporty w ciągu <strong>24 godzin</strong> z konkretnymi rekomendacjami i przewidywanym ROI.</p>
+                                <p>Analizujemy jedną stronę główną Twojej witryny i dostarczamy kompleksowy raport email w ciągu kilku godzin z konkretnymi rekomendacjami.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Dla jakich stron internetowych przeznaczone są audyty?</span>
+                            <span>Czy audyt dotyczy całej strony czy tylko strony głównej?</span>
                             <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p>Nasze audyty AI są uniwersalne i dedykowane dla:</p>
+                                <p>Na ten moment analizujemy <strong>tylko stronę główną</strong> Twojej witryny. To strategiczne podejście pozwala nam:</p>
                                 <ul>
-                                    <li><strong>Sklepy e-commerce</strong> - optymalizacja konwersji i bezpieczeństwa płatności</li>
-                                    <li><strong>Strony firmowe</strong> - poprawa widoczności i generowania leadów</li>
-                                    <li><strong>Blogi i portale</strong> - zwiększenie ruchu organicznego</li>
-                                    <li><strong>Aplikacje webowe</strong> - analiza wydajności i UX</li>
-                                    <li><strong>Landing pages</strong> - optymalizacja współczynnika konwersji</li>
+                                    <li>Dostarczyć szczegółową analizę najważniejszej strony</li>
+                                    <li>Zapewnić szybki czas realizacji (2-4 godziny)</li>
+                                    <li>Zidentyfikować kluczowe problemy wpływające na całą witrynę</li>
+                                    <li>Oferować konkurencyjną cenę</li>
                                 </ul>
-                                <p>Analizujemy strony o każdej wielkości - od prostych wizytówek po duże portale z tysiącami podstron.</p>
+                                <p>Strona główna to wizytówka Twojego biznesu - jej optymalizacja ma największy wpływ na wyniki.</p>
                             </div>
                         </div>
                     </div>
@@ -919,8 +953,8 @@
                                     <li><strong>95% automatyzacji</strong> - głębsza analiza w krótszym czasie</li>
                                     <li><strong>Wykrywanie ukrytych problemów</strong> - AI widzi to, czego nie widzą standardowe narzędzia</li>
                                     <li><strong>Predykcyjne analizy</strong> - przewidujemy wpływ zmian na business</li>
-                                    <li><strong>24h delivery</strong> - zamiast tygodni, otrzymujesz wyniki następnego dnia</li>
-                                    <li><strong>Konkretne ROI</strong> - każda rekomendacja ma przypisaną wartość biznesową</li>
+                                    <li><strong>Szybka realizacja</strong> - wyniki w 2-4 godziny zamiast tygodni</li>
+                                    <li><strong>Konkretne rekomendacje</strong> - każda sugestia ma przypisaną wartość biznesową</li>
                                 </ul>
                                 <p>Dodatkowo nasze AI ciągle się uczy i aktualizuje, dostosowując się do najnowszych algorytmów Google.</p>
                             </div>
@@ -943,108 +977,30 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>Podstawowy audyt AI:</strong> 24 godziny (automatycznie generowany)</p>
-                                <p><strong>Rozszerzony audyt z weryfikacją ekspertów:</strong> 2-5 dni roboczych</p>
-                                <p>Czas zależy od:</p>
-                                <ul>
-                                    <li>Wielkości strony (liczba podstron)</li>
-                                    <li>Złożoności technicznej</li>
-                                    <li>Wybranego pakietu audytu</li>
-                                </ul>
-                                <p>Małe strony (do 50 podstron) - <strong>24h</strong><br>
-                                Średnie strony (51-500 podstron) - <strong>48h</strong><br>
-                                Duże portale (500+ podstron) - <strong>3-5 dni</strong></p>
+                                <p><strong>Audyt podstawowy:</strong> mniej niż 2 godziny</p>
+                                <p><strong>Pełny kompleksowy audyt:</strong> 3-4 godziny, maksymalnie 24 godziny</p>
+                                <p>Dzięki zaawansowanej sztucznej inteligencji możemy dostarczyć szczegółową analizę w rekordowym tempie, zachowując przy tym najwyższą jakość raportu.</p>
+                                <p><strong>Po zakończeniu audytu</strong> otrzymujesz email z kompletną analizą i rekomendacjami gotowymi do wdrożenia.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Co zawiera raport z audytu SEO?</span>
+                            <span>Co zawiera raport z audytu SEO, UX i Security?</span>
                             <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p>Nasz raport SEO AI zawiera:</p>
+                                <p>Nasz kompleksowy raport zawiera analizę wszystkich kluczowych obszarów:</p>
                                 <ul>
-                                    <li><strong>Executive Summary</strong> - podsumowanie stanu strony</li>
-                                    <li><strong>Technical SEO</strong> - analiza Core Web Vitals, indexing, crawlability</li>
-                                    <li><strong>Content Analysis</strong> - optymalizacja treści i słów kluczowych</li>
-                                    <li><strong>Konkurencja</strong> - porównanie z 5 głównymi rywalami</li>
-                                    <li><strong>Action Plan</strong> - konkretne kroki do wdrożenia</li>
-                                    <li><strong>ROI Projections</strong> - przewidywany zwrot z inwestycji</li>
+                                    <li><strong>SEO Analysis</strong> - technical SEO, meta tags, Core Web Vitals, mobilność</li>
+                                    <li><strong>UX Audit</strong> - navigation, user flow, conversion optimization, accessibility</li>
+                                    <li><strong>Security Check</strong> - vulnerabilities, SSL, headers, GDPR compliance</li>
+                                    <li><strong>Performance Metrics</strong> - loading speed, optimization opportunities</li>
+                                    <li><strong>Action Plan</strong> - priorytetowe rekomendacje z przewidywanym ROI</li>
                                 </ul>
-                                <p>Problemy są podzielone na: <span style="color: #ef4444">KRYTYCZNE</span>, <span style="color: #f59e0b">WYSOKIE</span> i <span style="color: #10b981">ŚREDNIE</span> według wpływu na business.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Czy audyt bezpieczeństwa wykryje wszystkie zagrożenia?</span>
-                            <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>Nasz audyt Security AI wykrywa <strong>80-95% znanych podatności</strong> według standardów OWASP. Sprawdzamy:</p>
-                                <ul>
-                                    <li><strong>Nagłówki bezpieczeństwa</strong> - CSP, HSTS, X-Frame-Options</li>
-                                    <li><strong>Podatności XSS</strong> - cross-site scripting</li>
-                                    <li><strong>SSL/TLS</strong> - konfiguracja szyfrowania</li>
-                                    <li><strong>RODO compliance</strong> - zgodność z przepisami</li>
-                                    <li><strong>Injection attacks</strong> - podatności na ataki SQL</li>
-                                </ul>
-                                <p><strong>Ważne:</strong> Nie gwarantujemy wykrycia 100% zagrożeń. Bezpieczeństwo to proces ciągły. Rekomendujemy regularne audyty co 3-6 miesięcy.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Jak wygląda audyt UX i na co zwracacie uwagę?</span>
-                            <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>Audyt UX AI koncentruje się na maksymalizacji konwersji poprzez analizę:</p>
-                                <ul>
-                                    <li><strong>Ścieżki użytkownika</strong> - optymalizacja customer journey</li>
-                                    <li><strong>Heatmapy AI</strong> - symulacja zachowań użytkowników</li>
-                                    <li><strong>Mobile Experience</strong> - responsywność i wydajność</li>
-                                    <li><strong>Conversion Funnel</strong> - identyfikacja punktów opuszczenia</li>
-                                    <li><strong>A/B Testing suggestions</strong> - rekomendacje testów</li>
-                                    <li><strong>Psychology-driven improvements</strong> - wykorzystanie psychologii sprzedaży</li>
-                                </ul>
-                                <p>Średnio nasze rekomendacje UX prowadzą do <strong>+20% wzrostu konwersji</strong> w ciągu 2-4 miesięcy.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TECHNICZNE -->
-            <div class="faq-category" data-category="techniczne">
-                <h2 class="category-title">
-                    <i class="fas fa-cog category-icon" aria-hidden="true"></i>
-                    Pytania techniczne
-                </h2>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Jakie narzędzia i technologie używacie do audytów?</span>
-                            <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>Nasze audyty AI wykorzystują kombinację najlepszych narzędzi:</p>
-                                <ul>
-                                    <li><strong>Właściwy AI Engine</strong> - autorski algorytm uczenia maszynowego</li>
-                                    <li><strong>Google APIs</strong> - PageSpeed Insights, Search Console</li>
-                                    <li><strong>Security scanners</strong> - OWASP ZAP, Nessus</li>
-                                    <li><strong>SEO tools</strong> - integracja z Screaming Frog, Lighthouse</li>
-                                    <li><strong>Performance monitoring</strong> - real-time metrics</li>
-                                </ul>
-                                <p>Dodatkowo używamy machine learning do analizy wzorców konkurencji i predykcji trendów w Twojej branży.</p>
+                                <p>Sprawdź <a href="https://retixly.website/przykladowe-audyty/audyt-1.html" target="_blank">przykładowy audyt</a> aby zobaczyć jak wyglądają nasze analizy.</p>
                             </div>
                         </div>
                     </div>
@@ -1056,14 +1012,15 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>Podstawowy audyt:</strong> NIE - potrzebujemy tylko adresu URL strony</p>
-                                <p><strong>Rozszerzony audyt:</strong> Opcjonalnie dostęp do:</p>
+                                <p><strong>NIE!</strong> Potrzebujemy tylko <strong>adresu URL strony</strong>.</p>
+                                <p>Nasze audyty AI działają w pełni zewnętrznie, analizując Twoją stronę tak, jak robią to wyszukiwarki i użytkownicy. To oznacza:</p>
                                 <ul>
-                                    <li>Google Search Console (rekomendowane)</li>
-                                    <li>Google Analytics (dla głębszej analizy UX)</li>
-                                    <li>Panel administracyjny (tylko w przypadkach specjalnych)</li>
+                                    <li>✅ Pełne bezpieczeństwo - żaden dostęp do Twojego systemu</li>
+                                    <li>✅ Szybko i prosto - wystarczy podać link</li>
+                                    <li>✅ Realistyczna analiza - widzimy stronę oczami Google</li>
+                                    <li>✅ Zero ryzyka - żadnych zmian w Twoim kodzie</li>
                                 </ul>
-                                <p><strong>Bezpieczeństwo:</strong> Wszystkie dane są przetwarzane zgodnie z RODO. Używamy szyfrowania end-to-end i nie przechowujemy danych dłużej niż 30 dni po zakończeniu audytu.</p>
+                                <p>Wszystkie dane przetwarzamy zgodnie z RODO i nie przechowujemy ich dłużej niż potrzeba.</p>
                             </div>
                         </div>
                     </div>
@@ -1075,35 +1032,16 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>TAK!</strong> Nasze audyty AI są uniwersalne i działają z:</p>
+                                <p><strong>TAK!</strong> Nasze audyty AI są uniwersalne i działają z każdą technologią:</p>
                                 <ul>
-                                    <li><strong>WordPress</strong> - w tym WooCommerce</li>
-                                    <li><strong>Shopify</strong> - pełna analiza sklepów</li>
-                                    <li><strong>Magento</strong> - kompleksowe e-commerce audyty</li>
-                                    <li><strong>Custom HTML/JS</strong> - aplikacje webowe</li>
-                                    <li><strong>React/Vue/Angular</strong> - SPA applications</li>
-                                    <li><strong>Drupal, Joomla</strong> - inne systemy CMS</li>
+                                    <li><strong>WordPress</strong> - w tym WooCommerce i wszystkie motywy</li>
+                                    <li><strong>Shopify</strong> - pełna analiza sklepów online</li>
+                                    <li><strong>Custom HTML/CSS/JS</strong> - ręcznie kodowane strony</li>
+                                    <li><strong>React/Vue/Angular</strong> - nowoczesne aplikacje SPA</li>
+                                    <li><strong>Magento, PrestaShop</strong> - e-commerce platforms</li>
+                                    <li><strong>Drupal, Joomla</strong> - wszystkie popularne CMS</li>
                                 </ul>
-                                <p>Nasze AI analizuje kod źródłowy bez względu na technologię backend. Dodatkowo dla popularnych CMS dostarczamy specyficzne rekomendacje plugins i konfiguracji.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Czy mogę otrzymać surowe dane z audytu do własnej analizy?</span>
-                            <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p><strong>TAK!</strong> W pakietach rozszerzonych otrzymujesz:</p>
-                                <ul>
-                                    <li><strong>JSON export</strong> - wszystkie metryki w formacie maszynowym</li>
-                                    <li><strong>CSV raporty</strong> - do importu w Excel/Google Sheets</li>
-                                    <li><strong>API access</strong> - dla programistów (na życzenie)</li>
-                                    <li><strong>Raw logs</strong> - szczegółowe logi skanowania</li>
-                                </ul>
-                                <p>Idealne dla większych zespołów IT czy agencji, które chcą zintegrować nasze dane z własnymi systemami monitoringu.</p>
+                                <p>Nasze AI analizuje końcowy rezultat - stronę widzianą przez użytkownika, bez względu na technologię backend.</p>
                             </div>
                         </div>
                     </div>
@@ -1114,7 +1052,7 @@
             <div class="faq-category" data-category="ceny">
                 <h2 class="category-title">
                     <i class="fas fa-euro-sign category-icon" aria-hidden="true"></i>
-                    Ceny i pakiety
+                    Ceny i płatności
                 </h2>
                 <div class="faq-list">
                     <div class="faq-item">
@@ -1124,15 +1062,16 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>DARMOWY audyt podstawowy</strong> - zawsze za darmo (delivery 24h)</p>
-                                <p><strong>Rozszerzone pakiety:</strong></p>
+                                <p><strong>89 euro</strong> - to jedyna cena za kompletny audyt SEO, UX i bezpieczeństwa.</p>
+                                <p><strong>Brak dodatkowych pakietów</strong> - wszystkie funkcjonalności w jednej cenie:</p>
                                 <ul>
-                                    <li><strong>Starter (500 zł)</strong> - małe strony (do 50 podstron)</li>
-                                    <li><strong>Business (1200 zł)</strong> - średnie strony (51-500 podstron)</li>
-                                    <li><strong>Enterprise (2500 zł)</strong> - duże portale (500+ podstron)</li>
-                                    <li><strong>E-commerce Plus (3500 zł)</strong> - kompleksowy audyt sklepów</li>
+                                    <li>✅ Kompleksowy audyt AI wszystkich obszarów</li>
+                                    <li>✅ Szczegółowy raport z rekomendacjami</li>
+                                    <li>✅ Analiza konkurencji</li>
+                                    <li>✅ Action plan z priorytetami</li>
+                                    <li>✅ Przewidywane ROI dla każdej zmiany</li>
                                 </ul>
-                                <p><strong>Co różni pakiety?</strong> Głębokość analizy, liczba sprawdzanych podstron, dodatkowe analizy konkurencji, wsparcie wdrożeniowe i gwarancja follow-up.</p>
+                                <p>Prosta, transparentna cena bez ukrytych kosztów.</p>
                             </div>
                         </div>
                     </div>
@@ -1144,19 +1083,19 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>NIE!</strong> Ceny są w pełni transparentne. Płacisz jednorazowo za:</p>
+                                <p><strong>NIE!</strong> 89 euro to kompletna cena, która obejmuje wszystko.</p>
+                                <p><strong>Co dokładnie dostajesz:</strong></p>
                                 <ul>
-                                    <li>Kompletny audyt AI</li>
-                                    <li>Szczegółowy raport PDF</li>
-                                    <li>30 dni wsparcia mailowego</li>
-                                    <li>Exporty danych (w pakietach rozszerzonych)</li>
+                                    <li>Kompletny audyt AI strony głównej</li>
+                                    <li>Szczegółowy raport wysłany mailem</li>
+                                    <li>Brak płatności za PDF - wszystko w wiadomości email</li>
+                                    <li>Konkretne rekomendacje gotowe do wdrożenia</li>
                                 </ul>
-                                <p><strong>Dodatkowe usługi (opcjonalne):</strong></p>
+                                <p><strong>Dostępne dodatkowo:</strong></p>
                                 <ul>
-                                    <li>Konsultacja video (200 zł/h)</li>
-                                    <li>Follow-up audyt po 3 miesiącach (-50% zniżki)</li>
-                                    <li>Wdrożenie rekomendacji przez nasz zespół (wycena indywidualna)</li>
+                                    <li>Follow-up audyt po 30 dniach za 50% ceny (44.50 euro)</li>
                                 </ul>
+                                <p>Żadnego miesięcznego wsparcia ani dodatkowych opłat serwisowych.</p>
                             </div>
                         </div>
                     </div>
@@ -1168,14 +1107,14 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>TAK!</strong> Oferujemy atrakcyjne rabaty:</p>
+                                <p>Na ten moment <strong>nie oferujemy rabatów ilościowych</strong>.</p>
+                                <p>Każdy audyt to szczegółowa analiza strony głównej za stałą cenę <strong>89 euro</strong>, niezależnie od:</p>
                                 <ul>
-                                    <li><strong>2-5 stron:</strong> 15% rabatu</li>
-                                    <li><strong>6-10 stron:</strong> 25% rabatu</li>
-                                    <li><strong>11+ stron:</strong> 35% rabatu + dedicated account manager</li>
+                                    <li>Wielkości firmy</li>
+                                    <li>Liczby zamówionych audytów</li>
+                                    <li>Branży lub sektora</li>
                                 </ul>
-                                <p><strong>Dla agencji SEO:</strong> Specjalny program partnerski z rabatami do 50% i white-label reports.</p>
-                                <p><strong>Subskrypcje:</strong> Regularne audyty co 3/6 miesięcy z rabatem 40% na kolejne analizy.</p>
+                                <p>Ta jednakowa cena gwarantuje najwyższą jakość dla każdego klienta, bez różnicowania usługi.</p>
                             </div>
                         </div>
                     </div>
@@ -1187,16 +1126,15 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>Akceptujemy wszystkie popularne metody płatności:</strong></p>
+                                <p><strong>PayPal</strong> - jedyna dostępna metoda płatności.</p>
+                                <p>Przez PayPal możesz płacić:</p>
                                 <ul>
-                                    <li><strong>Karty płatnicze</strong> - Visa, Mastercard, Maestro</li>
-                                    <li><strong>Przelewy online</strong> - PayU, Przelewy24</li>
-                                    <li><strong>BLIK</strong> - natychmiastowe płatności mobilne</li>
-                                    <li><strong>PayPal</strong> - dla klientów zagranicznych</li>
-                                    <li><strong>Przelew tradycyjny</strong> - z przedpłatą</li>
+                                    <li><strong>Kartą płatniczą</strong> - Visa, Mastercard (nie potrzebujesz konta PayPal)</li>
+                                    <li><strong>Kontem PayPal</strong> - jeśli je posiadasz</li>
+                                    <li><strong>Przelewem bankowym</strong> - w niektórych krajach</li>
+                                    <li><strong>BLIK</strong> - dla polskich klientów przez PayPal</li>
                                 </ul>
-                                <p><strong>Dla firm:</strong> Faktura VAT, płatność z odroczeniem 14 dni (po weryfikacji).</p>
-                                <p><strong>Bezpieczeństwo:</strong> Wszystkie płatności zabezpieczone SSL i 3D Secure.</p>
+                                <p><strong>Bezpieczeństwo:</strong> PayPal gwarantuje najwyższy poziom bezpieczeństwa transakcji z ochroną kupującego.</p>
                             </div>
                         </div>
                     </div>
@@ -1217,54 +1155,40 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>TAK!</strong> Oferujemy kompleksowe wsparcie wdrożeniowe:</p>
+                                <p>My koncentrujemy się na analizie, ale <strong>mamy zaprzyjaźnione agencje</strong>, które chętnie pomogą we wdrożeniu.</p>
+                                <p><strong>Co dostarczamy:</strong></p>
                                 <ul>
-                                    <li><strong>30 dni email support</strong> - w każdym pakiecie</li>
-                                    <li><strong>Video konsultacje</strong> - omówienie raportu krok po kroku</li>
-                                    <li><strong>Priorytetowe poprawki</strong> - lista zadań według ważności</li>
-                                    <li><strong>Technical implementation</strong> - nasz zespół może wdrożyć zmiany</li>
+                                    <li>Szczegółowy action plan z priorytetami</li>
+                                    <li>Konkretne instrukcje techniczne</li>
+                                    <li>Przewidywane rezultaty każdej zmiany</li>
+                                    <li>Rekomendacje gotowe dla programisty</li>
                                 </ul>
-                                <p><strong>Dla zespołów programistycznych:</strong> Szczegółowe instrukcje techniczne, snippety kodu, konfiguracje serwerów.</p>
-                                <p><strong>Follow-up:</strong> Kontrolny audyt po 3 miesiącach za 50% ceny, żeby sprawdzić efekty zmian.</p>
+                                <p><strong>Potrzebujesz pomocy z wdrożeniem?</strong> Polecamy sprawdzone agencje, które specjalizują się w realizacji rekomendacji z naszych audytów.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>W jakich godzinach działa wsparcie techniczne?</span>
+                            <span>Jaki macie system wsparcia technicznego?</span>
                             <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p><strong>Email support:</strong> 24/7 - odpowiadamy w ciągu 4h w dni robocze</p>
-                                <p><strong>Live chat:</strong> Poniedziałek - Piątek, 9:00 - 18:00 CET</p>
-                                <p><strong>Video calls:</strong> Do umówienia, Poniedziałek - Piątek, 10:00 - 16:00 CET</p>
-                                <p><strong>Emergency support:</strong> Dla klientów Enterprise - 24/7 w przypadkach krytycznych (awarie bezpieczeństwa)</p>
-                                <p><strong>Języki:</strong> Polski, Angielski. Wszystkie komunikaty AI generowane w języku polskim.</p>
+                                <p><strong>Email support z AI</strong> - szybkie odpowiedzi na pytania dotyczące raportu.</p>
+                                <p><strong>Jak to działa:</strong></p>
+                                <ul>
+                                    <li>Napisz email z pytaniem o raport</li>
+                                    <li>AI analizuje Twoje pytanie w kontekście audytu</li>
+                                    <li>Otrzymujesz szczegółową odpowiedź w ciągu kilku godzin</li>
+                                    <li>Wsparcie dostępne tylko przez email</li>
+                                </ul>
+                                <p>System działa 24/7 i odpowiada na większość pytań technicznych związanych z interpretacją wyników audytu.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Co jeśli nie jestem zadowolony z audytu?</span>
-                            <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p><strong>Gwarancja satysfakcji 100%!</strong></p>
-                                <ul>
-                                    <li><strong>14 dni na reklamację</strong> - pełny zwrot kosztów bez pytań</li>
-                                    <li><strong>Darmowy re-audit</strong> - jeśli raport nie spełnia oczekiwań</li>
-                                    <li><strong>Bonusowa konsultacja</strong> - bezpłatne omówienie wyników</li>
-                                    <li><strong>Dodatkowe analizy</strong> - jeśli czegoś zabrakło w raporcie</li>
-                                </ul>
-                                <p><strong>Nasza filozofia:</strong> Płacisz tylko jeśli jesteś w 100% zadowolony. Ponad 95% naszych klientów poleca nas dalej.</p>
-                                <p><strong>Procedura reklamacji:</strong> Email na support@retixly.website z opisem problemu. Odpowiedź w ciągu 24h.</p>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
@@ -1275,13 +1199,13 @@
                             <div class="faq-answer-content">
                                 <p><strong>Rekomendowane częstotliwości:</strong></p>
                                 <ul>
-                                    <li><strong>Nowe strony:</strong> Co 3 miesiące w pierwszym roku</li>
-                                    <li><strong>Stabilne strony:</strong> Co 6 miesięcy</li>
+                                    <li><strong>Po pierwszym audycie:</strong> Follow-up po 30 dniach (50% taniej)</li>
+                                    <li><strong>Nowe strony:</strong> Co 3-6 miesięcy w pierwszym roku</li>
+                                    <li><strong>Stabilne strony:</strong> Co 6-12 miesięcy</li>
                                     <li><strong>E-commerce:</strong> Co 3-4 miesiące (szybkie zmiany w algorytmach)</li>
-                                    <li><strong>Po dużych zmianach:</strong> Kontrolny audyt po 4-6 tygodniach</li>
-                                    <li><strong>Security audits:</strong> Co 3 miesiące (cyberbezpieczeństwo)</li>
+                                    <li><strong>Po dużych zmianach:</strong> Kontrolny audyt po wdrożeniu</li>
                                 </ul>
-                                <p><strong>Automated monitoring:</strong> W pakietach Enterprise oferujemy ciągły monitoring najważniejszych metryk z alertami o krytycznych zmianach.</p>
+                                <p>Pamiętaj: Oferujemy follow-up audyt po 30 dniach za połowę ceny (44.50 euro), żeby sprawdzić efekty wdrożonych zmian.</p>
                             </div>
                         </div>
                     </div>
@@ -1293,11 +1217,11 @@
         <div class="contact-cta">
             <div class="contact-cta-content">
                 <h2>Nie znalazłeś odpowiedzi na swoje pytanie?</h2>
-                <p>Skontaktuj się z nami bezpośrednio - nasi eksperci AI odpowiedzą na wszystkie dodatkowe pytania</p>
+                <p>Skontaktuj się z nami bezpośrednio - nasze AI odpowie na wszystkie dodatkowe pytania</p>
                 <div class="contact-buttons">
                     <a href="index.html#contact" class="cta-button">
                         <i class="fas fa-rocket"></i>
-                        Darmowy audyt w 24h
+                        Zamów audyt za 89€
                     </a>
                     <a href="mailto:hello@retixly.website" class="cta-button secondary-button">
                         <i class="fas fa-envelope"></i>
@@ -1305,6 +1229,43 @@
                     </a>
                 </div>
             </div>
+        </div>
+
+        <!-- FREE AUDIT FORM -->
+        <div class="free-audit-form">
+            <h3>🚀 Zamów audyt swojej strony za 89€</h3>
+            <p>Kompleksowy audyt SEO, UX i bezpieczeństwa gotowy w 2-4 godziny</p>
+            
+            <form class="audit-form" id="auditForm">
+                <div class="form-group">
+                    <label for="website">Adres Twojej strony *</label>
+                    <input type="url" id="website" name="website" placeholder="https://twoja-strona.pl" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Twój email *</label>
+                    <input type="email" id="email" name="email" placeholder="twoj@email.pl" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Nazwa firmy (opcjonalnie)</label>
+                    <input type="text" id="company" name="company" placeholder="Nazwa Twojej firmy">
+                </div>
+                
+                <div class="form-group">
+                    <label for="goals">Główne cele audytu (opcjonalnie)</label>
+                    <textarea id="goals" name="goals" rows="3" placeholder="Co chcesz poprawić na swojej stronie?"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-credit-card"></i>
+                    Zapłać przez PayPal - 89€
+                </button>
+                
+                <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted);">
+                    Bezpieczna płatność przez PayPal. Raport otrzymasz w ciągu 2-24 godzin.
+                </p>
+            </form>
         </div>
     </main>
 
@@ -1402,7 +1363,6 @@
         function initFAQ() {
             const faqQuestions = document.querySelectorAll('.faq-question');
             const categoryButtons = document.querySelectorAll('.category-btn');
-            const searchInput = document.getElementById('searchInput');
             const faqCategories = document.querySelectorAll('.faq-category');
 
             // FAQ toggle
@@ -1444,83 +1404,7 @@
                             cat.style.display = 'none';
                         }
                     });
-                    
-                    // Clear search
-                    searchInput.value = '';
-                    clearHighlights();
                 });
-            });
-
-            // Search functionality
-            searchInput.addEventListener('input', debounce(function() {
-                const query = this.value.toLowerCase();
-                
-                if (query.length === 0) {
-                    // Show all categories
-                    faqCategories.forEach(cat => cat.style.display = 'block');
-                    clearHighlights();
-                    return;
-                }
-                
-                faqCategories.forEach(category => {
-                    const faqItems = category.querySelectorAll('.faq-item');
-                    let categoryHasMatch = false;
-                    
-                    faqItems.forEach(item => {
-                        const questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
-                        const answerText = item.querySelector('.faq-answer-content').textContent.toLowerCase();
-                        
-                        if (questionText.includes(query) || answerText.includes(query)) {
-                            item.style.display = 'block';
-                            categoryHasMatch = true;
-                            
-                            // Highlight matches
-                            highlightText(item, query);
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                    
-                    category.style.display = categoryHasMatch ? 'block' : 'none';
-                });
-            }, 300));
-        }
-
-        // Highlight search terms
-        function highlightText(element, query) {
-            clearHighlights();
-            const walker = document.createTreeWalker(
-                element,
-                NodeFilter.SHOW_TEXT,
-                null,
-                false
-            );
-            
-            const textNodes = [];
-            let node;
-            while (node = walker.nextNode()) {
-                textNodes.push(node);
-            }
-            
-            textNodes.forEach(textNode => {
-                const text = textNode.textContent;
-                const regex = new RegExp(`(${query})`, 'gi');
-                if (regex.test(text)) {
-                    const highlightedText = text.replace(regex, '<span class="highlight">$1</span>');
-                    const wrapper = document.createElement('span');
-                    wrapper.innerHTML = highlightedText;
-                    textNode.parentNode.replaceChild(wrapper, textNode);
-                }
-            });
-        }
-
-        // Clear highlights
-        function clearHighlights() {
-            const highlights = document.querySelectorAll('.highlight');
-            highlights.forEach(highlight => {
-                const parent = highlight.parentNode;
-                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
-                parent.normalize();
             });
         }
 
@@ -1532,6 +1416,23 @@
                     top: 0,
                     behavior: 'smooth'
                 });
+            });
+        }
+
+        // Form handling
+        function initForm() {
+            const form = document.getElementById('auditForm');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const website = document.getElementById('website').value;
+                const email = document.getElementById('email').value;
+                const company = document.getElementById('company').value;
+                const goals = document.getElementById('goals').value;
+                
+                // Redirect to PayPal or payment processor
+                // This would integrate with your payment system
+                alert('Przekierowanie do płatności PayPal...\nStrona: ' + website + '\nEmail: ' + email);
             });
         }
 
@@ -1556,6 +1457,7 @@
             initMobileMenu();
             initFAQ();
             initBackToTop();
+            initForm();
             initSmoothScroll();
             
             // Add optimized scroll listeners
