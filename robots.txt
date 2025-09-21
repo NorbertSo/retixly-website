@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /*.json$
+
+# Crawl-delay dla botów
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://retixly.website/sitemap.xml
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
