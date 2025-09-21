@@ -110,11 +110,16 @@
             66% { transform: translate(20px, -20px) rotate(240deg); }
         }
 
+        /* FIXED: PERFECT CONTAINER CENTERING */
         .container {
             width: 100%;
-            padding: 0 1rem;
-            margin: 0 auto;
-            max-width: 1200px;
+            max-width: 100vw;
+            padding-left: 0;
+            padding-right: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Progress Bar */
@@ -150,8 +155,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1rem 2rem;
             position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .logo {
@@ -230,42 +238,52 @@
             transform: translateY(-1px);
         }
 
-        /* FIXED: PERFECT HERO CENTERING */
+        /* ULTIMATE HERO CENTERING SOLUTION */
         .hero {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 1rem 4rem;
+            width: 100vw;
             position: relative;
             z-index: 1;
             background: var(--gradient-hero);
+            /* CRITICAL: Perfect centering using CSS Grid */
+            display: grid;
+            place-items: center;
+            padding: 8rem 0 4rem;
+            margin: 0;
+            box-sizing: border-box;
         }
 
         .hero-content {
-            max-width: 56rem;
+            /* CRITICAL: Full width with perfect centering */
             width: 100%;
+            max-width: 100vw;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
 
-        /* FIXED: PERFECTLY CENTERED HEADING WITH STABLE LAYOUT */
+        /* ULTIMATE HEADING CENTERING */
         .hero h1 {
-            font-size: 2.75rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin: 0 0 1.5rem 0;
             line-height: 1.1;
             letter-spacing: -0.025em;
             text-align: center;
             width: 100%;
+            /* CRITICAL: Perfect center alignment */
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.5rem 0.75rem;
+            /* CRITICAL: Ensure no container limitations */
+            max-width: none;
+            box-sizing: border-box;
         }
 
         .hero .highlight {
@@ -275,26 +293,33 @@
             background-clip: text;
         }
 
-        /* ROTATING TEXT COMPONENT STYLES - BASED ON PROVIDED COMPONENT */
+        /* ROTATING TEXT - PERFECT CENTERING */
         .rotating-text-container {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             position: relative;
+            /* CRITICAL: Fixed width to prevent layout shift */
+            min-width: 280px;
+            text-align: center;
         }
 
         .rotating-text {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
+            position: relative;
             overflow: hidden;
             border-radius: var(--radius-lg);
-            min-height: 2.5rem;
+            min-height: 1.2em;
+            width: 100%;
         }
 
         .rotating-text .text-item {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -303,41 +328,43 @@
             font-size: inherit;
             line-height: inherit;
             white-space: nowrap;
-            transform: translateY(100%);
             opacity: 0;
-            position: absolute;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .rotating-text .text-item.active {
-            transform: translateY(0);
             opacity: 1;
-            position: relative;
+            transform: translate(-50%, -50%);
         }
 
         .rotating-text .text-item:not(.active) {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%) translateY(-120%);
+            opacity: 0;
+            transform: translate(-50%, -150%);
         }
 
+        /* PERFECT SUBTITLE CENTERING */
         .hero .subtitle {
-            font-size: 1.25rem;
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem auto;
             line-height: 1.6;
             max-width: 48rem;
             text-align: center;
+            width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
 
+        /* PERFECT STATS CENTERING */
         .hero-stats {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: clamp(1.5rem, 4vw, 3rem);
+            margin: 2rem auto;
             flex-wrap: wrap;
             width: 100%;
+            max-width: 600px;
         }
 
         .hero-stat {
@@ -347,31 +374,34 @@
 
         .hero-stat-number {
             display: block;
-            font-size: 1.5rem;
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
             font-weight: 700;
             color: var(--primary-color);
         }
 
         .hero-stat-label {
-            font-size: 0.875rem;
+            font-size: clamp(0.75rem, 1.5vw, 0.875rem);
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
-        /* FIXED: PERFECTLY CENTERED CTA BUTTONS */
+        /* ULTIMATE CTA BUTTONS CENTERING */
         .cta-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            margin: 2.5rem auto 0;
+            margin: 2.5rem auto 0 auto;
             width: 100%;
+            max-width: 400px;
+            padding: 0 1rem;
+            box-sizing: border-box;
         }
 
         .cta-button {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
@@ -386,7 +416,10 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            min-width: 280px;
+            width: 100%;
+            max-width: 320px;
+            min-height: 56px;
+            box-sizing: border-box;
         }
 
         .cta-button:hover {
@@ -395,7 +428,7 @@
         }
 
         .secondary-button {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
@@ -409,7 +442,10 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            min-width: 280px;
+            width: 100%;
+            max-width: 320px;
+            min-height: 56px;
+            box-sizing: border-box;
         }
 
         .secondary-button:hover {
@@ -942,10 +978,11 @@
             font-size: 0.875rem;
         }
 
-        /* Responsive Design */
+        /* RESPONSIVE DESIGN WITH PERFECT CENTERING */
         @media (min-width: 768px) {
             .container {
                 padding: 0 2rem;
+                max-width: 1200px;
             }
 
             .nav-links {
@@ -991,7 +1028,7 @@
             }
 
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: clamp(3rem, 5vw, 4rem);
             }
 
             .hero .subtitle {
@@ -1005,6 +1042,7 @@
             .cta-buttons {
                 flex-direction: row;
                 gap: 1.5rem;
+                max-width: 700px;
             }
 
             .trust-grid {
@@ -1444,7 +1482,7 @@
             };
         };
 
-        // ROTATING TEXT - INSPIRED BY YOUR COMPONENT
+        // ENHANCED ROTATING TEXT WITH PERFECT STABILITY
         function initRotatingText() {
             const rotatingText = document.getElementById('rotatingText');
             const textItems = rotatingText.querySelectorAll('.text-item');
@@ -1464,7 +1502,7 @@
                 textItems[currentIndex].classList.add('active');
             }
 
-            // Start rotation after 3 seconds, then every 2 seconds (matching your component)
+            // Start rotation after 3 seconds, then every 2 seconds
             setTimeout(() => {
                 setInterval(rotateText, 2000);
             }, 3000);
