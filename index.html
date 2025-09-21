@@ -81,7 +81,7 @@
             position: relative;
         }
 
-        /* PARTICLES BACKGROUND */
+        /* ADVANCED PARTICLES BACKGROUND */
         .particles-container {
             position: fixed;
             top: 0;
@@ -92,27 +92,32 @@
             overflow: hidden;
         }
 
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float-particle 20s infinite linear;
+        .particle-canvas {
+            width: 100%;
+            height: 100%;
         }
 
-        @keyframes float-particle {
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0.1);
+            animation: particleFloat 20s infinite linear;
+        }
+
+        @keyframes particleFloat {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) translateX(-50px) rotate(0deg) scale(0.8);
                 opacity: 0;
             }
             10% {
-                opacity: 0.3;
+                opacity: 0.4;
             }
             90% {
-                opacity: 0.3;
+                opacity: 0.4;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(-100px) translateX(50px) rotate(360deg) scale(1.2);
                 opacity: 0;
             }
         }
@@ -300,19 +305,19 @@
             background-clip: text;
         }
 
-        /* FIXED: MUCH LARGER ROTATING TEXT BOX */
+        /* FIXED: SMALLER PADDING FOR ROTATING TEXT */
         .rotating-text-wrapper {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             position: relative;
             background: var(--gradient-primary);
-            padding: 0.75rem 2rem;
+            padding: 0.5rem 1rem;
             border-radius: var(--radius-xl);
             overflow: hidden;
-            min-width: 320px;
-            max-width: 400px;
-            height: 4rem;
+            min-width: 300px;
+            max-width: 380px;
+            height: 3.5rem;
             box-shadow: var(--shadow-lg);
             margin: 0 0.5rem;
         }
@@ -800,7 +805,7 @@
             margin-top: 2rem;
         }
 
-        /* Why Us Section - BACK TO 5 BOXES */
+        /* Why Us Section - WITH PROPER ICON FOR EXPERTISE */
         .why-us {
             padding: 6rem 1rem;
             width: 100%;
@@ -1134,8 +1139,8 @@
             }
 
             .rotating-text-wrapper {
-                min-width: 360px;
-                max-width: 450px;
+                min-width: 340px;
+                max-width: 420px;
             }
         }
 
@@ -1568,27 +1573,127 @@
             };
         };
 
-        // PARTICLES SYSTEM
-        function initParticles() {
+        // ADVANCED 3D PARTICLES SYSTEM
+        function initAdvancedParticles() {
             const container = document.getElementById('particlesContainer');
             const particleCount = 200;
+            const particleSpread = 10;
+            const speed = 0.1;
+            const particleBaseSize = 100;
+            const particles = [];
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 4 + 1;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                
-                container.appendChild(particle);
+            let mouseX = 0;
+            let mouseY = 0;
+            let time = 0;
+
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.className = 'particle-canvas';
+            container.appendChild(canvas);
+
+            // Resize function
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
+
+            // Initialize particles with 3D properties
+            function initParticles() {
+                for (let i = 0; i < particleCount; i++) {
+                    let x, y, z, len;
+                    do {
+                        x = Math.random() * 2 - 1;
+                        y = Math.random() * 2 - 1;
+                        z = Math.random() * 2 - 1;
+                        len = x * x + y * y + z * z;
+                    } while (len > 1 || len === 0);
+                    
+                    const r = Math.cbrt(Math.random()) * particleSpread;
+                    particles.push({
+                        baseX: x * r,
+                        baseY: y * r,
+                        baseZ: z * r,
+                        x: 0,
+                        y: 0,
+                        size: Math.random() * 4 + 2,
+                        opacity: Math.random() * 0.5 + 0.2,
+                        random: [Math.random(), Math.random(), Math.random(), Math.random()],
+                        color: `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.1})`
+                    });
+                }
+            }
+
+            // Update particles with mouse interaction and 3D movement
+            function updateParticles() {
+                time += speed;
+                
+                particles.forEach((particle, i) => {
+                    // 3D movement
+                    const t = time * 0.001;
+                    const mX = particle.baseX + Math.sin(t * particle.random[2] + 6.28 * particle.random[3]) * (0.1 + 1.5 * particle.random[0]);
+                    const mY = particle.baseY + Math.sin(t * particle.random[1] + 6.28 * particle.random[0]) * (0.1 + 1.5 * particle.random[3]);
+                    const mZ = particle.baseZ + Math.sin(t * particle.random[3] + 6.28 * particle.random[1]) * (0.1 + 1.5 * particle.random[2]);
+                    
+                    // Project 3D to 2D
+                    const camera = 20;
+                    const perspective = camera / (camera + mZ);
+                    particle.x = canvas.width / 2 + mX * perspective * 50;
+                    particle.y = canvas.height / 2 + mY * perspective * 50;
+                    
+                    // Mouse interaction
+                    const dx = mouseX - particle.x;
+                    const dy = mouseY - particle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        const force = (100 - distance) / 100;
+                        particle.x -= dx * force * 0.1;
+                        particle.y -= dy * force * 0.1;
+                    }
+                    
+                    // Size based on Z depth
+                    particle.size = (particleBaseSize * 0.01) * perspective;
+                });
+            }
+
+            // Render particles
+            function render() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    if (particle.x >= 0 && particle.x <= canvas.width && 
+                        particle.y >= 0 && particle.y <= canvas.height) {
+                        ctx.beginPath();
+                        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                        ctx.fillStyle = particle.color;
+                        ctx.fill();
+                    }
+                });
+            }
+
+            // Animation loop
+            function animate() {
+                updateParticles();
+                render();
+                requestAnimationFrame(animate);
+            }
+
+            // Mouse tracking
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+            });
+
+            // Initialize
+            window.addEventListener('resize', resize);
+            resize();
+            initParticles();
+            animate();
         }
 
-        // ROTATING TEXT WITH LARGER BOX
+        // ROTATING TEXT WITH SMALLER PADDING
         function initRotatingText() {
             const textItems = document.querySelectorAll('.rotating-text-item');
             let currentIndex = 0;
@@ -1854,7 +1959,7 @@
 
         // Initialize on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
-            initParticles();
+            initAdvancedParticles();
             initSmoothScroll();
             initLogoClick();
             initMobileMenu();
