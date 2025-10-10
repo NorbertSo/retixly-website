@@ -1815,7 +1815,7 @@
             });
         }
 
-        // Enhanced form validation and submission
+// Enhanced form validation and submission
         function initForm() {
             const form = document.getElementById('auditForm');
             const submitBtn = document.getElementById('submitBtn');
@@ -1897,8 +1897,8 @@
                         websiteUrl = 'https://' + websiteUrl;
                     }
 
-                    // Replace with your actual webhook URL
-                    const webhookUrl = "https://your-n8n-domain.com/webhook/darmowy-audyt-seo-form";
+                    // Your n8n webhook URL
+                    const webhookUrl = "https://norbertsobala.app.n8n.cloud/webhook/ee81aca2-e313-4aea-b30b-1df8aa7891a8";
                     
                     const response = await fetch(webhookUrl, {
                         method: 'POST',
@@ -1907,7 +1907,7 @@
                         },
                         body: JSON.stringify({
                             'URL Strony': websiteUrl,
-                            'Email': emailInput.value,
+                            'email': emailInput.value,
                             'Data wysłania': new Date().toISOString(),
                             'Źródło': 'Retixly Homepage'
                         })
