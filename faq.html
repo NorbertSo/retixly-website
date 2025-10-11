@@ -1419,12 +1419,19 @@
             });
         }
 
-// Enhanced form validation and submission
+// Enhanced form validation and submission with DETAILED LOGGING
 function initForm() {
     const form = document.getElementById('auditForm');
     const submitBtn = form.querySelector('.submit-btn');
     
-    if (!form || !submitBtn) return;
+    console.log('🔍 initForm called');
+    console.log('📋 Form element:', form);
+    console.log('🔘 Submit button:', submitBtn);
+    
+    if (!form || !submitBtn) {
+        console.error('❌ Form or submit button not found!');
+        return;
+    }
 
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1432,7 +1439,6 @@ function initForm() {
     };
 
     const validateWebsite = (website) => {
-        // Allow simple domain format without http/https
         const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.[a-zA-Z]{2,}$/;
         const urlRegex = /^https?:\/\/[^\s]+$/;
         return domainRegex.test(website) || urlRegex.test(website);
@@ -1442,29 +1448,42 @@ function initForm() {
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
+        console.log('📝 Form submitted!');
         
         const websiteInput = document.getElementById('website');
         const emailInput = document.getElementById('email');
+        
+        console.log('🌐 Website:', websiteInput.value);
+        console.log('📧 Email:', emailInput.value);
+        
         let isValid = true;
 
         // Basic validation
         if (!websiteInput.value.trim()) {
+            console.warn('⚠️ Website empty');
             alert('❌ Podaj adres strony internetowej');
             isValid = false;
+            return;
         } else if (!validateWebsite(websiteInput.value.trim())) {
+            console.warn('⚠️ Website invalid');
             alert('❌ Podaj prawidłowy adres strony (np. twoja-strona.pl)');
             isValid = false;
+            return;
         }
 
         if (!emailInput.value.trim()) {
+            console.warn('⚠️ Email empty');
             alert('❌ Podaj adres email');
             isValid = false;
+            return;
         } else if (!validateEmail(emailInput.value)) {
+            console.warn('⚠️ Email invalid');
             alert('❌ Podaj prawidłowy adres email');
             isValid = false;
+            return;
         }
 
-        if (!isValid) return;
+        console.log('✅ Validation passed');
 
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
@@ -1476,23 +1495,34 @@ function initForm() {
                 websiteUrl = 'https://' + websiteUrl;
             }
 
-            // Your n8n webhook URL
             const webhookUrl = "https://norbertsobala.app.n8n.cloud/webhook/ee81aca2-e313-4aea-b30b-1df8aa7891a8";
+            
+            const payload = {
+                'URL Strony': websiteUrl,
+                'email': emailInput.value,
+                'Data wysłania': new Date().toISOString(),
+                'Źródło': 'FAQ Page Form'
+            };
+            
+            console.log('🚀 Sending to webhook:', webhookUrl);
+            console.log('📦 Payload:', payload);
             
             const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    'URL Strony': websiteUrl,
-                    'email': emailInput.value,
-                    'Data wysłania': new Date().toISOString(),
-                    'Źródło': 'FAQ Page Form'
-                })
+                body: JSON.stringify(payload)
             });
             
-            if (response.ok) {
+            console.log('📡 Response received');
+            console.log('📊 Status:', response.status);
+            console.log('✅ OK:', response.ok);
+            
+            const responseText = await response.text();
+            console.log('📄 Response body:', responseText);
+            
+            if (response.ok || response.status === 201) {
                 submitBtn.innerHTML = '<i class="fas fa-check"></i> Wysłano pomyślnie!';
                 submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
                 
@@ -1505,10 +1535,13 @@ function initForm() {
                     form.reset();
                 }, 3000);
             } else {
-                throw new Error('Network response was not ok');
+                throw new Error(`HTTP ${response.status}: ${responseText}`);
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('❌ Error occurred:', error);
+            console.error('❌ Error name:', error.name);
+            console.error('❌ Error message:', error.message);
+            
             submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Błąd wysyłania';
             submitBtn.style.background = 'var(--error-color)';
             alert('❌ Wystąpił błąd podczas wysyłania.\n\nSpróbuj ponownie lub skontaktuj się z nami:\nhello@retixly.website');
@@ -1519,6 +1552,8 @@ function initForm() {
             }, 3000);
         }
     });
+    
+    console.log('✅ Form event listener attached');
 }
 
         // Smooth scrolling for anchor links
