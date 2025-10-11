@@ -1419,22 +1419,88 @@
             });
         }
 
-        // Form handling
-        function initForm() {
-            const form = document.getElementById('auditForm');
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const website = document.getElementById('website').value;
-                const email = document.getElementById('email').value;
-                const company = document.getElementById('company').value;
-                const goals = document.getElementById('goals').value;
-                
-                // Redirect to PayPal or payment processor
-                // This would integrate with your payment system
-                alert('Przekierowanie do płatności PayPal...\nStrona: ' + website + '\nEmail: ' + email);
-            });
+// Form handling with n8n webhook integration
+function initForm() {
+    const form = document.getElementById('auditForm');
+    const submitBtn = form.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.innerHTML;
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const website = document.getElementById('website').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const company = document.getElementById('company').value.trim() || '';
+        const goals = document.getElementById('goals').value.trim() || '';
+        
+        // Validation
+        if (!website || !email) {
+            alert('❌ Proszę wypełnić wszystkie wymagane pola');
+            return;
         }
+        
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
+        
+        try {
+            // Send data to n8n webhook
+            const response = await fetch('https://norbertsobala.app.n8n.cloud/webhook/ee81aca2-e313-4aea-b30b-1df8aa7891a8', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'URL Strony': website,
+                    'email': email,
+                    'Nazwa firmy': company,
+                    'Cele audytu': goals,
+                    'Data wysłania': new Date().toISOString(),
+                    'Źródło': 'FAQ Page Form'
+                })
+            });
+            
+            if (response.ok) {
+                // Success
+                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Wysłano pomyślnie!';
+                submitBtn.style.background = 'var(--success-color)';
+                
+                // Show success message
+                alert('✅ Dziękujemy!\n\nTwoje zamówienie zostało przyjęte.\nRaport audytu otrzymasz na email: ' + email + '\n\nCzas realizacji: 2-24 godziny');
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+                
+            } else {
+                throw new Error('Błąd serwera');
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+            
+            // Error handling
+            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Błąd wysyłania';
+            submitBtn.style.background = 'var(--error-color)';
+            
+            alert('❌ Wystąpił problem z wysłaniem formularza.\n\nProsimy spróbować ponownie lub skontaktować się przez email:\nhello@retixly.website');
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 3000);
+        }
+    });
+}
 
         // Smooth scrolling for anchor links
         function initSmoothScroll() {
