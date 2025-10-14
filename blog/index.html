@@ -1,1 +1,914 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO META TAGS -->
+    <title>Blog Retixly - Ekspertka wiedza o SEO, UX i Security | AI-Powered Insights</title>
+    <meta name="description" content="Praktyczna wiedza o SEO, UX i cyberbezpieczeństwie która zwiększa konwersje i przychody. Najnowsze trendy, case studies i porady od ekspertów AI.">
+    <meta name="keywords" content="blog SEO, blog UX, cyberbezpieczeństwo blog, audyty AI, optymalizacja strony, zwiększanie konwersji">
+    <meta name="author" content="Zespół Retixly">
+    <meta name="robots" content="index, follow">
+    
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://retixly.website/blog/">
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Blog Retixly - Ekspertka wiedza o SEO, UX i Security">
+    <meta property="og:description" content="Praktyczna wiedza która zwiększa konwersje i przychody">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://retixly.website/blog/">
+    <meta property="og:image" content="https://retixly.website/images/og-blog.jpg">
+    
+    <!-- PRELOAD -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            
+            --bg-dark: #0f172a;
+            --bg-light: #1e293b;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            
+            --border-color: rgba(148, 163, 184, 0.1);
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(148, 163, 184, 0.2);
+            
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-card: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.6));
+            
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15) 0%, var(--bg-dark) 70%);
+            z-index: -1;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 10000;
+            transition: width 0.1s ease;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-color);
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-links.active {
+            display: block;
+        }
+
+        .nav-links a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.1);
+            border-left-color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: flex;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* BREADCRUMBS */
+        .breadcrumbs {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1rem 0;
+            margin-top: 70px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .breadcrumbs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .breadcrumbs-list {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .breadcrumbs-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .breadcrumbs-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .breadcrumbs-current {
+            color: var(--text-primary);
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            min-height: 100vh;
+        }
+
+        /* HERO SECTION */
+        .blog-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+
+        .blog-hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blog-hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* SEARCH & FILTER */
+        .search-filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 2.75rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* ARTICLES GRID */
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+
+        .article-title-overlay {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-color);
+            border-radius: var(--radius-lg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .article-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* PAGINATION */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .pagination-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* NEWSLETTER CTA */
+        .newsletter-cta {
+            background: var(--gradient-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-2xl);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .newsletter-cta h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 0.875rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .newsletter-btn {
+            padding: 0.875rem 2rem;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: var(--radius-lg);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* NO RESULTS */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        /* RESPONSIVE */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                position: static;
+                background: none;
+                padding: 0;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem 0;
+                border-left: none;
+            }
+
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--gradient-primary);
+                transition: width 0.3s ease;
+            }
+
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-wrap: nowrap;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="scroll-indicator"></div>
+
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Retixly</a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#services">Usługi</a></li>
+                <li><a href="../index.html#examples">Przykłady</a></li>
+                <li><a href="../index.html#why-us">Dlaczego my</a></li>
+                <li><a href="../faq.html">FAQ</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-container">
+            <ol class="breadcrumbs-list">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>›</li>
+                <li class="breadcrumbs-current">Blog</li>
+            </ol>
+        </div>
+    </div>
+
+    <main class="main">
+        <!-- HERO -->
+        <div class="blog-hero">
+            <h1>📚 Blog <span class="highlight">ekspertów AI</span></h1>
+            <p>Praktyczna wiedza o SEO, UX i cyberbezpieczeństwie która zwiększa konwersje i przychody</p>
+        </div>
+
+        <!-- SEARCH & FILTER -->
+        <div class="search-filter-bar">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Szukaj artykułów...">
+            </div>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="wszystkie">Wszystkie</button>
+                <button class="category-btn" data-category="seo">🔍 SEO</button>
+                <button class="category-btn" data-category="ux">👥 UX</button>
+                <button class="category-btn" data-category="security">🛡️ Security</button>
+            </div>
+        </div>
+
+        <!-- ARTICLES GRID -->
+        <div class="articles-container" id="articlesContainer">
+            <!-- Articles will be injected here by JavaScript -->
+        </div>
+
+        <!-- NO RESULTS -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>Nie znaleziono artykułów</h3>
+            <p>Spróbuj zmienić kryteria wyszukiwania</p>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination-container" id="paginationContainer">
+            <button class="pagination-btn" id="prevBtn" disabled>
+                <i class="fas fa-chevron-left"></i> Poprzednia
+            </button>
+            <span class="pagination-info" id="paginationInfo">Strona 1 z 1</span>
+            <button class="pagination-btn" id="nextBtn" disabled>
+                Następna <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- NEWSLETTER CTA -->
+        <div class="newsletter-cta">
+            <h2>📬 Dołącz do <span class="highlight">newslettera</span></h2>
+            <p>Otrzymuj najnowsze artykuły, tips & tricks oraz ekskluzywne treści prosto na swoją skrzynkę</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" placeholder="twoj@email.pl" required>
+                <button type="submit" class="newsletter-btn">
+                    <i class="fas fa-paper-plane"></i> Zapisz się
+                </button>
+            </form>
+            <p style="font-size: 0.875rem; margin-top: 1rem; color: var(--text-muted);">
+                Zero spamu. Wypisz się w każdej chwili.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Retixly Blog. Wszystkie prawa zastrzeżone. | AI-Powered Business Solutions</p>
+    </footer>
+
+    <script>
+        // SAMPLE ARTICLES DATA (replace with real data)
+        const articles = [
+            {
+                id: 1,
+                title: "10 błędów SEO zabijających Twój sklep e-commerce w 2025",
+                excerpt: "Odkryj najczęstsze błędy SEO, które kosztują sklepy online tysiące złotych miesięcznie. Sprawdź, czy popełniasz któryś z nich i dowiedz się, jak je naprawić.",
+                category: "seo",
+                icon: "🔍",
+                date: "14 paź 2025",
+                readTime: "8 min",
+                url: "10-bledow-seo-ecommerce-2025.html"
+            },
+            {
+                id: 2,
+                title: "Jak poprawić UX i zwiększyć konwersje o 30% w 30 dni",
+                excerpt: "Praktyczny przewodnik po optymalizacji User Experience. Konkretne zmiany, które możesz wdrożyć już dziś i zobaczyć rezultaty w ciągu miesiąca.",
+                category: "ux",
+                icon: "👥",
+                date: "12 paź 2025",
+                readTime: "10 min",
+                url: "poprawic-ux-zwiekszyc-konwersje.html"
+            },
+            {
+                id: 3,
+                title: "Checklist bezpieczeństwa dla sklepów online [PDF]",
+                excerpt: "Kompleksowa lista kontrolna cyberbezpieczeństwa dla e-commerce. 47 punktów, które musisz sprawdzić, aby chronić swoją stronę i klientów.",
+                category: "security",
+                icon: "🛡️",
+                date: "10 paź 2025",
+                readTime: "12 min",
+                url: "checklist-bezpieczenstwa-sklepy.html"
+            },
+            {
+                id: 4,
+                title: "Core Web Vitals 2025: Kompletny przewodnik",
+                excerpt: "Wszystko co musisz wiedzieć o Core Web Vitals w 2025 roku. LCP, FID, CLS - co to znaczy i jak je zoptymalizować dla lepszych pozycji w Google.",
+                category: "seo",
+                icon: "🔍",
+                date: "8 paź 2025",
+                readTime: "15 min",
+                url: "core-web-vitals-2025.html"
+            },
+            {
+                id: 5,
+                title: "Psychologia kolorów w projektowaniu UX",
+                excerpt: "Jak kolory wpływają na decyzje zakupowe użytkowników? Naukowe podstawy wyboru palety kolorów, która zwiększa konwersję.",
+                category: "ux",
+                icon: "👥",
+                date: "6 paź 2025",
+                readTime: "7 min",
+                url: "psychologia-kolorow-ux.html"
+            },
+            {
+                id: 6,
+                title: "OWASP Top 10: Najgroźniejsze zagrożenia 2025",
+                excerpt: "Aktualna lista najbardziej krytycznych zagrożeń bezpieczeństwa aplikacji webowych według OWASP. Jak się przed nimi bronić?",
+                category: "security",
+                icon: "🛡️",
+                date: "4 paź 2025",
+                readTime: "11 min",
+                url: "owasp-top-10-2025.html"
+            }
+        ];
+
+        // STATE
+        let currentPage = 1;
+        const articlesPerPage = 6;
+        let filteredArticles = [...articles];
+
+        // ELEMENTS
+        const articlesContainer = document.getElementById('articlesContainer');
+        const noResults = document.getElementById('noResults');
+        const searchInput = document.getElementById('searchInput');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const paginationInfo = document.getElementById('paginationInfo');
+
+        // RENDER ARTICLES
+        function renderArticles() {
+            const startIndex = (currentPage - 1) * articlesPerPage;
+            const endIndex = startIndex + articlesPerPage;
+            const articlesToShow = filteredArticles.slice(startIndex, endIndex);
+
+            if (articlesToShow.length === 0) {
+                articlesContainer.style.display = 'none';
+                noResults.style.display = 'block';
+                document.getElementById('paginationContainer').style.display = 'none';
+                return;
+            }
+
+            articlesContainer.style.display = 'grid';
+            noResults.style.display = 'none';
+            document.getElementById('paginationContainer').style.display = 'flex';
+
+            articlesContainer.innerHTML = articlesToShow.map(article => `
+                <div class="article-card" onclick="window.location.href='${article.url}'">
+                    <div class="article-image">
+                        <span>${article.icon}</span>
+                        <div class="article-title-overlay">${article.title}</div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">
+                            ${article.icon} ${article.category.toUpperCase()}
+                        </span>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="far fa-calendar"></i> ${article.date}
+                            </span>
+                            <span class="article-read-time">
+                                <i class="far fa-clock"></i> ${article.readTime}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            updatePagination();
+        }
+
+        // UPDATE PAGINATION
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+            
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+            
+            paginationInfo.textContent = `Strona ${currentPage} z ${totalPages}`;
+        }
+
+        // FILTER BY CATEGORY
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                currentPage = 1;
+                
+                if (category === 'wszystkie') {
+                    filteredArticles = articles.filter(article => 
+                        article.title.toLowerCase().includes(searchInput.value.toLowerCase()) ||
+                        article.excerpt.toLowerCase().includes(searchInput.value.toLowerCase())
+                    );
+                } else {
+                    filteredArticles = articles.filter(article => 
+                        article.category === category &&
+                        (article.title.toLowerCase().includes(searchInput.value.toLowerCase()) ||
+                         article.excerpt.toLowerCase().includes(searchInput.value.toLowerCase()))
+                    );
+                }
+                
+                renderArticles();
+            });
+        });
+
+        // SEARCH
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+            
+            currentPage = 1;
+            
+            if (activeCategory === 'wszystkie') {
+                filteredArticles = articles.filter(article =>
+                    article.title.toLowerCase().includes(searchTerm) ||
+                    article.excerpt.toLowerCase().includes(searchTerm)
+                );
+            } else {
+                filteredArticles = articles.filter(article =>
+                    article.category === activeCategory &&
+                    (article.title.toLowerCase().includes(searchTerm) ||
+                     article.excerpt.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            renderArticles();
+        });
+
+        // PAGINATION
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderArticles();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderArticles();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // NEWSLETTER FORM
+        document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Newsletter signup coming soon! 🚀');
+        });
+
+        // MOBILE MENU
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        });
+
+        // SCROLL INDICATOR
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            document.querySelector('.scroll-indicator').style.width = scrollPercentage + '%';
+        }, { passive: true });
+
+        // INITIAL RENDER
+        renderArticles();
+    </script>
+</body>
+</html>
