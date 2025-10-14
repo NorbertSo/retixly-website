@@ -2,12 +2,23 @@
   "articles": [
     {
       "id": 1,
-      "title": "10 błędów SEO...",
-      "url": "10-bledow-seo-ecommerce-2025.html",
-      "excerpt": "...",
+      "title": "10 błędów SEO zabijających Twój sklep e-commerce w 2025",
+      "excerpt": "Odkryj najczęstsze błędy SEO...",
       "category": "seo",
-      "date": "2025-10-14",
-      "readTime": "8 min"
+      "icon": "🔍",
+      "date": "14 paź 2025",
+      "readTime": "8 min",
+      "url": "artykuly/bledow-seo-ecommerce-2025.html"
+    },
+    {
+      "id": 2,
+      "title": "Jak poprawić UX i zwiększyć konwersje o 30% w 30 dni",
+      "excerpt": "Praktyczny przewodnik...",
+      "category": "ux",
+      "icon": "👥",
+      "date": "12 paź 2025",
+      "readTime": "10 min",
+      "url": "artykuly/poprawic-ux-zwiekszyc-konwersje.html"
     }
   ]
 }
