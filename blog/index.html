@@ -4,28 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO META TAGS -->
     <title>Blog Retixly - Ekspertka wiedza o SEO, UX i Security | AI-Powered Insights</title>
     <meta name="description" content="Praktyczna wiedza o SEO, UX i cyberbezpieczeństwie która zwiększa konwersje i przychody. Najnowsze trendy, case studies i porady od ekspertów AI.">
-    <meta name="keywords" content="blog SEO, blog UX, cyberbezpieczeństwo blog, audyty AI, optymalizacja strony, zwiększanie konwersji">
-    <meta name="author" content="Zespół Retixly">
     <meta name="robots" content="index, follow">
-    
-    <!-- CANONICAL -->
     <link rel="canonical" href="https://retixly.website/blog/">
     
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="Blog Retixly - Ekspertka wiedza o SEO, UX i Security">
-    <meta property="og:description" content="Praktyczna wiedza która zwiększa konwersje i przychody">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://retixly.website/blog/">
-    <meta property="og:image" content="https://retixly.website/images/og-blog.jpg">
-    
-    <!-- PRELOAD -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
         :root {
@@ -77,6 +65,25 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* PARTICLES BACKGROUND */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--bg-dark);
+        }
+
+        .particle-canvas {
+            width: 100%;
+            height: 100%;
         }
 
         .animated-bg {
@@ -86,7 +93,7 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15) 0%, var(--bg-dark) 70%);
-            z-index: -1;
+            z-index: -2;
         }
 
         .scroll-indicator {
@@ -100,7 +107,7 @@
             transition: width 0.1s ease;
         }
 
-        /* HEADER */
+        /* HEADER - IDENTYCZNY JAK STRONA GŁÓWNA */
         header {
             position: fixed;
             top: 0;
@@ -112,13 +119,20 @@
             transition: all 0.3s ease;
         }
 
+        .header-scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: var(--shadow-lg);
+        }
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
+            position: relative;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .logo {
@@ -128,8 +142,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-decoration: none;
+            letter-spacing: -0.025em;
             cursor: pointer;
+            transition: transform 0.2s ease;
+            text-decoration: none;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -141,6 +161,8 @@
             background: rgba(15, 23, 42, 0.98);
             backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border-color);
+            border-radius: 0 0 1rem 1rem;
+            box-shadow: var(--shadow-xl);
             list-style: none;
             padding: 1rem 0;
         }
@@ -149,10 +171,15 @@
             display: block;
         }
 
+        .nav-links li {
+            margin: 0;
+        }
+
         .nav-links a {
             display: block;
             color: var(--text-secondary);
             text-decoration: none;
+            font-weight: 500;
             padding: 0.75rem 1.5rem;
             transition: all 0.3s ease;
             border-left: 3px solid transparent;
@@ -167,15 +194,23 @@
 
         .menu-toggle {
             display: flex;
+            align-items: center;
+            justify-content: center;
             width: 2.5rem;
             height: 2.5rem;
             background: var(--glass-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
-            border-radius: 0.5rem;
+            border-radius: var(--radius-md);
             color: var(--text-primary);
+            font-size: 1.125rem;
             cursor: pointer;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-1px);
         }
 
         /* BREADCRUMBS */
@@ -197,30 +232,37 @@
             list-style: none;
             gap: 0.5rem;
             font-size: 0.875rem;
+            align-items: center;
         }
 
         .breadcrumbs-list a {
             color: var(--text-muted);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .breadcrumbs-list a:hover {
             color: var(--primary-color);
         }
 
+        .breadcrumbs-separator {
+            color: var(--text-muted);
+        }
+
         .breadcrumbs-current {
             color: var(--text-primary);
+            font-weight: 500;
         }
 
-        /* MAIN CONTENT */
-        .main {
+        /* MAIN */
+        .container {
+            width: 100%;
             max-width: 1400px;
-            margin: 0 auto;
             padding: 3rem 2rem;
-            min-height: 100vh;
+            margin: 0 auto;
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .blog-hero {
             text-align: center;
             margin-bottom: 4rem;
@@ -247,11 +289,11 @@
             margin: 0 auto 2rem;
         }
 
-        /* SEARCH & FILTER */
+        /* SEARCH & FILTER - Z EFEKTEM WOW */
         .search-filter-bar {
             display: flex;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -272,11 +314,14 @@
             border-radius: var(--radius-lg);
             color: var(--text-primary);
             font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         .search-input:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+            transform: scale(1.02);
         }
 
         .search-icon {
@@ -285,6 +330,11 @@
             top: 50%;
             transform: translateY(-50%);
             color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus + .search-icon {
+            color: var(--primary-color);
         }
 
         .category-filters {
@@ -303,6 +353,26 @@
             transition: all 0.3s ease;
             font-size: 0.875rem;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .category-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .category-btn:hover,
@@ -310,9 +380,15 @@
             background: rgba(99, 102, 241, 0.2);
             border-color: var(--primary-color);
             color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
-        /* ARTICLES GRID */
+        .category-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ARTICLES GRID - MEGA ANIMACJE */
         .articles-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -326,16 +402,38 @@
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-2xl);
             overflow: hidden;
-            transition: all 0.3s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .article-card:hover::before {
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .article-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.4);
+            border-color: rgba(99, 102, 241, 0.5);
         }
 
         .article-image {
@@ -350,7 +448,7 @@
             overflow: hidden;
         }
 
-        .article-image::before {
+        .article-image::after {
             content: '';
             position: absolute;
             top: 0;
@@ -368,8 +466,9 @@
             color: white;
             font-size: 1.25rem;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
             z-index: 1;
+            line-height: 1.3;
         }
 
         .article-content {
@@ -377,6 +476,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .article-category {
@@ -391,6 +491,12 @@
             font-weight: 600;
             margin-bottom: 1rem;
             width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover .article-category {
+            background: rgba(99, 102, 241, 0.3);
+            transform: scale(1.05);
         }
 
         .article-excerpt {
@@ -410,19 +516,14 @@
             color: var(--text-muted);
         }
 
-        .article-date {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
+        .article-date,
         .article-read-time {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        /* PAGINATION */
+        /* PAGINATION - SLIDE IN EFFECT */
         .pagination-container {
             display: flex;
             justify-content: center;
@@ -440,11 +541,29 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pagination-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .pagination-btn:hover:not(:disabled)::after {
+            left: 0;
         }
 
         .pagination-btn:hover:not(:disabled) {
-            background: var(--primary-color);
             border-color: var(--primary-color);
+            transform: scale(1.05);
         }
 
         .pagination-btn:disabled {
@@ -455,6 +574,9 @@
         .pagination-info {
             color: var(--text-secondary);
             font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-lg);
         }
 
         /* NEWSLETTER CTA */
@@ -466,12 +588,31 @@
             padding: 3rem 2rem;
             text-align: center;
             margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
 
         .newsletter-cta h2 {
             font-size: 1.75rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            position: relative;
         }
 
         .newsletter-cta p {
@@ -480,15 +621,17 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
         }
 
         .newsletter-form {
             display: flex;
             gap: 1rem;
             max-width: 500px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
+            position: relative;
         }
 
         .newsletter-input {
@@ -499,11 +642,13 @@
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-lg);
             color: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         .newsletter-input:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
         }
 
         .newsletter-btn {
@@ -522,13 +667,54 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* FOOTER */
-        footer {
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            cursor: pointer;
             font-size: 0.875rem;
+            line-height: 1.4;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--glass-border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.2s ease;
+            background: var(--glass-bg);
+        }
+
+        .checkbox-custom::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+            opacity: 1;
         }
 
         /* NO RESULTS */
@@ -544,19 +730,34 @@
             opacity: 0.3;
         }
 
+        /* FOOTER */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
         /* RESPONSIVE */
         @media (min-width: 768px) {
             .nav-links {
                 display: flex;
                 position: static;
                 background: none;
+                backdrop-filter: none;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
                 padding: 0;
                 gap: 2rem;
             }
 
             .nav-links a {
+                display: inline-block;
                 padding: 0.5rem 0;
                 border-left: none;
+                position: relative;
             }
 
             .nav-links a::after {
@@ -570,7 +771,12 @@
                 transition: width 0.3s ease;
             }
 
-            .nav-links a:hover::after {
+            .nav-links a:hover {
+                background: none;
+            }
+
+            .nav-links a:hover::after,
+            .nav-links a.active::after {
                 width: 100%;
             }
 
@@ -588,10 +794,16 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* WOW.JS VISIBILITY */
+        .wow {
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
     <div class="animated-bg"></div>
+    <div class="particles-container" id="particlesContainer"></div>
     <div class="scroll-indicator"></div>
 
     <header>
@@ -616,36 +828,36 @@
         <div class="breadcrumbs-container">
             <ol class="breadcrumbs-list">
                 <li><a href="../index.html">Strona główna</a></li>
-                <li>›</li>
+                <li class="breadcrumbs-separator">›</li>
                 <li class="breadcrumbs-current">Blog</li>
             </ol>
         </div>
     </div>
 
-    <main class="main">
+    <main class="container">
         <!-- HERO -->
-        <div class="blog-hero">
+        <div class="blog-hero wow animate__animated animate__fadeInDown">
             <h1>📚 Blog <span class="highlight">ekspertów AI</span></h1>
             <p>Praktyczna wiedza o SEO, UX i cyberbezpieczeństwie która zwiększa konwersje i przychody</p>
         </div>
 
         <!-- SEARCH & FILTER -->
-        <div class="search-filter-bar">
+        <div class="search-filter-bar wow animate__animated animate__fadeInUp" data-wow-delay="0.2s">
             <div class="search-box">
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" class="search-input" id="searchInput" placeholder="Szukaj artykułów...">
             </div>
             <div class="category-filters">
-                <button class="category-btn active" data-category="wszystkie">Wszystkie</button>
-                <button class="category-btn" data-category="seo">🔍 SEO</button>
-                <button class="category-btn" data-category="ux">👥 UX</button>
-                <button class="category-btn" data-category="security">🛡️ Security</button>
+                <button class="category-btn active" data-category="wszystkie"><span>Wszystkie</span></button>
+                <button class="category-btn" data-category="seo"><span>🔍 SEO</span></button>
+                <button class="category-btn" data-category="ux"><span>👥 UX</span></button>
+                <button class="category-btn" data-category="security"><span>🛡️ Security</span></button>
             </div>
         </div>
 
         <!-- ARTICLES GRID -->
         <div class="articles-container" id="articlesContainer">
-            <!-- Articles will be injected here by JavaScript -->
+            <!-- Injected by JS with WOW animations -->
         </div>
 
         <!-- NO RESULTS -->
@@ -667,7 +879,7 @@
         </div>
 
         <!-- NEWSLETTER CTA -->
-        <div class="newsletter-cta">
+        <div class="newsletter-cta wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
             <h2>📬 Dołącz do <span class="highlight">newslettera</span></h2>
             <p>Otrzymuj najnowsze artykuły, tips & tricks oraz ekskluzywne treści prosto na swoją skrzynkę</p>
             <form class="newsletter-form" id="newsletterForm">
@@ -676,7 +888,12 @@
                     <i class="fas fa-paper-plane"></i> Zapisz się
                 </button>
             </form>
-            <p style="font-size: 0.875rem; margin-top: 1rem; color: var(--text-muted);">
+            <label class="checkbox-label">
+                <input type="checkbox" id="newsletterConsent" required>
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu wysyłki newslettera zgodnie z polityką prywatności.</span>
+            </label>
+            <p style="font-size: 0.875rem; margin-top: 1rem; color: var(--text-muted); position: relative;">
                 Zero spamu. Wypisz się w każdej chwili.
             </p>
         </div>
@@ -686,8 +903,149 @@
         <p>&copy; 2025 Retixly Blog. Wszystkie prawa zastrzeżone. | AI-Powered Business Solutions</p>
     </footer>
 
+    <!-- WOW.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script>
-        // SAMPLE ARTICLES DATA (replace with real data)
+        // Initialize WOW.js
+        new WOW({
+            boxClass: 'wow',
+            animateClass: 'animate__animated',
+            offset: 100,
+            mobile: true,
+            live: true
+        }).init();
+
+        // INTERACTIVE PARTICLES (z strony głównej)
+        function initInteractiveParticles() {
+            const container = document.getElementById('particlesContainer');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.className = 'particle-canvas';
+            container.appendChild(canvas);
+
+            let particles = [];
+            let mouse = { x: 0, y: 0 };
+            let animationId;
+
+            const config = {
+                particleCount: 150,
+                particleSize: 2,
+                connectionDistance: 100,
+                mouseRadius: 150,
+                speed: 0.5,
+                colors: ['rgba(255, 255, 255, 0.8)', 'rgba(99, 102, 241, 0.6)', 'rgba(139, 92, 246, 0.4)']
+            };
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * config.speed;
+                    this.vy = (Math.random() - 0.5) * config.speed;
+                    this.size = Math.random() * config.particleSize + 1;
+                    this.color = config.colors[Math.floor(Math.random() * config.colors.length)];
+                    this.originalVx = this.vx;
+                    this.originalVy = this.vy;
+                }
+
+                update() {
+                    const dx = this.x - mouse.x;
+                    const dy = this.y - mouse.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < config.mouseRadius) {
+                        const force = (config.mouseRadius - distance) / config.mouseRadius;
+                        const angle = Math.atan2(dy, dx);
+                        this.vx += Math.cos(angle) * force * 0.5;
+                        this.vy += Math.sin(angle) * force * 0.5;
+                    } else {
+                        this.vx += (this.originalVx - this.vx) * 0.05;
+                        this.vy += (this.originalVy - this.vy) * 0.05;
+                    }
+
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0) this.x = canvas.width;
+                    if (this.x > canvas.width) this.x = 0;
+                    if (this.y < 0) this.y = canvas.height;
+                    if (this.y > canvas.height) this.y = 0;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                for (let i = 0; i < config.particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function drawConnections() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < config.connectionDistance) {
+                            const opacity = 1 - (distance / config.connectionDistance);
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.2})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+                drawConnections();
+                animationId = requestAnimationFrame(animate);
+            }
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initParticles();
+            }
+
+            function handleMouseMove(e) {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.clientX - rect.left;
+                mouse.y = e.clientY - rect.top;
+            }
+
+            function handleTouchMove(e) {
+                e.preventDefault();
+                const rect = canvas.getBoundingClientRect();
+                const touch = e.touches[0];
+                mouse.x = touch.clientX - rect.left;
+                mouse.y = touch.clientY - rect.top;
+            }
+
+            window.addEventListener('resize', resize);
+            canvas.addEventListener('mousemove', handleMouseMove);
+            canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+            
+            resize();
+            animate();
+        }
+
+        // SAMPLE ARTICLES DATA
         const articles = [
             {
                 id: 1,
@@ -765,7 +1123,7 @@
         const nextBtn = document.getElementById('nextBtn');
         const paginationInfo = document.getElementById('paginationInfo');
 
-        // RENDER ARTICLES
+        // RENDER ARTICLES with WOW animations
         function renderArticles() {
             const startIndex = (currentPage - 1) * articlesPerPage;
             const endIndex = startIndex + articlesPerPage;
@@ -782,8 +1140,16 @@
             noResults.style.display = 'none';
             document.getElementById('paginationContainer').style.display = 'flex';
 
-            articlesContainer.innerHTML = articlesToShow.map(article => `
-                <div class="article-card" onclick="window.location.href='${article.url}'">
+            const animations = ['fadeInUp', 'fadeInLeft', 'fadeInRight', 'zoomIn', 'bounceIn', 'flipInX'];
+
+            articlesContainer.innerHTML = articlesToShow.map((article, index) => {
+                const animation = animations[index % animations.length];
+                const delay = (index * 0.1).toFixed(1);
+                
+                return `
+                <div class="article-card wow animate__animated animate__${animation}" 
+                     data-wow-delay="${delay}s" 
+                     onclick="window.location.href='${article.url}'">
                     <div class="article-image">
                         <span>${article.icon}</span>
                         <div class="article-title-overlay">${article.title}</div>
@@ -803,18 +1169,17 @@
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
 
             updatePagination();
+            new WOW().init(); // Re-initialize WOW for new elements
         }
 
         // UPDATE PAGINATION
         function updatePagination() {
             const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
-            
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === totalPages;
-            
             paginationInfo.textContent = `Strona ${currentPage} z ${totalPages}`;
         }
 
@@ -848,7 +1213,6 @@
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
             const activeCategory = document.querySelector('.category-btn.active').dataset.category;
-            
             currentPage = 1;
             
             if (activeCategory === 'wszystkie') {
@@ -867,7 +1231,7 @@
             renderArticles();
         });
 
-        // PAGINATION
+        // PAGINATION with smooth scroll
         prevBtn.addEventListener('click', () => {
             if (currentPage > 1) {
                 currentPage--;
@@ -885,10 +1249,18 @@
             }
         });
 
-        // NEWSLETTER FORM
+        // NEWSLETTER FORM with checkbox validation
         document.getElementById('newsletterForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Newsletter signup coming soon! 🚀');
+            const consent = document.getElementById('newsletterConsent');
+            
+            if (!consent.checked) {
+                alert('Musisz wyrazić zgodę na przetwarzanie danych osobowych.');
+                return;
+            }
+            
+            alert('Newsletter signup coming soon! 🚀\n\nDziękujemy za zainteresowanie!');
+            e.target.reset();
         });
 
         // MOBILE MENU
@@ -900,15 +1272,42 @@
         });
 
         // SCROLL INDICATOR
-        window.addEventListener('scroll', () => {
+        const debounce = (func, wait) => {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        };
+
+        const updateScrollIndicator = debounce(() => {
             const scrollTop = document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrollPercentage = (scrollTop / scrollHeight) * 100;
             document.querySelector('.scroll-indicator').style.width = scrollPercentage + '%';
-        }, { passive: true });
+        }, 10);
 
-        // INITIAL RENDER
-        renderArticles();
+        const updateHeader = debounce(() => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        }, 10);
+
+        window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+        window.addEventListener('scroll', updateHeader, { passive: true });
+
+        // INITIALIZE
+        document.addEventListener('DOMContentLoaded', function() {
+            initInteractiveParticles();
+            renderArticles();
+        });
     </script>
 </body>
 </html>
