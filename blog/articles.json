@@ -1,1 +1,13 @@
-
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "10 błędów SEO...",
+      "url": "10-bledow-seo-ecommerce-2025.html",
+      "excerpt": "...",
+      "category": "seo",
+      "date": "2025-10-14",
+      "readTime": "8 min"
+    }
+  ]
+}
