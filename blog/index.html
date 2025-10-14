@@ -406,34 +406,29 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Subtle professional hover effect */
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.4);
         }
 
         .article-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent);
+            transition: left 0.6s ease;
         }
 
         .article-card:hover::before {
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        .article-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.4);
-            border-color: rgba(99, 102, 241, 0.5);
+            left: 100%;
         }
 
         .article-image {
@@ -1123,7 +1118,7 @@
         const nextBtn = document.getElementById('nextBtn');
         const paginationInfo = document.getElementById('paginationInfo');
 
-        // RENDER ARTICLES with WOW animations
+        // RENDER ARTICLES with consistent, professional UX animations
         function renderArticles() {
             const startIndex = (currentPage - 1) * articlesPerPage;
             const endIndex = startIndex + articlesPerPage;
@@ -1140,35 +1135,36 @@
             noResults.style.display = 'none';
             document.getElementById('paginationContainer').style.display = 'flex';
 
-            const animations = ['fadeInUp', 'fadeInLeft', 'fadeInRight', 'zoomIn', 'bounceIn', 'flipInX'];
-
+            // Consistent fadeInUp animation for all cards - professional UX standard
             articlesContainer.innerHTML = articlesToShow.map((article, index) => {
-                const animation = animations[index % animations.length];
-                const delay = (index * 0.1).toFixed(1);
+                const delay = (index * 0.15).toFixed(2);
                 
                 return `
-                <div class="article-card wow animate__animated animate__${animation}" 
-                     data-wow-delay="${delay}s" 
-                     onclick="window.location.href='${article.url}'">
-                    <div class="article-image">
-                        <span>${article.icon}</span>
-                        <div class="article-title-overlay">${article.title}</div>
+                <article class="article-card wow animate__animated animate__fadeInUp" 
+                     data-wow-delay="${delay}s"
+                     data-wow-duration="0.6s"
+                     onclick="window.location.href='${article.url}'"
+                     role="article"
+                     aria-label="${article.title}">
+                    <div class="article-image" role="img" aria-label="${article.category} article illustration">
+                        <span aria-hidden="true">${article.icon}</span>
+                        <h2 class="article-title-overlay">${article.title}</h2>
                     </div>
                     <div class="article-content">
-                        <span class="article-category">
-                            ${article.icon} ${article.category.toUpperCase()}
+                        <span class="article-category" aria-label="Category: ${article.category}">
+                            <span aria-hidden="true">${article.icon}</span> ${article.category.toUpperCase()}
                         </span>
                         <p class="article-excerpt">${article.excerpt}</p>
                         <div class="article-meta">
-                            <span class="article-date">
-                                <i class="far fa-calendar"></i> ${article.date}
-                            </span>
+                            <time class="article-date" datetime="${article.date}">
+                                <i class="far fa-calendar" aria-hidden="true"></i> ${article.date}
+                            </time>
                             <span class="article-read-time">
-                                <i class="far fa-clock"></i> ${article.readTime}
+                                <i class="far fa-clock" aria-hidden="true"></i> ${article.readTime} czytania
                             </span>
                         </div>
                     </div>
-                </div>
+                </article>
             `}).join('');
 
             updatePagination();
